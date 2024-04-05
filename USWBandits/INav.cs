@@ -2,5 +2,7 @@
 
 public interface INav
 {
-    UserControl CurrentPage { get; }
+    UserControl CurrentView { get; }
+
+    void GoTo(UserControl view);
 }

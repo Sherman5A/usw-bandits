@@ -2,8 +2,11 @@
 {
     public partial class HomeView : UserControl
     {
-        public HomeView()
+        private Control Control { get; set; }
+
+        public HomeView(Control control)
         {
+            Control = control;
             InitializeComponent();
         }
     }
