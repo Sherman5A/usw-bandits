@@ -144,7 +144,7 @@
             MainMenuStrip = TopMenu;
             Name = "MainForm";
             Text = "Outlaw Hess";
-            Load += MainForm_Load;
+            Load += MainFormLoad;
             TopMenu.ResumeLayout(false);
             TopMenu.PerformLayout();
             ButtonMenu.ResumeLayout(false);

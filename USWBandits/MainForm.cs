@@ -10,10 +10,10 @@ public partial class MainForm : Form
 
     public void ChangeView(UserControl view)
     {
-        Host.Controls.Add(new HomeView(null));
+        Host.Controls.Add(view);
     }
 
-    private void MainForm_Load(object sender, EventArgs e)
+    private void MainFormLoad(object sender, EventArgs e)
     {
         Control.GoToDefault();
     }
