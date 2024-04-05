@@ -1,6 +1,6 @@
 ﻿namespace USWBandits
 {
-    partial class MainScreen
+    partial class HomeView
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,10 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            button1 = new Button();
+            SuspendLayout();
+            // 
+            // button1
+            // 
+            button1.Location = new Point(251, 93);
+            button1.Name = "button1";
+            button1.Size = new Size(233, 86);
+            button1.TabIndex = 0;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // Home
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            Controls.Add(button1);
+            Name = "Home";
+            Size = new Size(487, 182);
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button button1;
     }
 }

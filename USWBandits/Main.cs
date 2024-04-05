@@ -1,10 +1,6 @@
-namespace USWBandits
+﻿namespace USWBandits;
+
+public class Main
 {
-    public partial class Main : Form
-    {
-        public Main()
-        {
-            InitializeComponent();
-        }
-    }
+    
 }
