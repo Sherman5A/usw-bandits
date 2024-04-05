@@ -29,153 +29,142 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            topMenu = new MenuStrip();
-            fileToolStripMenuItem = new ToolStripMenuItem();
-            openFileToolStripMenuItem = new ToolStripMenuItem();
-            recentsToolStripMenuItem = new ToolStripMenuItem();
-            bobToolStripMenuItem = new ToolStripMenuItem();
-            testToolStripMenuItem = new ToolStripMenuItem();
-            exitToolStripMenuItem = new ToolStripMenuItem();
-            viewToolStripMenuItem = new ToolStripMenuItem();
-            host = new Panel();
-            toolStrip1 = new ToolStrip();
-            toolStripButton1 = new ToolStripButton();
-            toolStripButton2 = new ToolStripButton();
-            toolStripDropDownButton1 = new ToolStripDropDownButton();
-            topMenu.SuspendLayout();
-            toolStrip1.SuspendLayout();
+            TopMenu = new MenuStrip();
+            FileItem = new ToolStripMenuItem();
+            OpenFileItem = new ToolStripMenuItem();
+            RecentsItem = new ToolStripMenuItem();
+            ExitItem = new ToolStripMenuItem();
+            ViewItem = new ToolStripMenuItem();
+            Host = new Panel();
+            ButtonMenu = new ToolStrip();
+            BackButton = new ToolStripButton();
+            ForwardButton = new ToolStripButton();
+            DisconnectButton = new ToolStripButton();
+            TopMenu.SuspendLayout();
+            ButtonMenu.SuspendLayout();
             SuspendLayout();
             // 
-            // topMenu
+            // TopMenu
             // 
-            topMenu.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, viewToolStripMenuItem });
-            topMenu.Location = new Point(0, 0);
-            topMenu.Name = "topMenu";
-            topMenu.Size = new Size(800, 24);
-            topMenu.TabIndex = 0;
-            topMenu.Text = "menuStrip1";
+            TopMenu.BackColor = Color.Silver;
+            TopMenu.Items.AddRange(new ToolStripItem[] { FileItem, ViewItem });
+            TopMenu.Location = new Point(0, 0);
+            TopMenu.Name = "TopMenu";
+            TopMenu.Size = new Size(609, 24);
+            TopMenu.TabIndex = 0;
+            TopMenu.Text = "menuStrip1";
             // 
-            // fileToolStripMenuItem
+            // FileItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openFileToolStripMenuItem, recentsToolStripMenuItem, exitToolStripMenuItem });
-            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(37, 20);
-            fileToolStripMenuItem.Text = "&File";
+            FileItem.DropDownItems.AddRange(new ToolStripItem[] { OpenFileItem, RecentsItem, ExitItem });
+            FileItem.Name = "FileItem";
+            FileItem.Size = new Size(37, 20);
+            FileItem.Text = "&File";
             // 
-            // openFileToolStripMenuItem
+            // OpenFileItem
             // 
-            openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            openFileToolStripMenuItem.Size = new Size(122, 22);
-            openFileToolStripMenuItem.Text = "&Open file";
+            OpenFileItem.Name = "OpenFileItem";
+            OpenFileItem.Size = new Size(180, 22);
+            OpenFileItem.Text = "&Open file";
             // 
-            // recentsToolStripMenuItem
+            // RecentsItem
             // 
-            recentsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { bobToolStripMenuItem, testToolStripMenuItem });
-            recentsToolStripMenuItem.Name = "recentsToolStripMenuItem";
-            recentsToolStripMenuItem.Size = new Size(122, 22);
-            recentsToolStripMenuItem.Text = "&Recents";
+            RecentsItem.Name = "RecentsItem";
+            RecentsItem.Size = new Size(180, 22);
+            RecentsItem.Text = "&Recents";
             // 
-            // bobToolStripMenuItem
+            // ExitItem
             // 
-            bobToolStripMenuItem.Name = "bobToolStripMenuItem";
-            bobToolStripMenuItem.Size = new Size(95, 22);
-            bobToolStripMenuItem.Text = "Bob";
+            ExitItem.Name = "ExitItem";
+            ExitItem.Size = new Size(180, 22);
+            ExitItem.Text = "Exit";
             // 
-            // testToolStripMenuItem
+            // ViewItem
             // 
-            testToolStripMenuItem.Name = "testToolStripMenuItem";
-            testToolStripMenuItem.Size = new Size(95, 22);
-            testToolStripMenuItem.Text = "Test";
+            ViewItem.Name = "ViewItem";
+            ViewItem.Size = new Size(44, 20);
+            ViewItem.Text = "&View";
             // 
-            // exitToolStripMenuItem
+            // Host
             // 
-            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(122, 22);
-            exitToolStripMenuItem.Text = "Exit";
+            Host.Dock = DockStyle.Fill;
+            Host.Location = new Point(0, 49);
+            Host.Name = "Host";
+            Host.Size = new Size(609, 388);
+            Host.TabIndex = 2;
+            Host.ControlAdded += HostControlAdded;
             // 
-            // viewToolStripMenuItem
+            // ButtonMenu
             // 
-            viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            viewToolStripMenuItem.Size = new Size(44, 20);
-            viewToolStripMenuItem.Text = "&View";
+            ButtonMenu.BackColor = Color.Silver;
+            ButtonMenu.GripStyle = ToolStripGripStyle.Hidden;
+            ButtonMenu.Items.AddRange(new ToolStripItem[] { BackButton, ForwardButton, DisconnectButton });
+            ButtonMenu.Location = new Point(0, 24);
+            ButtonMenu.Name = "ButtonMenu";
+            ButtonMenu.Padding = new Padding(10, 0, 0, 0);
+            ButtonMenu.Size = new Size(609, 25);
+            ButtonMenu.Stretch = true;
+            ButtonMenu.TabIndex = 1;
             // 
-            // host
+            // BackButton
             // 
-            host.Location = new Point(0, 42);
-            host.Name = "host";
-            host.Size = new Size(800, 409);
-            host.TabIndex = 1;
+            BackButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            BackButton.Image = (Image)resources.GetObject("BackButton.Image");
+            BackButton.ImageTransparentColor = Color.Magenta;
+            BackButton.Name = "BackButton";
+            BackButton.Size = new Size(23, 22);
+            BackButton.Text = "toolStripButton1";
             // 
-            // toolStrip1
+            // ForwardButton
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripButton2, toolStripDropDownButton1 });
-            toolStrip1.Location = new Point(0, 24);
-            toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(800, 25);
-            toolStrip1.TabIndex = 2;
-            toolStrip1.Text = "toolStrip1";
+            ForwardButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            ForwardButton.Image = (Image)resources.GetObject("ForwardButton.Image");
+            ForwardButton.ImageTransparentColor = Color.Magenta;
+            ForwardButton.Name = "ForwardButton";
+            ForwardButton.Size = new Size(23, 22);
+            ForwardButton.Text = "toolStripButton2";
             // 
-            // toolStripButton1
+            // DisconnectButton
             // 
-            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
-            toolStripButton1.ImageTransparentColor = Color.Magenta;
-            toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new Size(23, 22);
-            toolStripButton1.Text = "toolStripButton1";
-            // 
-            // toolStripButton2
-            // 
-            toolStripButton2.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton2.Image = (Image)resources.GetObject("toolStripButton2.Image");
-            toolStripButton2.ImageTransparentColor = Color.Magenta;
-            toolStripButton2.Name = "toolStripButton2";
-            toolStripButton2.Size = new Size(23, 22);
-            toolStripButton2.Text = "toolStripButton2";
-            // 
-            // toolStripDropDownButton1
-            // 
-            toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripDropDownButton1.Image = (Image)resources.GetObject("toolStripDropDownButton1.Image");
-            toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
-            toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            toolStripDropDownButton1.Size = new Size(29, 22);
-            toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            DisconnectButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            DisconnectButton.Image = (Image)resources.GetObject("DisconnectButton.Image");
+            DisconnectButton.ImageTransparentColor = Color.Magenta;
+            DisconnectButton.Name = "DisconnectButton";
+            DisconnectButton.Size = new Size(23, 22);
+            DisconnectButton.Text = "toolStripButton1";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(toolStrip1);
-            Controls.Add(host);
-            Controls.Add(topMenu);
-            MainMenuStrip = topMenu;
+            ClientSize = new Size(609, 437);
+            Controls.Add(Host);
+            Controls.Add(ButtonMenu);
+            Controls.Add(TopMenu);
+            MainMenuStrip = TopMenu;
             Name = "MainForm";
             Text = "Outlaw Hess";
             Load += MainForm_Load;
-            topMenu.ResumeLayout(false);
-            topMenu.PerformLayout();
-            toolStrip1.ResumeLayout(false);
-            toolStrip1.PerformLayout();
+            TopMenu.ResumeLayout(false);
+            TopMenu.PerformLayout();
+            ButtonMenu.ResumeLayout(false);
+            ButtonMenu.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private MenuStrip topMenu;
-        private ToolStripMenuItem fileToolStripMenuItem;
-        private ToolStripMenuItem openFileToolStripMenuItem;
-        private ToolStripMenuItem recentsToolStripMenuItem;
-        private ToolStripMenuItem bobToolStripMenuItem;
-        private ToolStripMenuItem testToolStripMenuItem;
-        private ToolStripMenuItem exitToolStripMenuItem;
-        private Panel host;
-        private ToolStripMenuItem viewToolStripMenuItem;
-        private ToolStrip toolStrip1;
-        private ToolStripButton toolStripButton1;
-        private ToolStripButton toolStripButton2;
-        private ToolStripDropDownButton toolStripDropDownButton1;
+        private MenuStrip TopMenu;
+        private ToolStripMenuItem FileItem;
+        private ToolStripMenuItem OpenFileItem;
+        private ToolStripMenuItem RecentsItem;
+        private ToolStripMenuItem ExitItem;
+        private Panel Host;
+        private ToolStripMenuItem ViewItem;
+        private ToolStrip ButtonMenu;
+        private ToolStripButton BackButton;
+        private ToolStripButton ForwardButton;
+        private ToolStripButton DisconnectButton;
     }
 }

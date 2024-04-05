@@ -25,7 +25,5 @@ public class Control : INav
     public void Start()
     {
         Application.Run(Form);
-        // Cannot run
-        GoTo(new HomeView(this));
     }
 }

@@ -1,25 +1,25 @@
-﻿using System.Diagnostics;
+﻿namespace USWBandits;
 
-namespace USWBandits
+public partial class MainForm : Form
 {
-    public partial class MainForm : Form
+    public Control Control { get; set; }
+    public MainForm()
     {
-        public Control Control { get; set; }
-        public MainForm()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        public void ChangeView(UserControl view)
-        {
-            Debug.WriteLine("running");
-            host.Controls.Add(new HomeView(null));
-            Debug.WriteLine(host.Controls.ToString());
-        }
+    public void ChangeView(UserControl view)
+    {
+        Host.Controls.Add(new HomeView(null));
+    }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            Control.GoToDefault();
-        }
+    private void MainForm_Load(object sender, EventArgs e)
+    {
+        Control.GoToDefault();
+    }
+
+    private void HostControlAdded(object sender, ControlEventArgs e)
+    {
+        e.Control.Dock = DockStyle.Fill;
     }
 }

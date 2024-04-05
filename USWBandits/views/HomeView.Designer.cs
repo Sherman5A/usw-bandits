@@ -33,9 +33,10 @@
             // 
             // button1
             // 
-            button1.Location = new Point(47, 22);
+            button1.AutoSize = true;
+            button1.Location = new Point(21, 16);
             button1.Name = "button1";
-            button1.Size = new Size(233, 86);
+            button1.Size = new Size(305, 217);
             button1.TabIndex = 0;
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
@@ -44,12 +45,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            BackColor = Color.DimGray;
             Controls.Add(button1);
             Name = "HomeView";
-            Size = new Size(283, 111);
+            Size = new Size(1016, 637);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
