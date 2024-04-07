@@ -1,4 +1,7 @@
-﻿namespace USWBandits;
+﻿using USWBandits.presenters;
+using USWBandits.views;
+
+namespace USWBandits;
 
 /// <summary>
 /// Controller class. Interfaces between the model and views
@@ -6,7 +9,7 @@
 public class Control : INav
 {
     public MainForm Form { get; }
-    public UserControl CurrentView { get; private set; }
+    public IPresenter CurrentPresenter { get; private set; }
 
     /// <summary>
     /// Starts controller class, injects into form
@@ -22,10 +25,10 @@ public class Control : INav
     /// Swap to a given view
     /// </summary>
     /// <param name="view">The view to swap to</param>
-    public void GoTo(UserControl view)
+    public void GoTo(IPresenter presenter)
     {
-        CurrentView = view;
-        Form.ChangeView(CurrentView);
+        CurrentPresenter = presenter;
+        Form.ChangeView((UserControl)CurrentPresenter.View);
     }
 
     /// <summary>
@@ -33,7 +36,7 @@ public class Control : INav
     /// </summary>
     public void GoToDefault()
     {
-        GoTo(new HomeView(this));
+        GoTo(new HomePresenter(this, new HomeView()));
     }
 
     /// <summary>

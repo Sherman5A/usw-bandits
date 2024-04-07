@@ -1,8 +1,10 @@
-﻿namespace USWBandits;
+﻿using USWBandits.presenters;
+
+namespace USWBandits;
 
 public interface INav
 {
-    UserControl CurrentView { get; }
+    IPresenter CurrentPresenter { get; }
 
-    void GoTo(UserControl view);
+    void GoTo(IPresenter presenter);
 }

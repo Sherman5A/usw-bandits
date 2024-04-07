@@ -1,4 +1,4 @@
-﻿namespace USWBandits.model;
+﻿namespace USWBandits.models;
 
 public class Account
 {

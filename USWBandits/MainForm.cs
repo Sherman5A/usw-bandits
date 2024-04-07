@@ -3,6 +3,7 @@
 public partial class MainForm : Form
 {
     public Control Control { get; set; }
+
     public MainForm()
     {
         InitializeComponent();

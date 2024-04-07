@@ -1,12 +1,27 @@
-﻿namespace USWBandits;
+﻿using USWBandits.presenters;
 
-public partial class HomeView : UserControl
+namespace USWBandits.views;
+
+public partial class HomeView : UserControl, IView
 {
-    private Control Control { get; set; }
+    public IPresenter Presenter { get; set; }
+    public event EventHandler<ConnectDatabaseEventArgs> ConnectDatabase;
 
-    public HomeView(Control control)
+    public HomeView()
     {
-        Control = control;
         InitializeComponent();
     }
+
+    private void OnBtnConnectClick(object sender, EventArgs e)
+    {
+        ConnectDatabaseEventArgs args = new ConnectDatabaseEventArgs
+        {
+            DatabasePath = "jeff"
+        };
+        ConnectDatabase(this, args);
+    }
+}
+
+public class ConnectDatabaseEventArgs: EventArgs {
+    public string DatabasePath { get; set; }
 }

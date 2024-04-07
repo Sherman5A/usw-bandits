@@ -1,6 +1,6 @@
 ﻿namespace USWBandits.views
 {
-    partial class HomeView
+    partial class ConnectedDatabase
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            BtnConnect = new Button();
+            TreeNode treeNode1 = new TreeNode("Jeff");
+            TreeNode treeNode2 = new TreeNode("Customers", new TreeNode[] { treeNode1 });
+            treeView1 = new TreeView();
             SuspendLayout();
             // 
-            // BtnConnect
+            // treeView1
             // 
-            BtnConnect.AutoSize = true;
-            BtnConnect.Location = new Point(21, 16);
-            BtnConnect.Name = "BtnConnect";
-            BtnConnect.Size = new Size(305, 217);
-            BtnConnect.TabIndex = 0;
-            BtnConnect.Text = "Connect";
-            BtnConnect.UseVisualStyleBackColor = true;
-            BtnConnect.Click += OnBtnConnectClick;
+            treeView1.Location = new Point(3, 3);
+            treeView1.Name = "treeView1";
+            treeNode1.Name = "Node1";
+            treeNode1.Text = "Jeff";
+            treeNode2.Name = "Node0";
+            treeNode2.Text = "Customers";
+            treeView1.Nodes.AddRange(new TreeNode[] { treeNode2 });
+            treeView1.Size = new Size(216, 545);
+            treeView1.TabIndex = 3;
             // 
-            // HomeView
+            // ConnectedDatabase
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            BackColor = Color.DimGray;
-            Controls.Add(BtnConnect);
-            Name = "HomeView";
-            Size = new Size(1016, 637);
+            Controls.Add(treeView1);
+            Name = "ConnectedDatabase";
+            Size = new Size(1058, 551);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Button BtnConnect;
+        private TreeView treeView1;
     }
 }
