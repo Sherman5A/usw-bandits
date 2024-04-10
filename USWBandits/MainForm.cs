@@ -11,6 +11,7 @@ public partial class MainForm : Form
 
     public void ChangeView(UserControl view)
     {
+        Host.Controls.Clear();
         Host.Controls.Add(view);
     }
 

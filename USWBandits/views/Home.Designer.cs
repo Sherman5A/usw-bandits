@@ -1,6 +1,6 @@
 ﻿namespace USWBandits.views
 {
-    partial class HomeView
+    partial class Home
     {
         /// <summary> 
         /// Required designer variable.

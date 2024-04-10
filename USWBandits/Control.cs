@@ -36,7 +36,7 @@ public class Control : INav
     /// </summary>
     public void GoToDefault()
     {
-        GoTo(new HomePresenter(this, new HomeView()));
+        GoTo(new HomePresenter(this, new Home()));
     }
 
     /// <summary>

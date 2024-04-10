@@ -2,12 +2,12 @@
 
 namespace USWBandits.views;
 
-public partial class HomeView : UserControl, IView
+public partial class Home : UserControl, IView
 {
     public IPresenter Presenter { get; set; }
     public event EventHandler<ConnectDatabaseEventArgs> ConnectDatabase;
 
-    public HomeView()
+    public Home()
     {
         InitializeComponent();
     }

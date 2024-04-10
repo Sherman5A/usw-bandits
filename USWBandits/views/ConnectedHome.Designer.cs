@@ -1,6 +1,6 @@
 ﻿namespace USWBandits.views
 {
-    partial class ConnectedDatabase
+    partial class ConnectedHome
     {
         /// <summary> 
         /// Required designer variable.
