@@ -9,6 +9,11 @@ public partial class SideNav : UserControl
         InitializeComponent();
     }
 
+    public void FocusNode(string nodeName)
+    {
+        TreeNav.SelectedNode = TreeNav.Nodes.Find(nodeName, true)[0];
+    }
+
     private void OnTreeNavAfterSelect(object sender, TreeViewEventArgs e)
     {
         string selectedNode = e.Node.Name;

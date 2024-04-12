@@ -51,6 +51,6 @@
 
         #endregion
 
-        private components.SideNav sideNav;
+        public components.SideNav sideNav;
     }
 }

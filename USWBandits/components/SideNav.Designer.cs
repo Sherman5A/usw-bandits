@@ -28,28 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TreeNode productNode = new TreeNode("Products");
-            TreeNode accountNode = new TreeNode("Accounts");
-            TreeNode customerNode = new TreeNode("Customers");
-            TreeNode transactionNode = new TreeNode("Transactions");
+            TreeNode treeNode1 = new TreeNode("Products");
+            TreeNode treeNode2 = new TreeNode("Accounts");
+            TreeNode treeNode3 = new TreeNode("Customers");
+            TreeNode treeNode4 = new TreeNode("Transactions");
             TreeNav = new TreeView();
             SuspendLayout();
             // 
             // TreeNav
             // 
             TreeNav.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            TreeNav.HideSelection = false;
             TreeNav.Location = new Point(5, 5);
             TreeNav.Margin = new Padding(5);
             TreeNav.Name = "TreeNav";
-            productNode.Name = "NodeProducts";
-            productNode.Text = "Products";
-            accountNode.Name = "NodeAccounts";
-            accountNode.Text = "Accounts";
-            customerNode.Name = "NodeCustomers";
-            customerNode.Text = "Customers";
-            transactionNode.Name = "NodeTransactions";
-            transactionNode.Text = "Transactions";
-            TreeNav.Nodes.AddRange(new TreeNode[] { productNode, accountNode, customerNode, transactionNode });
+            treeNode1.Name = "NodeProducts";
+            treeNode1.Text = "Products";
+            treeNode2.Name = "NodeAccounts";
+            treeNode2.Text = "Accounts";
+            treeNode3.Name = "NodeCustomers";
+            treeNode3.Text = "Customers";
+            treeNode4.Name = "NodeTransactions";
+            treeNode4.Text = "Transactions";
+            TreeNav.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode2, treeNode3, treeNode4 });
             TreeNav.Size = new Size(146, 308);
             TreeNav.TabIndex = 4;
             TreeNav.AfterSelect += OnTreeNavAfterSelect;

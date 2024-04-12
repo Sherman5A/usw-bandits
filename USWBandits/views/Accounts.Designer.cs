@@ -28,31 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            LabelTitle = new Label();
             SuspendLayout();
             // 
-            // label1
+            // sideNav
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(321, 150);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 1;
-            label1.Text = "label1";
+            sideNav.Size = new Size(156, 354);
+            // 
+            // LabelTitle
+            // 
+            LabelTitle.AutoSize = true;
+            LabelTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            LabelTitle.Location = new Point(162, 11);
+            LabelTitle.Name = "LabelTitle";
+            LabelTitle.Size = new Size(108, 30);
+            LabelTitle.TabIndex = 1;
+            LabelTitle.Text = "Accounts";
             // 
             // Accounts
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(label1);
+            Controls.Add(LabelTitle);
             Name = "Accounts";
-            Controls.SetChildIndex(label1, 0);
+            Size = new Size(663, 354);
+            Load += OnAccountsLoad;
+            Controls.SetChildIndex(sideNav, 0);
+            Controls.SetChildIndex(LabelTitle, 0);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
+        private Label LabelTitle;
     }
 }
