@@ -1,16 +1,9 @@
-﻿using USWBandits.components;
-using USWBandits.presenters;
+﻿namespace USWBandits.views;
 
-namespace USWBandits.views;
-
-public partial class Home : UserControl, IView
+public partial class Home : ConnectedView, IHome
 {
-    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
-    public IPresenter Presenter { get; set; }
-
     public Home()
     {
         InitializeComponent();
-        sideNav.TreeNavSelect += (s, e) => TreeNavSelect?.Invoke(s, e);
     }
 }

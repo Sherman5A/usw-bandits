@@ -2,7 +2,7 @@
 
 namespace USWBandits.views;
 
-public partial class Start : UserControl, IHome
+public partial class Start : UserControl, IStart
 {
     public IPresenter Presenter { get; set; }
     public event EventHandler<ConnectDatabaseEventArgs> ConnectDatabase;

@@ -5,11 +5,11 @@ namespace USWBandits.presenters;
 public class HomePresenter : IPresenter
 {
     public Control ParentControl { get; set; }
-    public Home View { get; set; }
-    public UserControl ViewControl => View;
+    public IHome View { get; set; }
+    public UserControl ViewControl => View as UserControl;
 
 
-    public HomePresenter(Control parentControl, Home view)
+    public HomePresenter(Control parentControl, IHome view)
     {
         ParentControl = parentControl;
         View = view;

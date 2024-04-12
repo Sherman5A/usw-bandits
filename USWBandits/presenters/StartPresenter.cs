@@ -5,11 +5,11 @@ namespace USWBandits.presenters;
 public class StartPresenter : IPresenter
 {
     public Control ParentControl { get; set; }
-    public Start View { get; set; }
-    public UserControl ViewControl => View;
+    public IStart View { get; set; }
+    public UserControl ViewControl => View as UserControl;
 
 
-    public StartPresenter(Control parentControl, Start view)
+    public StartPresenter(Control parentControl, IStart view)
     {
         ParentControl = parentControl;
         View = view;
@@ -19,11 +19,11 @@ public class StartPresenter : IPresenter
 
     private void HandleDatabaseConnect(object sender, ConnectDatabaseEventArgs e)
     {
-        ParentControl.GoTo(new HomePresenter(ParentControl, new Home()));
+        ChangePresenter(new HomePresenter(ParentControl, new Home()));
     }
 
     public void ChangePresenter(IPresenter presenter)
     {
-        throw new NotImplementedException();
+        ParentControl.GoTo(presenter);
     }
 }
