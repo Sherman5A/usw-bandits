@@ -1,5 +1,6 @@
 ﻿namespace USWBandits.models;
 
-internal class HomeModel
+public class HomeModel
 {
+    
 }

@@ -1,28 +1,16 @@
-﻿using USWBandits.presenters;
+﻿using USWBandits.components;
+using USWBandits.presenters;
 
 namespace USWBandits.views;
 
-public partial class Home : UserControl, IHome
+public partial class Home : UserControl, IView
 {
+    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
     public IPresenter Presenter { get; set; }
-    public event EventHandler<ConnectDatabaseEventArgs> ConnectDatabase;
 
     public Home()
     {
         InitializeComponent();
+        sideNav.TreeNavSelect += (s, e) => TreeNavSelect?.Invoke(s, e);
     }
-
-    private void OnBtnConnectClick(object sender, EventArgs e)
-    {
-        ConnectDatabaseEventArgs args = new ConnectDatabaseEventArgs
-        {
-            DatabasePath = "jeff"
-        };
-        ConnectDatabase(this, args);
-    }
-}
-
-public class ConnectDatabaseEventArgs : EventArgs
-{
-    public string DatabasePath { get; set; }
 }

@@ -1,13 +1,14 @@
-﻿using USWBandits.presenters;
+﻿namespace USWBandits.views;
 
-namespace USWBandits.views;
-
-public partial class Product : UserControl, IView
+public partial class Product : ConnectedView, IProduct
 {
-    public IPresenter Presenter { get; set; }
-
     public Product()
     {
         InitializeComponent();
+    }
+
+    private void OnProductsLoad(object sender, EventArgs e)
+    {
+        sideNav.FocusNode("NodeAccounts");
     }
 }

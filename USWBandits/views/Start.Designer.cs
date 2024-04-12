@@ -1,6 +1,6 @@
 ﻿namespace USWBandits.views
 {
-    partial class ConnectedHome
+    partial class Start
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,29 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            sideNav = new components.SideNav();
+            BtnConnect = new Button();
             SuspendLayout();
             // 
-            // sideNav
+            // BtnConnect
             // 
-            sideNav.Dock = DockStyle.Left;
-            sideNav.Location = new Point(0, 0);
-            sideNav.Name = "sideNav";
-            sideNav.Size = new Size(156, 411);
-            sideNav.TabIndex = 0;
+            BtnConnect.AutoSize = true;
+            BtnConnect.Location = new Point(21, 16);
+            BtnConnect.Name = "BtnConnect";
+            BtnConnect.Size = new Size(305, 217);
+            BtnConnect.TabIndex = 0;
+            BtnConnect.Text = "Connect";
+            BtnConnect.UseVisualStyleBackColor = true;
+            BtnConnect.Click += OnBtnConnectClick;
             // 
-            // ConnectedHome
+            // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(sideNav);
-            Name = "ConnectedHome";
-            Size = new Size(770, 411);
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            BackColor = SystemColors.Control;
+            Controls.Add(BtnConnect);
+            Name = "Home";
+            Size = new Size(1016, 637);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private components.SideNav sideNav;
+        private Button BtnConnect;
     }
 }

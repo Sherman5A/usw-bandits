@@ -9,7 +9,7 @@ public class AccountPresenter : IPresenter
     public Control ParentControl { get; set; }
 
     public IAccounts View { get; set; }
-    public UserControl ViewControl => (UserControl)View;
+    public UserControl ViewControl => View as UserControl;
 
     public AccountPresenter(Control parentControl, IAccounts view)
     {

@@ -49,7 +49,7 @@
             // 
             // TopMenu
             // 
-            TopMenu.BackColor = Color.Silver;
+            TopMenu.BackColor = SystemColors.ControlLight;
             TopMenu.Items.AddRange(new ToolStripItem[] { FileItem, ViewItem });
             TopMenu.Location = new Point(0, 0);
             TopMenu.Name = "TopMenu";
@@ -99,7 +99,7 @@
             // 
             // ButtonMenu
             // 
-            ButtonMenu.BackColor = Color.Silver;
+            ButtonMenu.BackColor = SystemColors.ControlLight;
             ButtonMenu.GripStyle = ToolStripGripStyle.Hidden;
             ButtonMenu.Items.AddRange(new ToolStripItem[] { BackButton, ForwardButton, toolStripLabel1, toolStripSeparator1, toolStripTextBox1, toolStripButton1 });
             ButtonMenu.Location = new Point(0, 24);

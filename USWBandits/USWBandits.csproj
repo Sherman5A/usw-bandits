@@ -15,7 +15,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="views\NavBar.cs">
+    <Compile Update="views\Product.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="views\Transactions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="views\Products.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

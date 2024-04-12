@@ -28,35 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            BtnConnect = new Button();
+            sideNav = new components.SideNav();
             SuspendLayout();
             // 
-            // BtnConnect
+            // sideNav
             // 
-            BtnConnect.AutoSize = true;
-            BtnConnect.Location = new Point(21, 16);
-            BtnConnect.Name = "BtnConnect";
-            BtnConnect.Size = new Size(305, 217);
-            BtnConnect.TabIndex = 0;
-            BtnConnect.Text = "Connect";
-            BtnConnect.UseVisualStyleBackColor = true;
-            BtnConnect.Click += OnBtnConnectClick;
+            sideNav.Dock = DockStyle.Left;
+            sideNav.Location = new Point(0, 0);
+            sideNav.Name = "sideNav";
+            sideNav.Size = new Size(156, 411);
+            sideNav.TabIndex = 0;
             // 
-            // HomeView
+            // ConnectedHome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            BackColor = Color.DimGray;
-            Controls.Add(BtnConnect);
-            Name = "HomeView";
-            Size = new Size(1016, 637);
+            Controls.Add(sideNav);
+            Name = "ConnectedHome";
+            Size = new Size(770, 411);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Button BtnConnect;
+        public components.SideNav sideNav;
     }
 }
