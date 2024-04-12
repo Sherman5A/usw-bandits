@@ -1,6 +1,6 @@
 ﻿namespace USWBandits.views
 {
-    partial class ConnectedHome
+    partial class Accounts
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,29 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            sideNav = new components.SideNav();
+            label1 = new Label();
             SuspendLayout();
             // 
-            // sideNav
+            // label1
             // 
-            sideNav.Dock = DockStyle.Left;
-            sideNav.Location = new Point(0, 0);
-            sideNav.Name = "sideNav";
-            sideNav.Size = new Size(156, 411);
-            sideNav.TabIndex = 0;
+            label1.AutoSize = true;
+            label1.Location = new Point(321, 150);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 1;
+            label1.Text = "label1";
             // 
-            // ConnectedHome
+            // Accounts
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(sideNav);
-            Name = "ConnectedHome";
-            Size = new Size(770, 411);
+            Controls.Add(label1);
+            Name = "Accounts";
+            Controls.SetChildIndex(label1, 0);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private components.SideNav sideNav;
+        private Label label1;
     }
 }

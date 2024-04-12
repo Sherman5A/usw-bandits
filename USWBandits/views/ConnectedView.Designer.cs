@@ -1,6 +1,6 @@
 ﻿namespace USWBandits.views
 {
-    partial class ConnectedHome
+    partial class ConnectedView
     {
         /// <summary> 
         /// Required designer variable.
@@ -36,16 +36,16 @@
             sideNav.Dock = DockStyle.Left;
             sideNav.Location = new Point(0, 0);
             sideNav.Name = "sideNav";
-            sideNav.Size = new Size(156, 411);
-            sideNav.TabIndex = 0;
+            sideNav.Size = new Size(156, 350);
+            sideNav.TabIndex = 1;
             // 
-            // ConnectedHome
+            // ConnectedViews
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(sideNav);
-            Name = "ConnectedHome";
-            Size = new Size(770, 411);
+            Name = "ConnectedViews";
+            Size = new Size(614, 350);
             ResumeLayout(false);
         }
 

@@ -2,7 +2,7 @@
 
 namespace USWBandits.views;
 
-public partial class Home : UserControl, IView
+public partial class Home : UserControl, IHome
 {
     public IPresenter Presenter { get; set; }
     public event EventHandler<ConnectDatabaseEventArgs> ConnectDatabase;
@@ -22,6 +22,7 @@ public partial class Home : UserControl, IView
     }
 }
 
-public class ConnectDatabaseEventArgs: EventArgs {
+public class ConnectDatabaseEventArgs : EventArgs
+{
     public string DatabasePath { get; set; }
 }

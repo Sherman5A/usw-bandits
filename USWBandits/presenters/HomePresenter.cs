@@ -2,16 +2,28 @@
 
 namespace USWBandits.presenters;
 
-public class HomePresenter : Presenter
+public class HomePresenter : IPresenter
 {
-    public HomePresenter(Control parentControl, Home view) : base(parentControl, view)
-    {
-        view.ConnectDatabase += HandleDatabaseConnect;
-    }
+    public Control ParentControl { get; set; }
+    public Home View { get; set; }
+    public UserControl ViewControl => (UserControl)View;
 
+
+    public HomePresenter(Control parentControl, Home view)
+    {
+        ParentControl = parentControl;
+        View = view;
+        View.Presenter = this;
+        View.ConnectDatabase += HandleDatabaseConnect;
+    }
 
     private void HandleDatabaseConnect(object sender, ConnectDatabaseEventArgs e)
     {
-        ParentControl.GoTo(new ConnectedHomePresenter(ParentControl, new ConnectedHome()));
+        ParentControl.GoTo(new AccountPresenter(ParentControl, new Accounts()));
+    }
+
+    public void ChangePresenter(IPresenter presenter)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -39,7 +39,10 @@
             ButtonMenu = new ToolStrip();
             BackButton = new ToolStripButton();
             ForwardButton = new ToolStripButton();
-            DisconnectButton = new ToolStripButton();
+            toolStripLabel1 = new ToolStripLabel();
+            toolStripSeparator1 = new ToolStripSeparator();
+            toolStripTextBox1 = new ToolStripTextBox();
+            toolStripButton1 = new ToolStripButton();
             TopMenu.SuspendLayout();
             ButtonMenu.SuspendLayout();
             SuspendLayout();
@@ -50,7 +53,7 @@
             TopMenu.Items.AddRange(new ToolStripItem[] { FileItem, ViewItem });
             TopMenu.Location = new Point(0, 0);
             TopMenu.Name = "TopMenu";
-            TopMenu.Size = new Size(609, 24);
+            TopMenu.Size = new Size(574, 24);
             TopMenu.TabIndex = 0;
             TopMenu.Text = "menuStrip1";
             // 
@@ -64,19 +67,19 @@
             // OpenFileItem
             // 
             OpenFileItem.Name = "OpenFileItem";
-            OpenFileItem.Size = new Size(180, 22);
+            OpenFileItem.Size = new Size(122, 22);
             OpenFileItem.Text = "&Open file";
             // 
             // RecentsItem
             // 
             RecentsItem.Name = "RecentsItem";
-            RecentsItem.Size = new Size(180, 22);
+            RecentsItem.Size = new Size(122, 22);
             RecentsItem.Text = "&Recents";
             // 
             // ExitItem
             // 
             ExitItem.Name = "ExitItem";
-            ExitItem.Size = new Size(180, 22);
+            ExitItem.Size = new Size(122, 22);
             ExitItem.Text = "Exit";
             // 
             // ViewItem
@@ -90,7 +93,7 @@
             Host.Dock = DockStyle.Fill;
             Host.Location = new Point(0, 49);
             Host.Name = "Host";
-            Host.Size = new Size(609, 388);
+            Host.Size = new Size(574, 299);
             Host.TabIndex = 2;
             Host.ControlAdded += HostControlAdded;
             // 
@@ -98,11 +101,11 @@
             // 
             ButtonMenu.BackColor = Color.Silver;
             ButtonMenu.GripStyle = ToolStripGripStyle.Hidden;
-            ButtonMenu.Items.AddRange(new ToolStripItem[] { BackButton, ForwardButton, DisconnectButton });
+            ButtonMenu.Items.AddRange(new ToolStripItem[] { BackButton, ForwardButton, toolStripLabel1, toolStripSeparator1, toolStripTextBox1, toolStripButton1 });
             ButtonMenu.Location = new Point(0, 24);
             ButtonMenu.Name = "ButtonMenu";
             ButtonMenu.Padding = new Padding(10, 0, 0, 0);
-            ButtonMenu.Size = new Size(609, 25);
+            ButtonMenu.Size = new Size(574, 25);
             ButtonMenu.Stretch = true;
             ButtonMenu.TabIndex = 1;
             // 
@@ -124,24 +127,41 @@
             ForwardButton.Size = new Size(23, 22);
             ForwardButton.Text = "toolStripButton2";
             // 
-            // DisconnectButton
+            // toolStripLabel1
             // 
-            DisconnectButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            DisconnectButton.Image = (Image)resources.GetObject("DisconnectButton.Image");
-            DisconnectButton.ImageTransparentColor = Color.Magenta;
-            DisconnectButton.Name = "DisconnectButton";
-            DisconnectButton.Size = new Size(23, 22);
-            DisconnectButton.Text = "toolStripButton1";
+            toolStripLabel1.Name = "toolStripLabel1";
+            toolStripLabel1.Size = new Size(86, 22);
+            toolStripLabel1.Text = "toolStripLabel1";
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(6, 25);
+            // 
+            // toolStripTextBox1
+            // 
+            toolStripTextBox1.Name = "toolStripTextBox1";
+            toolStripTextBox1.Size = new Size(100, 25);
+            // 
+            // toolStripButton1
+            // 
+            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
+            toolStripButton1.ImageTransparentColor = Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new Size(23, 22);
+            toolStripButton1.Text = "toolStripButton1";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(609, 437);
+            ClientSize = new Size(574, 348);
             Controls.Add(Host);
             Controls.Add(ButtonMenu);
             Controls.Add(TopMenu);
             MainMenuStrip = TopMenu;
+            MinimumSize = new Size(500, 350);
             Name = "MainForm";
             Text = "Outlaw Hess";
             Load += MainFormLoad;
@@ -165,6 +185,9 @@
         private ToolStrip ButtonMenu;
         private ToolStripButton BackButton;
         private ToolStripButton ForwardButton;
-        private ToolStripButton DisconnectButton;
+        private ToolStripLabel toolStripLabel1;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripTextBox toolStripTextBox1;
+        private ToolStripButton toolStripButton1;
     }
 }

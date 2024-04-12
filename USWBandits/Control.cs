@@ -28,7 +28,7 @@ public class Control : INav
     public void GoTo(IPresenter presenter)
     {
         CurrentPresenter = presenter;
-        Form.ChangeView((UserControl)CurrentPresenter.View);
+        Form.ChangeView(CurrentPresenter.ViewControl);
     }
 
     /// <summary>

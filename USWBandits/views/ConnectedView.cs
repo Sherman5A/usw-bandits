@@ -3,12 +3,12 @@ using USWBandits.presenters;
 
 namespace USWBandits.views;
 
-public partial class ConnectedHome : UserControl, IView
+public partial class ConnectedView : UserControl, IView
 {
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
     public IPresenter Presenter { get; set; }
 
-    public ConnectedHome()
+    public ConnectedView()
     {
         InitializeComponent();
         sideNav.TreeNavSelect += (s, e) => TreeNavSelect?.Invoke(s, e);
