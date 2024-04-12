@@ -1,4 +1,4 @@
-﻿namespace USWBandits.models;
+﻿namespace USWBandits.logic;
 
 public enum ProductOpenStatus
 {
