@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             LabelTitle = new Label();
-            BtnUpdate = new Button();
+            ButtonUpdate = new Button();
             TableProductDetails = new TableLayoutPanel();
             LabelRate = new Label();
             LabelAccName = new Label();
@@ -40,6 +40,7 @@
             LabelStatus = new Label();
             LabelLabelID = new Label();
             SideNav = new components.SideNav();
+            ButtonDelete = new Button();
             TableProductDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumericRate).BeginInit();
             SuspendLayout();
@@ -55,14 +56,14 @@
             LabelTitle.TabIndex = 1;
             LabelTitle.Text = "Product";
             // 
-            // BtnUpdate
+            // ButtonUpdate
             // 
-            BtnUpdate.Location = new Point(162, 287);
-            BtnUpdate.Name = "BtnUpdate";
-            BtnUpdate.Size = new Size(417, 63);
-            BtnUpdate.TabIndex = 3;
-            BtnUpdate.Text = "Update";
-            BtnUpdate.UseVisualStyleBackColor = true;
+            ButtonUpdate.Location = new Point(162, 287);
+            ButtonUpdate.Name = "ButtonUpdate";
+            ButtonUpdate.Size = new Size(180, 62);
+            ButtonUpdate.TabIndex = 3;
+            ButtonUpdate.Text = "Update";
+            ButtonUpdate.UseVisualStyleBackColor = true;
             // 
             // TableProductDetails
             // 
@@ -84,7 +85,7 @@
             TableProductDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             TableProductDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             TableProductDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            TableProductDetails.Size = new Size(369, 241);
+            TableProductDetails.Size = new Size(380, 241);
             TableProductDetails.TabIndex = 4;
             // 
             // LabelRate
@@ -93,7 +94,7 @@
             LabelRate.AutoSize = true;
             LabelRate.BackColor = Color.Transparent;
             LabelRate.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelRate.Location = new Point(26, 198);
+            LabelRate.Location = new Point(30, 198);
             LabelRate.Name = "LabelRate";
             LabelRate.Size = new Size(113, 25);
             LabelRate.TabIndex = 11;
@@ -106,17 +107,17 @@
             LabelAccName.AutoSize = true;
             LabelAccName.BackColor = Color.Transparent;
             LabelAccName.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelAccName.Location = new Point(6, 77);
+            LabelAccName.Location = new Point(7, 77);
             LabelAccName.Name = "LabelAccName";
-            LabelAccName.Size = new Size(133, 25);
+            LabelAccName.Size = new Size(136, 25);
             LabelAccName.TabIndex = 9;
-            LabelAccName.Text = "Account name";
+            LabelAccName.Text = "Account Name";
             LabelAccName.TextAlign = ContentAlignment.MiddleRight;
             // 
             // TextAccName
             // 
             TextAccName.Anchor = AnchorStyles.Left;
-            TextAccName.Location = new Point(145, 78);
+            TextAccName.Location = new Point(149, 78);
             TextAccName.Name = "TextAccName";
             TextAccName.Size = new Size(221, 23);
             TextAccName.TabIndex = 1;
@@ -127,7 +128,7 @@
             LabelID.AutoSize = true;
             LabelID.BackColor = Color.Transparent;
             LabelID.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelID.Location = new Point(145, 17);
+            LabelID.Location = new Point(149, 17);
             LabelID.Name = "LabelID";
             LabelID.Size = new Size(52, 25);
             LabelID.TabIndex = 5;
@@ -137,7 +138,7 @@
             // 
             ComboStatus.Anchor = AnchorStyles.Left;
             ComboStatus.FormattingEnabled = true;
-            ComboStatus.Location = new Point(145, 138);
+            ComboStatus.Location = new Point(149, 138);
             ComboStatus.Name = "ComboStatus";
             ComboStatus.Size = new Size(221, 23);
             ComboStatus.Sorted = true;
@@ -146,7 +147,9 @@
             // NumericRate
             // 
             NumericRate.Anchor = AnchorStyles.Left;
-            NumericRate.Location = new Point(145, 199);
+            NumericRate.DecimalPlaces = 5;
+            NumericRate.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            NumericRate.Location = new Point(149, 199);
             NumericRate.Name = "NumericRate";
             NumericRate.Size = new Size(221, 23);
             NumericRate.TabIndex = 7;
@@ -157,7 +160,7 @@
             LabelStatus.AutoSize = true;
             LabelStatus.BackColor = Color.Transparent;
             LabelStatus.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelStatus.Location = new Point(77, 137);
+            LabelStatus.Location = new Point(81, 137);
             LabelStatus.Name = "LabelStatus";
             LabelStatus.Size = new Size(62, 25);
             LabelStatus.TabIndex = 10;
@@ -169,7 +172,7 @@
             LabelLabelID.Anchor = AnchorStyles.Right;
             LabelLabelID.BackColor = Color.Transparent;
             LabelLabelID.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelLabelID.Location = new Point(38, 17);
+            LabelLabelID.Location = new Point(42, 17);
             LabelLabelID.Name = "LabelLabelID";
             LabelLabelID.Size = new Size(101, 25);
             LabelLabelID.TabIndex = 8;
@@ -184,13 +187,23 @@
             SideNav.Size = new Size(150, 400);
             SideNav.TabIndex = 5;
             // 
+            // ButtonDelete
+            // 
+            ButtonDelete.Location = new Point(362, 287);
+            ButtonDelete.Name = "ButtonDelete";
+            ButtonDelete.Size = new Size(180, 62);
+            ButtonDelete.TabIndex = 6;
+            ButtonDelete.Text = "Delete";
+            ButtonDelete.UseVisualStyleBackColor = true;
+            // 
             // Product
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(ButtonDelete);
             Controls.Add(SideNav);
             Controls.Add(TableProductDetails);
-            Controls.Add(BtnUpdate);
+            Controls.Add(ButtonUpdate);
             Controls.Add(LabelTitle);
             Name = "Product";
             Size = new Size(600, 400);
@@ -205,7 +218,7 @@
         #endregion
 
         private Label LabelTitle;
-        private Button BtnUpdate;
+        private Button ButtonUpdate;
         private TableLayoutPanel TableProductDetails;
         private TextBox TextAccName;
         private Label LabelID;
@@ -216,5 +229,6 @@
         private Label LabelRate;
         private Label LabelStatus;
         private components.SideNav SideNav;
+        private Button ButtonDelete;
     }
 }
