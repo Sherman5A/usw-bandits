@@ -1,14 +1,15 @@
-﻿using USWBandits.views;
+﻿using System.Diagnostics;
+using USWBandits.views;
 
 namespace USWBandits.presenters;
 
-public class ProductsPresenter : SideNavPresenters, IPresenter
+public class AccountsPresenter : SideNavPresenters, IPresenter
 {
     public override Control ParentControl { get; set; }
-    public IProducts View { get; set; }
+    public IAccounts View { get; set; }
     public override UserControl ViewControl => View as UserControl;
 
-    public ProductsPresenter(Control parentControl, IProducts view)
+    public AccountsPresenter(Control parentControl, IAccounts view)
     {
         ParentControl = parentControl;
         View = view;

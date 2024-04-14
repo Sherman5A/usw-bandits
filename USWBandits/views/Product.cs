@@ -1,14 +1,25 @@
-﻿namespace USWBandits.views;
+﻿using USWBandits.components;
+using USWBandits.presenters;
 
-public partial class Product : ConnectedView, IProduct
+namespace USWBandits.views;
+
+public partial class Product : UserControl, IProduct
 {
+    public IPresenter? Presenter { get; set; }
+    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
+
     public Product()
     {
         InitializeComponent();
+        SideNav.TreeNavSelect += (s, e) =>
+        {
+            if (e.SelectedNode != "NodeProducts") TreeNavSelect?.Invoke(s, e);
+        };
     }
 
-    private void OnProductsLoad(object sender, EventArgs e)
+    private void OnProductLoad(object sender, EventArgs e)
     {
-        sideNav.FocusNode("NodeAccounts");
+        SideNav.FocusNode("NodeProducts");
     }
+
 }

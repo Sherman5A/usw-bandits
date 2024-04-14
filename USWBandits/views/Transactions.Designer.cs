@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             LabelTitle = new Label();
+            SideNav = new components.SideNav();
             SuspendLayout();
             // 
             // LabelTitle
@@ -37,19 +38,27 @@
             LabelTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
             LabelTitle.Location = new Point(162, 11);
             LabelTitle.Name = "LabelTitle";
-            LabelTitle.Size = new Size(108, 30);
+            LabelTitle.Size = new Size(142, 30);
             LabelTitle.TabIndex = 1;
-            LabelTitle.Text = "Products";
+            LabelTitle.Text = "Transactions";
             // 
-            // Accounts
+            // SideNav
+            // 
+            SideNav.Dock = DockStyle.Left;
+            SideNav.Location = new Point(0, 0);
+            SideNav.Name = "SideNav";
+            SideNav.Size = new Size(150, 400);
+            SideNav.TabIndex = 5;
+            // 
+            // Transactions
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(SideNav);
             Controls.Add(LabelTitle);
-            Name = "Products";
-            Size = new Size(663, 354);
-            Load += OnProductsLoad;
-            Controls.SetChildIndex(LabelTitle, 0);
+            Name = "Transactions";
+            Size = new Size(600, 400);
+            Load += OnTransactionsLoad;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -57,5 +66,6 @@
         #endregion
 
         private Label LabelTitle;
+        private components.SideNav SideNav;
     }
 }

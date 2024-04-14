@@ -1,6 +1,6 @@
 ﻿namespace USWBandits.views
 {
-    partial class ConnectedView
+    partial class Customers
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,29 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            sideNav = new components.SideNav();
             SuspendLayout();
             // 
-            // sideNav
-            // 
-            sideNav.Dock = DockStyle.Left;
-            sideNav.Location = new Point(0, 0);
-            sideNav.Name = "sideNav";
-            sideNav.Size = new Size(156, 350);
-            sideNav.TabIndex = 1;
-            // 
-            // ConnectedViews
+            // Customers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(sideNav);
-            Name = "ConnectedViews";
-            Size = new Size(614, 350);
+            Name = "Customers";
+            Size = new Size(600, 400);
             ResumeLayout(false);
         }
 
         #endregion
-
-        public components.SideNav sideNav;
     }
 }

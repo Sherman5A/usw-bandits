@@ -4,5 +4,5 @@ namespace USWBandits.views;
 
 public interface IView
 {
-    public IPresenter Presenter { get; set; }
+    public IPresenter? Presenter { get; set; }
 }

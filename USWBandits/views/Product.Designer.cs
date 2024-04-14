@@ -33,19 +33,16 @@
             TableProductDetails = new TableLayoutPanel();
             LabelRate = new Label();
             LabelAccName = new Label();
-            LabelLabelID = new Label();
             TextAccName = new TextBox();
             LabelID = new Label();
             ComboStatus = new ComboBox();
             NumericRate = new NumericUpDown();
             LabelStatus = new Label();
+            LabelLabelID = new Label();
+            SideNav = new components.SideNav();
             TableProductDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumericRate).BeginInit();
             SuspendLayout();
-            // 
-            // sideNav
-            // 
-            sideNav.Size = new Size(156, 354);
             // 
             // LabelTitle
             // 
@@ -114,17 +111,6 @@
             LabelAccName.TabIndex = 9;
             LabelAccName.Text = "Account name";
             // 
-            // LabelLabelID
-            // 
-            LabelLabelID.Anchor = AnchorStyles.Right;
-            LabelLabelID.BackColor = Color.Transparent;
-            LabelLabelID.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelLabelID.Location = new Point(38, 17);
-            LabelLabelID.Name = "LabelLabelID";
-            LabelLabelID.Size = new Size(101, 25);
-            LabelLabelID.TabIndex = 8;
-            LabelLabelID.Text = "Product ID";
-            // 
             // TextAccName
             // 
             TextAccName.Anchor = AnchorStyles.Left;
@@ -175,20 +161,36 @@
             LabelStatus.TabIndex = 10;
             LabelStatus.Text = "Status";
             // 
+            // LabelLabelID
+            // 
+            LabelLabelID.Anchor = AnchorStyles.Right;
+            LabelLabelID.BackColor = Color.Transparent;
+            LabelLabelID.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelLabelID.Location = new Point(38, 17);
+            LabelLabelID.Name = "LabelLabelID";
+            LabelLabelID.Size = new Size(101, 25);
+            LabelLabelID.TabIndex = 8;
+            LabelLabelID.Text = "Product ID";
+            // 
+            // SideNav
+            // 
+            SideNav.Dock = DockStyle.Left;
+            SideNav.Location = new Point(0, 0);
+            SideNav.Name = "SideNav";
+            SideNav.Size = new Size(150, 400);
+            SideNav.TabIndex = 5;
+            // 
             // Product
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(SideNav);
             Controls.Add(TableProductDetails);
             Controls.Add(BtnUpdate);
             Controls.Add(LabelTitle);
             Name = "Product";
-            Size = new Size(663, 354);
-            Load += OnProductsLoad;
-            Controls.SetChildIndex(LabelTitle, 0);
-            Controls.SetChildIndex(BtnUpdate, 0);
-            Controls.SetChildIndex(sideNav, 0);
-            Controls.SetChildIndex(TableProductDetails, 0);
+            Size = new Size(600, 400);
+            Load += OnProductLoad;
             TableProductDetails.ResumeLayout(false);
             TableProductDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)NumericRate).EndInit();
@@ -209,5 +211,6 @@
         private Label LabelLabelID;
         private Label LabelRate;
         private Label LabelStatus;
+        private components.SideNav SideNav;
     }
 }

@@ -31,11 +31,8 @@
             LabelTitle = new Label();
             ButtonAddProduct = new Button();
             ButtonSearch = new Button();
+            SideNav = new components.SideNav();
             SuspendLayout();
-            // 
-            // sideNav
-            // 
-            sideNav.Size = new Size(156, 354);
             // 
             // LabelTitle
             // 
@@ -65,20 +62,25 @@
             ButtonSearch.Text = "Search for product";
             ButtonSearch.UseVisualStyleBackColor = true;
             // 
+            // SideNav
+            // 
+            SideNav.Dock = DockStyle.Left;
+            SideNav.Location = new Point(0, 0);
+            SideNav.Name = "SideNav";
+            SideNav.Size = new Size(150, 400);
+            SideNav.TabIndex = 4;
+            // 
             // Products
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(SideNav);
             Controls.Add(ButtonSearch);
             Controls.Add(ButtonAddProduct);
             Controls.Add(LabelTitle);
             Name = "Products";
-            Size = new Size(663, 354);
+            Size = new Size(600, 400);
             Load += OnProductsLoad;
-            Controls.SetChildIndex(sideNav, 0);
-            Controls.SetChildIndex(LabelTitle, 0);
-            Controls.SetChildIndex(ButtonAddProduct, 0);
-            Controls.SetChildIndex(ButtonSearch, 0);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -88,5 +90,6 @@
         private Label LabelTitle;
         private Button ButtonAddProduct;
         private Button ButtonSearch;
+        private components.SideNav SideNav;
     }
 }

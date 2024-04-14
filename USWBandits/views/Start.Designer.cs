@@ -42,15 +42,15 @@
             BtnConnect.UseVisualStyleBackColor = true;
             BtnConnect.Click += OnBtnConnectClick;
             // 
-            // Home
+            // Start
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = SystemColors.Control;
             Controls.Add(BtnConnect);
-            Name = "Home";
-            Size = new Size(1016, 637);
+            Name = "Start";
+            Size = new Size(600, 400);
             ResumeLayout(false);
             PerformLayout();
         }

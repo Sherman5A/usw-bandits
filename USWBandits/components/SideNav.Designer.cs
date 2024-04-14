@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TreeNode treeNode1 = new TreeNode("Products");
-            TreeNode treeNode2 = new TreeNode("Accounts");
-            TreeNode treeNode3 = new TreeNode("Customers");
-            TreeNode treeNode4 = new TreeNode("Transactions");
+            TreeNode treeNode1 = new TreeNode("Home");
+            TreeNode treeNode2 = new TreeNode("Products");
+            TreeNode treeNode3 = new TreeNode("Accounts");
+            TreeNode treeNode4 = new TreeNode("Customers");
+            TreeNode treeNode5 = new TreeNode("Transactions");
             TreeNav = new TreeView();
             SuspendLayout();
             // 
@@ -42,15 +43,17 @@
             TreeNav.Location = new Point(5, 5);
             TreeNav.Margin = new Padding(5);
             TreeNav.Name = "TreeNav";
-            treeNode1.Name = "NodeProducts";
-            treeNode1.Text = "Products";
-            treeNode2.Name = "NodeAccounts";
-            treeNode2.Text = "Accounts";
-            treeNode3.Name = "NodeCustomers";
-            treeNode3.Text = "Customers";
-            treeNode4.Name = "NodeTransactions";
-            treeNode4.Text = "Transactions";
-            TreeNav.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode2, treeNode3, treeNode4 });
+            treeNode1.Name = "NodeHome";
+            treeNode1.Text = "Home";
+            treeNode2.Name = "NodeProducts";
+            treeNode2.Text = "Products";
+            treeNode3.Name = "NodeAccounts";
+            treeNode3.Text = "Accounts";
+            treeNode4.Name = "NodeCustomers";
+            treeNode4.Text = "Customers";
+            treeNode5.Name = "NodeTransactions";
+            treeNode5.Text = "Transactions";
+            TreeNav.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode2, treeNode3, treeNode4, treeNode5 });
             TreeNav.Size = new Size(146, 308);
             TreeNav.TabIndex = 4;
             TreeNav.AfterSelect += OnTreeNavAfterSelect;

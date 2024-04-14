@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             LabelTitle = new Label();
+            SideNav = new components.SideNav();
+            ButtonSearch = new Button();
+            ButtonAddProduct = new Button();
             SuspendLayout();
-            // 
-            // sideNav
-            // 
-            sideNav.Size = new Size(156, 354);
             // 
             // LabelTitle
             // 
@@ -45,16 +44,43 @@
             LabelTitle.TabIndex = 1;
             LabelTitle.Text = "Accounts";
             // 
+            // SideNav
+            // 
+            SideNav.Dock = DockStyle.Left;
+            SideNav.Location = new Point(0, 0);
+            SideNav.Name = "SideNav";
+            SideNav.Size = new Size(150, 400);
+            SideNav.TabIndex = 2;
+            // 
+            // ButtonSearch
+            // 
+            ButtonSearch.Location = new Point(396, 71);
+            ButtonSearch.Name = "ButtonSearch";
+            ButtonSearch.Size = new Size(178, 63);
+            ButtonSearch.TabIndex = 5;
+            ButtonSearch.Text = "Search for product";
+            ButtonSearch.UseVisualStyleBackColor = true;
+            // 
+            // ButtonAddProduct
+            // 
+            ButtonAddProduct.Location = new Point(162, 71);
+            ButtonAddProduct.Name = "ButtonAddProduct";
+            ButtonAddProduct.Size = new Size(178, 63);
+            ButtonAddProduct.TabIndex = 4;
+            ButtonAddProduct.Text = "Add new product";
+            ButtonAddProduct.UseVisualStyleBackColor = true;
+            // 
             // Accounts
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(ButtonSearch);
+            Controls.Add(ButtonAddProduct);
+            Controls.Add(SideNav);
             Controls.Add(LabelTitle);
             Name = "Accounts";
-            Size = new Size(663, 354);
+            Size = new Size(600, 400);
             Load += OnAccountsLoad;
-            Controls.SetChildIndex(sideNav, 0);
-            Controls.SetChildIndex(LabelTitle, 0);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -62,5 +88,8 @@
         #endregion
 
         private Label LabelTitle;
+        private components.SideNav SideNav;
+        private Button ButtonSearch;
+        private Button ButtonAddProduct;
     }
 }

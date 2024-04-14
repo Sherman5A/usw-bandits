@@ -2,11 +2,11 @@
 
 namespace USWBandits.presenters;
 
-public class HomePresenter : IPresenter
+public class HomePresenter : SideNavPresenters, IPresenter
 {
-    public Control ParentControl { get; set; }
+    public override Control ParentControl { get; set; }
     public IHome View { get; set; }
-    public UserControl ViewControl => View as UserControl;
+    public override UserControl ViewControl => View as UserControl;
 
 
     public HomePresenter(Control parentControl, IHome view)
@@ -14,10 +14,19 @@ public class HomePresenter : IPresenter
         ParentControl = parentControl;
         View = view;
         View.Presenter = this;
+        View.TreeNavSelect += OnTreeNavSelect;
+        // View.ButtonCustomersClick += (s, e) => ChangePresenter(new ProductsPresenter(ParentControl, new Products()));
+        View.ButtonProductsClick += (s, e) => ChangePresenter(
+            new ProductsPresenter(ParentControl, new Products())
+        );
+        View.ButtonAccountsClick += (s, e) => ChangePresenter(
+            new AccountsPresenter(ParentControl, new Accounts())
+        );
+        // View.ButtonTransactionClick += (s, e) => ChangePresenter(new ProductsPresenter(ParentControl, new Products()));
     }
 
-    public void ChangePresenter(IPresenter presenter)
+    public override void ChangePresenter(IPresenter presenter)
     {
-        throw new NotImplementedException();
+        ParentControl.GoTo(presenter);
     }
 }

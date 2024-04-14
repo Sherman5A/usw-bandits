@@ -17,19 +17,9 @@ public partial class SideNav : UserControl
     private void OnTreeNavAfterSelect(object sender, TreeViewEventArgs e)
     {
         string selectedNode = e.Node.Name;
-
-        string? switchWindow = selectedNode switch
-        {
-            "NodeProducts" => "Products",
-            "NodeAccounts" => "Accounts",
-            "NodeCustomers" => "Customers",
-            "NodeTransactions" => "Transactions",
-            _ => null
-        };
-
         TreeNavSelectArgs args = new()
         {
-            SelectedNode = switchWindow ?? throw new InvalidOperationException()
+            SelectedNode = selectedNode
         };
         TreeNavSelect?.Invoke(this, args);
     }
