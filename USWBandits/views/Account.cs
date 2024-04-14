@@ -13,7 +13,7 @@ public partial class Account : UserControl, IAccount
         InitializeComponent();
     }
 
-    private void OnAccountLoad(object sender, EventArgs e)
+    private void OnAccountLoad(object sender, EventArgs eventArgs)
     {
         NumericBalance.Maximum = decimal.MaxValue;
         NumericAccrued.Maximum = decimal.MaxValue;
