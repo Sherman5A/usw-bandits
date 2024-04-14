@@ -130,8 +130,8 @@
             // toolStripLabel1
             // 
             toolStripLabel1.Name = "toolStripLabel1";
-            toolStripLabel1.Size = new Size(86, 22);
-            toolStripLabel1.Text = "toolStripLabel1";
+            toolStripLabel1.Size = new Size(65, 22);
+            toolStripLabel1.Text = "Connected";
             // 
             // toolStripSeparator1
             // 
@@ -161,7 +161,7 @@
             Controls.Add(ButtonMenu);
             Controls.Add(TopMenu);
             MainMenuStrip = TopMenu;
-            MinimumSize = new Size(500, 350);
+            MinimumSize = new Size(600, 400);
             Name = "MainForm";
             Text = "Outlaw Hess";
             Load += MainFormLoad;
