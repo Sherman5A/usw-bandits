@@ -29,7 +29,7 @@
 
   <ItemGroup>
     <None Update="bandits.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
