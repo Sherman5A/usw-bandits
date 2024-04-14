@@ -55,7 +55,7 @@
             // 
             // ButtonSearch
             // 
-            ButtonSearch.Location = new Point(437, 58);
+            ButtonSearch.Location = new Point(383, 58);
             ButtonSearch.Name = "ButtonSearch";
             ButtonSearch.Size = new Size(205, 63);
             ButtonSearch.TabIndex = 3;

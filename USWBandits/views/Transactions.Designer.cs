@@ -30,6 +30,8 @@
         {
             LabelTitle = new Label();
             SideNav = new components.SideNav();
+            ButtonSearch = new Button();
+            ButtonAddProduct = new Button();
             SuspendLayout();
             // 
             // LabelTitle
@@ -50,10 +52,30 @@
             SideNav.Size = new Size(150, 400);
             SideNav.TabIndex = 5;
             // 
+            // ButtonSearch
+            // 
+            ButtonSearch.Location = new Point(396, 59);
+            ButtonSearch.Name = "ButtonSearch";
+            ButtonSearch.Size = new Size(178, 63);
+            ButtonSearch.TabIndex = 7;
+            ButtonSearch.Text = "Search for product";
+            ButtonSearch.UseVisualStyleBackColor = true;
+            // 
+            // ButtonAddProduct
+            // 
+            ButtonAddProduct.Location = new Point(162, 59);
+            ButtonAddProduct.Name = "ButtonAddProduct";
+            ButtonAddProduct.Size = new Size(178, 63);
+            ButtonAddProduct.TabIndex = 6;
+            ButtonAddProduct.Text = "Add new transaction";
+            ButtonAddProduct.UseVisualStyleBackColor = true;
+            // 
             // Transactions
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(ButtonSearch);
+            Controls.Add(ButtonAddProduct);
             Controls.Add(SideNav);
             Controls.Add(LabelTitle);
             Name = "Transactions";
@@ -67,5 +89,7 @@
 
         private Label LabelTitle;
         private components.SideNav SideNav;
+        private Button ButtonSearch;
+        private Button ButtonAddProduct;
     }
 }
