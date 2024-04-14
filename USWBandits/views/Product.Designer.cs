@@ -59,7 +59,7 @@
             // 
             BtnUpdate.Location = new Point(162, 287);
             BtnUpdate.Name = "BtnUpdate";
-            BtnUpdate.Size = new Size(473, 63);
+            BtnUpdate.Size = new Size(417, 63);
             BtnUpdate.TabIndex = 3;
             BtnUpdate.Text = "Update";
             BtnUpdate.UseVisualStyleBackColor = true;
@@ -98,6 +98,7 @@
             LabelRate.Size = new Size(113, 25);
             LabelRate.TabIndex = 11;
             LabelRate.Text = "Interest rate";
+            LabelRate.TextAlign = ContentAlignment.MiddleRight;
             // 
             // LabelAccName
             // 
@@ -110,6 +111,7 @@
             LabelAccName.Size = new Size(133, 25);
             LabelAccName.TabIndex = 9;
             LabelAccName.Text = "Account name";
+            LabelAccName.TextAlign = ContentAlignment.MiddleRight;
             // 
             // TextAccName
             // 
@@ -160,6 +162,7 @@
             LabelStatus.Size = new Size(62, 25);
             LabelStatus.TabIndex = 10;
             LabelStatus.Text = "Status";
+            LabelStatus.TextAlign = ContentAlignment.MiddleRight;
             // 
             // LabelLabelID
             // 
@@ -171,6 +174,7 @@
             LabelLabelID.Size = new Size(101, 25);
             LabelLabelID.TabIndex = 8;
             LabelLabelID.Text = "Product ID";
+            LabelLabelID.TextAlign = ContentAlignment.MiddleRight;
             // 
             // SideNav
             // 
