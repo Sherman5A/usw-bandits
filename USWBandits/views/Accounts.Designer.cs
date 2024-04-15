@@ -38,9 +38,9 @@
             // 
             LabelTitle.AutoSize = true;
             LabelTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            LabelTitle.Location = new Point(185, 15);
+            LabelTitle.Location = new Point(162, 11);
             LabelTitle.Name = "LabelTitle";
-            LabelTitle.Size = new Size(134, 37);
+            LabelTitle.Size = new Size(108, 30);
             LabelTitle.TabIndex = 1;
             LabelTitle.Text = "Accounts";
             // 
@@ -48,43 +48,40 @@
             // 
             SideNav.Dock = DockStyle.Left;
             SideNav.Location = new Point(0, 0);
-            SideNav.Margin = new Padding(3, 5, 3, 5);
+            SideNav.Margin = new Padding(3, 4, 3, 4);
             SideNav.Name = "SideNav";
-            SideNav.Padding = new Padding(5, 10, 5, 10);
-            SideNav.Size = new Size(171, 533);
+            SideNav.Padding = new Padding(4, 6, 4, 6);
+            SideNav.Size = new Size(150, 400);
             SideNav.TabIndex = 2;
             // 
             // ButtonSearch
             // 
-            ButtonSearch.Location = new Point(453, 95);
-            ButtonSearch.Margin = new Padding(3, 4, 3, 4);
+            ButtonSearch.Location = new Point(396, 71);
             ButtonSearch.Name = "ButtonSearch";
-            ButtonSearch.Size = new Size(203, 84);
+            ButtonSearch.Size = new Size(178, 63);
             ButtonSearch.TabIndex = 5;
             ButtonSearch.Text = "Search for product";
             ButtonSearch.UseVisualStyleBackColor = true;
             // 
             // ButtonAddAccount
             // 
-            ButtonAddAccount.Location = new Point(185, 95);
-            ButtonAddAccount.Margin = new Padding(3, 4, 3, 4);
+            ButtonAddAccount.Location = new Point(162, 71);
             ButtonAddAccount.Name = "ButtonAddAccount";
-            ButtonAddAccount.Size = new Size(203, 84);
+            ButtonAddAccount.Size = new Size(178, 63);
             ButtonAddAccount.TabIndex = 4;
             ButtonAddAccount.Text = "Add new account";
             ButtonAddAccount.UseVisualStyleBackColor = true;
             // 
             // Accounts
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(ButtonSearch);
             Controls.Add(ButtonAddAccount);
             Controls.Add(SideNav);
             Controls.Add(LabelTitle);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Accounts";
-            Size = new Size(686, 533);
+            Size = new Size(600, 400);
             Load += OnAccountsLoad;
             ResumeLayout(false);
             PerformLayout();

@@ -46,7 +46,7 @@
             ButtonSearch.Text = "Search for customers";
             ButtonSearch.UseVisualStyleBackColor = true;
             // 
-            // ButtonAddCustomer
+            // ButtonNewAccountClick
             // 
             ButtonAddCustomer.Location = new Point(190, 66);
             ButtonAddCustomer.Margin = new Padding(3, 4, 3, 4);

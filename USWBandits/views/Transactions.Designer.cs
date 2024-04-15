@@ -48,7 +48,9 @@
             // 
             SideNav.Dock = DockStyle.Left;
             SideNav.Location = new Point(0, 0);
+            SideNav.Margin = new Padding(0);
             SideNav.Name = "SideNav";
+            SideNav.Padding = new Padding(4, 6, 4, 6);
             SideNav.Size = new Size(150, 400);
             SideNav.TabIndex = 5;
             // 

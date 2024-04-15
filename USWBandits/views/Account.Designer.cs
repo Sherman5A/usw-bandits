@@ -42,7 +42,7 @@
             LabelForAccountID = new Label();
             LabelTitle = new Label();
             ButtonDelete = new Button();
-            ButtonUpdate = new Button();
+            ButtonAdd = new Button();
             TableAccountDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumericAccrued).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NumericBalance).BeginInit();
@@ -52,10 +52,10 @@
             // 
             SideNav.Dock = DockStyle.Left;
             SideNav.Location = new Point(0, 0);
-            SideNav.Margin = new Padding(3, 5, 3, 5);
+            SideNav.Margin = new Padding(3, 4, 3, 4);
             SideNav.Name = "SideNav";
-            SideNav.Padding = new Padding(5, 10, 5, 10);
-            SideNav.Size = new Size(171, 533);
+            SideNav.Padding = new Padding(4, 6, 4, 6);
+            SideNav.Size = new Size(150, 400);
             SideNav.TabIndex = 3;
             // 
             // TableAccountDetails
@@ -73,8 +73,7 @@
             TableAccountDetails.Controls.Add(NumericBalance, 1, 3);
             TableAccountDetails.Controls.Add(LabelProductID, 0, 2);
             TableAccountDetails.Controls.Add(LabelForAccountID, 0, 0);
-            TableAccountDetails.Location = new Point(178, 52);
-            TableAccountDetails.Margin = new Padding(3, 4, 3, 4);
+            TableAccountDetails.Location = new Point(156, 39);
             TableAccountDetails.Name = "TableAccountDetails";
             TableAccountDetails.RowCount = 5;
             TableAccountDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
@@ -82,28 +81,26 @@
             TableAccountDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             TableAccountDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             TableAccountDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            TableAccountDetails.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
-            TableAccountDetails.Size = new Size(434, 385);
+            TableAccountDetails.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableAccountDetails.Size = new Size(380, 289);
             TableAccountDetails.TabIndex = 7;
             // 
             // ComboCustomerID
             // 
             ComboCustomerID.Anchor = AnchorStyles.Left;
             ComboCustomerID.FormattingEnabled = true;
-            ComboCustomerID.Location = new Point(170, 101);
-            ComboCustomerID.Margin = new Padding(3, 4, 3, 4);
+            ComboCustomerID.Location = new Point(149, 74);
             ComboCustomerID.Name = "ComboCustomerID";
-            ComboCustomerID.Size = new Size(252, 28);
+            ComboCustomerID.Size = new Size(221, 23);
             ComboCustomerID.TabIndex = 8;
             // 
             // NumericAccrued
             // 
             NumericAccrued.Anchor = AnchorStyles.Left;
             NumericAccrued.DecimalPlaces = 2;
-            NumericAccrued.Location = new Point(170, 333);
-            NumericAccrued.Margin = new Padding(3, 4, 3, 4);
+            NumericAccrued.Location = new Point(149, 247);
             NumericAccrued.Name = "NumericAccrued";
-            NumericAccrued.Size = new Size(253, 27);
+            NumericAccrued.Size = new Size(221, 23);
             NumericAccrued.TabIndex = 8;
             NumericAccrued.ThousandsSeparator = true;
             // 
@@ -113,9 +110,9 @@
             LabelAccrued.AutoSize = true;
             LabelAccrued.BackColor = Color.Transparent;
             LabelAccrued.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelAccrued.Location = new Point(64, 330);
+            LabelAccrued.Location = new Point(62, 246);
             LabelAccrued.Name = "LabelAccrued";
-            LabelAccrued.Size = new Size(100, 32);
+            LabelAccrued.Size = new Size(81, 25);
             LabelAccrued.TabIndex = 12;
             LabelAccrued.Text = "Accrued";
             LabelAccrued.TextAlign = ContentAlignment.MiddleRight;
@@ -126,9 +123,9 @@
             LabelBalance.AutoSize = true;
             LabelBalance.BackColor = Color.Transparent;
             LabelBalance.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelBalance.Location = new Point(68, 253);
+            LabelBalance.Location = new Point(65, 187);
             LabelBalance.Name = "LabelBalance";
-            LabelBalance.Size = new Size(96, 32);
+            LabelBalance.Size = new Size(78, 25);
             LabelBalance.TabIndex = 11;
             LabelBalance.Text = "Balance";
             LabelBalance.TextAlign = ContentAlignment.MiddleRight;
@@ -139,9 +136,9 @@
             LabelCustomerID.AutoSize = true;
             LabelCustomerID.BackColor = Color.Transparent;
             LabelCustomerID.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelCustomerID.Location = new Point(17, 99);
+            LabelCustomerID.Location = new Point(27, 73);
             LabelCustomerID.Name = "LabelCustomerID";
-            LabelCustomerID.Size = new Size(147, 32);
+            LabelCustomerID.Size = new Size(116, 25);
             LabelCustomerID.TabIndex = 9;
             LabelCustomerID.Text = "Customer ID";
             LabelCustomerID.TextAlign = ContentAlignment.MiddleRight;
@@ -152,9 +149,9 @@
             LabelAccountID.AutoSize = true;
             LabelAccountID.BackColor = Color.Transparent;
             LabelAccountID.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelAccountID.Location = new Point(170, 22);
+            LabelAccountID.Location = new Point(149, 16);
             LabelAccountID.Name = "LabelAccountID";
-            LabelAccountID.Size = new Size(66, 32);
+            LabelAccountID.Size = new Size(52, 25);
             LabelAccountID.TabIndex = 5;
             LabelAccountID.Text = "2321";
             // 
@@ -162,20 +159,18 @@
             // 
             ComboProductID.Anchor = AnchorStyles.Left;
             ComboProductID.FormattingEnabled = true;
-            ComboProductID.Location = new Point(170, 178);
-            ComboProductID.Margin = new Padding(3, 4, 3, 4);
+            ComboProductID.Location = new Point(149, 131);
             ComboProductID.Name = "ComboProductID";
-            ComboProductID.Size = new Size(252, 28);
+            ComboProductID.Size = new Size(221, 23);
             ComboProductID.TabIndex = 6;
             // 
             // NumericBalance
             // 
             NumericBalance.Anchor = AnchorStyles.Left;
             NumericBalance.DecimalPlaces = 2;
-            NumericBalance.Location = new Point(170, 256);
-            NumericBalance.Margin = new Padding(3, 4, 3, 4);
+            NumericBalance.Location = new Point(149, 188);
             NumericBalance.Name = "NumericBalance";
-            NumericBalance.Size = new Size(253, 27);
+            NumericBalance.Size = new Size(221, 23);
             NumericBalance.TabIndex = 7;
             NumericBalance.ThousandsSeparator = true;
             // 
@@ -185,9 +180,9 @@
             LabelProductID.AutoSize = true;
             LabelProductID.BackColor = Color.Transparent;
             LabelProductID.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelProductID.Location = new Point(38, 176);
+            LabelProductID.Location = new Point(42, 130);
             LabelProductID.Name = "LabelProductID";
-            LabelProductID.Size = new Size(126, 32);
+            LabelProductID.Size = new Size(101, 25);
             LabelProductID.TabIndex = 10;
             LabelProductID.Text = "Product ID";
             LabelProductID.TextAlign = ContentAlignment.MiddleRight;
@@ -198,9 +193,9 @@
             LabelForAccountID.AutoSize = true;
             LabelForAccountID.BackColor = Color.Transparent;
             LabelForAccountID.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelForAccountID.Location = new Point(33, 22);
+            LabelForAccountID.Location = new Point(39, 16);
             LabelForAccountID.Name = "LabelForAccountID";
-            LabelForAccountID.Size = new Size(131, 32);
+            LabelForAccountID.Size = new Size(104, 25);
             LabelForAccountID.TabIndex = 8;
             LabelForAccountID.Text = "Account ID";
             LabelForAccountID.TextAlign = ContentAlignment.MiddleRight;
@@ -210,44 +205,41 @@
             LabelTitle.AutoSize = true;
             LabelTitle.BackColor = Color.Transparent;
             LabelTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            LabelTitle.Location = new Point(178, 8);
+            LabelTitle.Location = new Point(156, 6);
             LabelTitle.Name = "LabelTitle";
-            LabelTitle.Size = new Size(122, 37);
+            LabelTitle.Size = new Size(98, 30);
             LabelTitle.TabIndex = 5;
             LabelTitle.Text = "Account";
             // 
             // ButtonDelete
             // 
-            ButtonDelete.Location = new Point(406, 451);
-            ButtonDelete.Margin = new Padding(3, 4, 3, 4);
+            ButtonDelete.Location = new Point(355, 338);
             ButtonDelete.Name = "ButtonDelete";
-            ButtonDelete.Size = new Size(206, 71);
+            ButtonDelete.Size = new Size(180, 53);
             ButtonDelete.TabIndex = 9;
             ButtonDelete.Text = "Delete";
             ButtonDelete.UseVisualStyleBackColor = true;
             // 
-            // ButtonUpdate
+            // ButtonAdd
             // 
-            ButtonUpdate.Location = new Point(178, 451);
-            ButtonUpdate.Margin = new Padding(3, 4, 3, 4);
-            ButtonUpdate.Name = "ButtonUpdate";
-            ButtonUpdate.Size = new Size(206, 71);
-            ButtonUpdate.TabIndex = 8;
-            ButtonUpdate.Text = "Update";
-            ButtonUpdate.UseVisualStyleBackColor = true;
+            ButtonAdd.Location = new Point(156, 338);
+            ButtonAdd.Name = "ButtonAdd";
+            ButtonAdd.Size = new Size(180, 53);
+            ButtonAdd.TabIndex = 8;
+            ButtonAdd.Text = "Add Account";
+            ButtonAdd.UseVisualStyleBackColor = true;
             // 
             // Account
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(ButtonDelete);
-            Controls.Add(ButtonUpdate);
+            Controls.Add(ButtonAdd);
             Controls.Add(TableAccountDetails);
             Controls.Add(LabelTitle);
             Controls.Add(SideNav);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Account";
-            Size = new Size(686, 533);
+            Size = new Size(600, 400);
             Load += OnAccountLoad;
             TableAccountDetails.ResumeLayout(false);
             TableAccountDetails.PerformLayout();
@@ -273,6 +265,6 @@
         private NumericUpDown NumericAccrued;
         private ComboBox ComboCustomerID;
         private Button ButtonDelete;
-        private Button ButtonUpdate;
+        private Button ButtonAdd;
     }
 }

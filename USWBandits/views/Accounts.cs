@@ -6,7 +6,7 @@ namespace USWBandits.views;
 public partial class Accounts : UserControl, IAccounts
 {
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
-    public event EventHandler? ButtonAddCustomer;
+    public event EventHandler? ButtonNewAccountClick;
     public IPresenter? Presenter { get; set; }
 
     public Accounts()
@@ -16,7 +16,7 @@ public partial class Accounts : UserControl, IAccounts
 
     private void OnAccountsLoad(object sender, EventArgs eventArgs)
     {
-        ButtonAddAccount.Click += (s, e) => ButtonAddCustomer?.Invoke(s, e);
+        ButtonAddAccount.Click += (s, e) => ButtonNewAccountClick?.Invoke(s, e);
         SideNav.TreeNavSelect += (s, e) =>
         {
             if (e.SelectedNode != "NodeAccounts") TreeNavSelect?.Invoke(s, e);

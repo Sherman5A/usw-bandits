@@ -3,7 +3,7 @@ using USWBandits.models;
 
 namespace USWBandits.presenters;
 
-internal class CustomersPresenter : SideNavPresenters, IPresenter
+public class CustomersPresenter : SideNavPresenters, IPresenter
 {
     public override Control ParentControl { get; set; }
     public ICustomers View { get; set; }

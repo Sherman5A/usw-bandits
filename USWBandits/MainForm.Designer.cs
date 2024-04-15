@@ -93,7 +93,7 @@
             Host.Dock = DockStyle.Fill;
             Host.Location = new Point(0, 49);
             Host.Name = "Host";
-            Host.Size = new Size(584, 312);
+            Host.Size = new Size(584, 412);
             Host.TabIndex = 2;
             Host.ControlAdded += HostControlAdded;
             // 
@@ -156,12 +156,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(584, 361);
+            ClientSize = new Size(584, 461);
             Controls.Add(Host);
             Controls.Add(ButtonMenu);
             Controls.Add(TopMenu);
             MainMenuStrip = TopMenu;
-            MinimumSize = new Size(600, 400);
+            MinimumSize = new Size(600, 500);
             Name = "MainForm";
             Text = "Outlaw Hess";
             Load += MainFormLoad;

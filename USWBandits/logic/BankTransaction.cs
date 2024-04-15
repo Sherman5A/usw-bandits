@@ -1,11 +1,11 @@
 ﻿namespace USWBandits.logic;
 
-public class Transaction
+public class BankTransaction
 {
-    public int TranID { get; }
+    public int TransactionID { get; }
     public int TranAccountID { get; }
-    public Account TranAccount { get; set; }
+    public BankAccount TranAccount { get; set; }
     public TransactionAction TranAction { get; }
-    public decimal TranAmmount { get; }
+    public decimal Amount { get; }
     public DateTime TranTime { get; }
 }

@@ -1,4 +1,6 @@
 ﻿using System.Data.SQLite;
+using System.Diagnostics;
+using USWBandits.logic;
 
 namespace USWBandits.models;
 
@@ -14,12 +16,13 @@ public class AccountModel : IModel
 
     public int GetAccountNumber()
     {
+        const string queryString = "SELECT MAX(accid) FROM account;";
         using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))
         {
             connection.Open();
 
             var sqlCommand = connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT MAX(accid) FROM account;";
+            sqlCommand.CommandText = queryString;
             using (var reader = sqlCommand.ExecuteReader())
             {
                 while (reader.Read())
@@ -28,18 +31,20 @@ public class AccountModel : IModel
                 }
             }
         }
+
         return -1;
     }
 
     public List<(int id, string firstName, string lastName)> GetCustomers()
     {
+        const string queryString = "SELECT custid, firstname, lastname FROM customer ORDER BY custid;";
         List<(int, string, string)> returnList = new();
         using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))
         {
             connection.Open();
 
             var sqlCommand = connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT custid, firstname, lastname FROM customer ORDER BY custid;";
+            sqlCommand.CommandText = queryString;
             using (var reader = sqlCommand.ExecuteReader())
             {
                 while (reader.Read())
@@ -48,19 +53,21 @@ public class AccountModel : IModel
                 }
             }
         }
+
         return returnList;
     }
 
     public List<(int id, string isaName)> GetProducts()
     {
         // TODO: Shorten this stuff with a helper
+        const string queryString = "SELECT prodid, isaname FROM product ORDER BY prodid;";
         List<(int id, string isaName)> returnList = new();
         using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))
         {
             connection.Open();
 
             var sqlCommand = connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT prodid, isaname FROM product ORDER BY prodid;";
+            sqlCommand.CommandText = queryString;
             using (var reader = sqlCommand.ExecuteReader())
             {
                 while (reader.Read())
@@ -69,6 +76,26 @@ public class AccountModel : IModel
                 }
             }
         }
+
         return returnList;
+    }
+
+    public int AddAccount(BankAccount account)
+    {
+        const string queryString =
+            @"INSERT INTO account(custid, prodid, balance, accrued) VALUES (@CustomerID, @ProductID, @Balance, @Accrued);";
+        using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))
+        {
+            connection.Open();
+
+            var sqlCommand = connection.CreateCommand();
+            sqlCommand.CommandText = queryString;
+            sqlCommand.Parameters.AddWithValue("@CustomerID", account.CustomerID);
+            sqlCommand.Parameters.AddWithValue("@ProductID", account.ProductID);
+            sqlCommand.Parameters.AddWithValue("@Balance", account.Balance);
+            sqlCommand.Parameters.AddWithValue("@Accrued", account.Accrued);
+            int result = sqlCommand.ExecuteNonQuery();
+            return result;
+        }
     }
 }

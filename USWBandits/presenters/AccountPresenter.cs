@@ -1,6 +1,7 @@
-﻿using System.Diagnostics;
+﻿using USWBandits.logic;
 using USWBandits.models;
 using USWBandits.views;
+
 
 namespace USWBandits.presenters;
 
@@ -18,7 +19,7 @@ internal class AccountPresenter : SideNavPresenters, IPresenter
         View = view;
         View.Presenter = this;
         View.TreeNavSelect += OnTreeNavSelect;
-        View.AddAccountClicked += OnAddAccountClicked;
+        View.ButtonAddAccountClicked += OnAddAccountClicked;
         Model = new AccountModel(modelData);
         InitView();
     }
@@ -37,11 +38,9 @@ internal class AccountPresenter : SideNavPresenters, IPresenter
         int productID = View.GetProductID();
         decimal balance = View.Balance;
         decimal accrued = View.Accrued;
-        Debug.WriteLine(accID);
-        Debug.WriteLine(customerID);
-        Debug.WriteLine(productID);
-        Debug.WriteLine(balance);
-        Debug.WriteLine(accrued);
+        BankAccount account = new(accID, customerID, productID, balance, accrued);
+        int addResult = Model.AddAccount(account);
+        View.ShowResult(addResult);
     }
 
     public override void ChangePresenter(IPresenter presenter)

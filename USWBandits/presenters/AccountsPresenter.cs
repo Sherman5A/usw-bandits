@@ -17,10 +17,10 @@ public class AccountsPresenter : SideNavPresenters, IPresenter
         View = view;
         View.Presenter = this;
         View.TreeNavSelect += OnTreeNavSelect;
-        Model = new GenericModel(modelData);
-        View.ButtonAddCustomer += (s, e) => ChangePresenter(
+        View.ButtonNewAccountClick += (s, e) => ChangePresenter(
             new AccountPresenter(ParentControl, new Account(), ModelData)
         );
+        Model = new GenericModel(modelData);
     }
 
     public override void ChangePresenter(IPresenter presenter)
