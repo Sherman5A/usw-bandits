@@ -7,7 +7,7 @@ internal class CustomersPresenter : SideNavPresenters, IPresenter
 {
     public override Control ParentControl { get; set; }
     public ICustomers View { get; set; }
-    public ProductsModel Model { get; set; }
+    public GenericModel Model { get; set; }
     public override ModelData ModelData => Model.ModelData;
     public override UserControl ViewControl => View as UserControl;
 
@@ -17,7 +17,7 @@ internal class CustomersPresenter : SideNavPresenters, IPresenter
         View = view;
         View.Presenter = this;
         View.TreeNavSelect += OnTreeNavSelect;
-        Model = new ProductsModel(modelData);
+        Model = new GenericModel(modelData);
     }
 
     public override void ChangePresenter(IPresenter presenter)

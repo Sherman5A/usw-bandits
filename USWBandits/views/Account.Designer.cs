@@ -54,6 +54,7 @@
             SideNav.Location = new Point(0, 0);
             SideNav.Margin = new Padding(3, 5, 3, 5);
             SideNav.Name = "SideNav";
+            SideNav.Padding = new Padding(5, 10, 5, 10);
             SideNav.Size = new Size(171, 533);
             SideNav.TabIndex = 3;
             // 
@@ -93,7 +94,6 @@
             ComboCustomerID.Margin = new Padding(3, 4, 3, 4);
             ComboCustomerID.Name = "ComboCustomerID";
             ComboCustomerID.Size = new Size(252, 28);
-            ComboCustomerID.Sorted = true;
             ComboCustomerID.TabIndex = 8;
             // 
             // NumericAccrued
@@ -166,7 +166,6 @@
             ComboProductID.Margin = new Padding(3, 4, 3, 4);
             ComboProductID.Name = "ComboProductID";
             ComboProductID.Size = new Size(252, 28);
-            ComboProductID.Sorted = true;
             ComboProductID.TabIndex = 6;
             // 
             // NumericBalance
@@ -219,20 +218,20 @@
             // 
             // ButtonDelete
             // 
-            ButtonDelete.Location = new Point(407, 445);
+            ButtonDelete.Location = new Point(406, 451);
             ButtonDelete.Margin = new Padding(3, 4, 3, 4);
             ButtonDelete.Name = "ButtonDelete";
-            ButtonDelete.Size = new Size(206, 83);
+            ButtonDelete.Size = new Size(206, 71);
             ButtonDelete.TabIndex = 9;
             ButtonDelete.Text = "Delete";
             ButtonDelete.UseVisualStyleBackColor = true;
             // 
             // ButtonUpdate
             // 
-            ButtonUpdate.Location = new Point(178, 445);
+            ButtonUpdate.Location = new Point(178, 451);
             ButtonUpdate.Margin = new Padding(3, 4, 3, 4);
             ButtonUpdate.Name = "ButtonUpdate";
-            ButtonUpdate.Size = new Size(206, 83);
+            ButtonUpdate.Size = new Size(206, 71);
             ButtonUpdate.TabIndex = 8;
             ButtonUpdate.Text = "Update";
             ButtonUpdate.UseVisualStyleBackColor = true;

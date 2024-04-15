@@ -31,7 +31,7 @@
             LabelTitle = new Label();
             SideNav = new components.SideNav();
             ButtonSearch = new Button();
-            ButtonAddProduct = new Button();
+            ButtonAddAccount = new Button();
             SuspendLayout();
             // 
             // LabelTitle
@@ -50,6 +50,7 @@
             SideNav.Location = new Point(0, 0);
             SideNav.Margin = new Padding(3, 5, 3, 5);
             SideNav.Name = "SideNav";
+            SideNav.Padding = new Padding(5, 10, 5, 10);
             SideNav.Size = new Size(171, 533);
             SideNav.TabIndex = 2;
             // 
@@ -63,22 +64,22 @@
             ButtonSearch.Text = "Search for product";
             ButtonSearch.UseVisualStyleBackColor = true;
             // 
-            // ButtonAddProduct
+            // ButtonAddAccount
             // 
-            ButtonAddProduct.Location = new Point(185, 95);
-            ButtonAddProduct.Margin = new Padding(3, 4, 3, 4);
-            ButtonAddProduct.Name = "ButtonAddProduct";
-            ButtonAddProduct.Size = new Size(203, 84);
-            ButtonAddProduct.TabIndex = 4;
-            ButtonAddProduct.Text = "Add new product";
-            ButtonAddProduct.UseVisualStyleBackColor = true;
+            ButtonAddAccount.Location = new Point(185, 95);
+            ButtonAddAccount.Margin = new Padding(3, 4, 3, 4);
+            ButtonAddAccount.Name = "ButtonAddAccount";
+            ButtonAddAccount.Size = new Size(203, 84);
+            ButtonAddAccount.TabIndex = 4;
+            ButtonAddAccount.Text = "Add new account";
+            ButtonAddAccount.UseVisualStyleBackColor = true;
             // 
             // Accounts
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(ButtonSearch);
-            Controls.Add(ButtonAddProduct);
+            Controls.Add(ButtonAddAccount);
             Controls.Add(SideNav);
             Controls.Add(LabelTitle);
             Margin = new Padding(3, 4, 3, 4);
@@ -94,6 +95,6 @@
         private Label LabelTitle;
         private components.SideNav SideNav;
         private Button ButtonSearch;
-        private Button ButtonAddProduct;
+        private Button ButtonAddAccount;
     }
 }

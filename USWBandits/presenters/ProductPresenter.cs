@@ -7,7 +7,7 @@ public class ProductPresenter : SideNavPresenters, IPresenter
 {
     public override Control ParentControl { get; set; }
     public IProduct View { get; set; }
-    public ProductsModel Model { get; set; }
+    public GenericModel Model { get; set; }
     public override ModelData ModelData => Model.ModelData;
     public override UserControl ViewControl => View as UserControl;
 
@@ -18,7 +18,6 @@ public class ProductPresenter : SideNavPresenters, IPresenter
         View.Presenter = this;
         View.TreeNavSelect += OnTreeNavSelect;
     }
-
 
     public override void ChangePresenter(IPresenter presenter)
     {

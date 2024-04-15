@@ -1,10 +1,10 @@
 ﻿namespace USWBandits.models;
 
-public class ProductsModel : IModel
+public class ProductModel : IModel
 {
     public ModelData ModelData { get; set; }
 
-    public ProductsModel(ModelData modelData)
+    public ProductModel(ModelData modelData)
     {
         ModelData = modelData;
     }

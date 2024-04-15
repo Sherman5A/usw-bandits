@@ -7,7 +7,7 @@ public class AccountsPresenter : SideNavPresenters, IPresenter
 {
     public override Control ParentControl { get; set; }
     public IAccounts View { get; set; }
-    public AccountModel Model { get; set; }
+    public GenericModel Model { get; set; }
     public override ModelData ModelData => Model.ModelData;
     public override UserControl ViewControl => View as UserControl;
 
@@ -17,7 +17,10 @@ public class AccountsPresenter : SideNavPresenters, IPresenter
         View = view;
         View.Presenter = this;
         View.TreeNavSelect += OnTreeNavSelect;
-        Model = new AccountModel(modelData);
+        Model = new GenericModel(modelData);
+        View.ButtonAddCustomer += (s, e) => ChangePresenter(
+            new AccountPresenter(ParentControl, new Account(), ModelData)
+        );
     }
 
     public override void ChangePresenter(IPresenter presenter)
