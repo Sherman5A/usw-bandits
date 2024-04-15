@@ -6,11 +6,11 @@ public class BankCustomer
     public string Title { get; }
     public string FirstName { get; }
     public string LastName { get; }
+    public DateOnly CustomerDOB { get; }
+    public string NINUmber { get; }
     public string Email { get; }
     public string Password { get; }
-    public string NINUmber { get; }
     public decimal Allowance { get; }
-    public DateOnly CustomerDOB { get; }
 
     public BankCustomer(int customerId, string title, string firstName, string lastName, string email, string password,
         string ninUmber, decimal allowance, DateOnly customerDob)

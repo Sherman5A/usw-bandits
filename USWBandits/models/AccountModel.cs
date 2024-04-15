@@ -1,5 +1,4 @@
 ﻿using System.Data.SQLite;
-using System.Diagnostics;
 using USWBandits.logic;
 
 namespace USWBandits.models;
@@ -7,8 +6,6 @@ namespace USWBandits.models;
 public class AccountModel : IModel
 {
     public ModelData ModelData { get; set; }
-
-
     public AccountModel(ModelData modelData)
     {
         ModelData = modelData;

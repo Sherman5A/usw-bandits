@@ -5,9 +5,9 @@ namespace USWBandits.views;
 
 public partial class Accounts : UserControl, IAccounts
 {
+    public IPresenter? Presenter { get; set; }
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
     public event EventHandler? ButtonNewAccountClick;
-    public IPresenter? Presenter { get; set; }
 
     public Accounts()
     {

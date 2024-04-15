@@ -17,6 +17,9 @@ public class CustomersPresenter : SideNavPresenters, IPresenter
         View = view;
         View.Presenter = this;
         View.TreeNavSelect += OnTreeNavSelect;
+        View.ButtonAddCustClick += (s, e) =>
+            ChangePresenter(new CustomerPresenter(ParentControl, new Customer(), Model.ModelData)
+            );
         Model = new GenericModel(modelData);
     }
 
