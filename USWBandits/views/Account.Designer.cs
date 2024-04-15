@@ -239,7 +239,7 @@
             Controls.Add(LabelTitle);
             Controls.Add(SideNav);
             Name = "Account";
-            Size = new Size(600, 400);
+            Size = new Size(700, 400);
             Load += OnAccountLoad;
             TableAccountDetails.ResumeLayout(false);
             TableAccountDetails.PerformLayout();

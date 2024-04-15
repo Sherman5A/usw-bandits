@@ -81,7 +81,7 @@
             Controls.Add(SideNav);
             Controls.Add(LabelTitle);
             Name = "Transactions";
-            Size = new Size(600, 400);
+            Size = new Size(700, 400);
             Load += OnTransactionsLoad;
             ResumeLayout(false);
             PerformLayout();

@@ -81,7 +81,7 @@
             Controls.Add(ButtonAddProduct);
             Controls.Add(LabelTitle);
             Name = "Products";
-            Size = new Size(600, 400);
+            Size = new Size(700, 400);
             Load += OnProductsLoad;
             ResumeLayout(false);
             PerformLayout();

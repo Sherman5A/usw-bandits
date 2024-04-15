@@ -53,7 +53,7 @@
             TopMenu.Items.AddRange(new ToolStripItem[] { FileItem, ViewItem });
             TopMenu.Location = new Point(0, 0);
             TopMenu.Name = "TopMenu";
-            TopMenu.Size = new Size(584, 24);
+            TopMenu.Size = new Size(684, 24);
             TopMenu.TabIndex = 0;
             TopMenu.Text = "menuStrip1";
             // 
@@ -93,7 +93,7 @@
             Host.Dock = DockStyle.Fill;
             Host.Location = new Point(0, 49);
             Host.Name = "Host";
-            Host.Size = new Size(584, 412);
+            Host.Size = new Size(684, 412);
             Host.TabIndex = 2;
             Host.ControlAdded += HostControlAdded;
             // 
@@ -105,7 +105,7 @@
             ButtonMenu.Location = new Point(0, 24);
             ButtonMenu.Name = "ButtonMenu";
             ButtonMenu.Padding = new Padding(10, 0, 0, 0);
-            ButtonMenu.Size = new Size(584, 25);
+            ButtonMenu.Size = new Size(684, 25);
             ButtonMenu.Stretch = true;
             ButtonMenu.TabIndex = 1;
             // 
@@ -156,7 +156,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(584, 461);
+            ClientSize = new Size(684, 461);
             Controls.Add(Host);
             Controls.Add(ButtonMenu);
             Controls.Add(TopMenu);

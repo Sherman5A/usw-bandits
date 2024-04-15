@@ -38,20 +38,18 @@
             // 
             // ButtonSearch
             // 
-            ButtonSearch.Location = new Point(432, 66);
-            ButtonSearch.Margin = new Padding(3, 4, 3, 4);
+            ButtonSearch.Location = new Point(378, 50);
             ButtonSearch.Name = "ButtonSearch";
-            ButtonSearch.Size = new Size(203, 84);
+            ButtonSearch.Size = new Size(178, 63);
             ButtonSearch.TabIndex = 9;
             ButtonSearch.Text = "Search for customers";
             ButtonSearch.UseVisualStyleBackColor = true;
             // 
-            // ButtonNewAccountClick
+            // ButtonAddCustomer
             // 
-            ButtonAddCustomer.Location = new Point(190, 66);
-            ButtonAddCustomer.Margin = new Padding(3, 4, 3, 4);
+            ButtonAddCustomer.Location = new Point(166, 50);
             ButtonAddCustomer.Name = "ButtonAddCustomer";
-            ButtonAddCustomer.Size = new Size(203, 84);
+            ButtonAddCustomer.Size = new Size(178, 63);
             ButtonAddCustomer.TabIndex = 8;
             ButtonAddCustomer.Text = "Add new customers";
             ButtonAddCustomer.UseVisualStyleBackColor = true;
@@ -60,44 +58,43 @@
             // 
             SideNav.Dock = DockStyle.Left;
             SideNav.Location = new Point(0, 0);
-            SideNav.Margin = new Padding(3, 5, 3, 5);
+            SideNav.Margin = new Padding(3, 4, 3, 4);
             SideNav.Name = "SideNav";
-            SideNav.Size = new Size(171, 533);
+            SideNav.Padding = new Padding(4, 6, 4, 6);
+            SideNav.Size = new Size(150, 400);
             SideNav.TabIndex = 7;
             // 
             // LabelTitle
             // 
             LabelTitle.AutoSize = true;
             LabelTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            LabelTitle.Location = new Point(190, 10);
+            LabelTitle.Location = new Point(166, 8);
             LabelTitle.Name = "LabelTitle";
-            LabelTitle.Size = new Size(153, 37);
+            LabelTitle.Size = new Size(123, 30);
             LabelTitle.TabIndex = 6;
             LabelTitle.Text = "Customers";
             // 
             // ButtonTransactions
             // 
-            ButtonTransactions.Location = new Point(190, 168);
-            ButtonTransactions.Margin = new Padding(3, 4, 3, 4);
+            ButtonTransactions.Location = new Point(166, 126);
             ButtonTransactions.Name = "ButtonTransactions";
-            ButtonTransactions.Size = new Size(203, 84);
+            ButtonTransactions.Size = new Size(178, 63);
             ButtonTransactions.TabIndex = 10;
             ButtonTransactions.Text = "Display Transactions By Customer";
             ButtonTransactions.UseVisualStyleBackColor = true;
             // 
             // ButtonAddTransaction
             // 
-            ButtonAddTransaction.Location = new Point(432, 168);
-            ButtonAddTransaction.Margin = new Padding(3, 4, 3, 4);
+            ButtonAddTransaction.Location = new Point(378, 126);
             ButtonAddTransaction.Name = "ButtonAddTransaction";
-            ButtonAddTransaction.Size = new Size(203, 84);
+            ButtonAddTransaction.Size = new Size(178, 63);
             ButtonAddTransaction.TabIndex = 11;
             ButtonAddTransaction.Text = "Add Customer Transaction";
             ButtonAddTransaction.UseVisualStyleBackColor = true;
             // 
             // Customers
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(ButtonAddTransaction);
             Controls.Add(ButtonTransactions);
@@ -105,9 +102,8 @@
             Controls.Add(ButtonAddCustomer);
             Controls.Add(SideNav);
             Controls.Add(LabelTitle);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Customers";
-            Size = new Size(686, 533);
+            Size = new Size(700, 400);
             Load += OnCustomersLoad;
             ResumeLayout(false);
             PerformLayout();
