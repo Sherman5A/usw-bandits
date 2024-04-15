@@ -15,6 +15,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="views\Stats.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="views\Product.cs" />
     <Compile Update="views\Transactions.cs" />
     <Compile Update="views\Products.cs" />
@@ -31,6 +34,11 @@
     <None Update="bandits.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+    <PackageReference Include="System.Data.SQLite.Linq" Version="1.0.118" />
   </ItemGroup>
 
 </Project>

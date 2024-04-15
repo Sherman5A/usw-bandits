@@ -33,15 +33,16 @@
             TreeNode treeNode3 = new TreeNode("Accounts");
             TreeNode treeNode4 = new TreeNode("Customers");
             TreeNode treeNode5 = new TreeNode("Transactions");
+            TreeNode treeNode6 = new TreeNode("Stats");
             TreeNav = new TreeView();
             SuspendLayout();
             // 
             // TreeNav
             // 
-            TreeNav.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            TreeNav.Dock = DockStyle.Fill;
             TreeNav.HideSelection = false;
-            TreeNav.Location = new Point(5, 5);
-            TreeNav.Margin = new Padding(5);
+            TreeNav.Location = new Point(5, 10);
+            TreeNav.Margin = new Padding(6, 7, 6, 7);
             TreeNav.Name = "TreeNav";
             treeNode1.Name = "NodeHome";
             treeNode1.Text = "Home";
@@ -53,18 +54,22 @@
             treeNode4.Text = "Customers";
             treeNode5.Name = "NodeTransactions";
             treeNode5.Text = "Transactions";
-            TreeNav.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode2, treeNode3, treeNode4, treeNode5 });
-            TreeNav.Size = new Size(146, 308);
+            treeNode6.Name = "NodeStats";
+            treeNode6.Text = "Stats";
+            TreeNav.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode2, treeNode3, treeNode4, treeNode5, treeNode6 });
+            TreeNav.Size = new Size(170, 404);
             TreeNav.TabIndex = 4;
             TreeNav.AfterSelect += OnTreeNavAfterSelect;
             // 
             // SideNav
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(TreeNav);
+            Margin = new Padding(0);
             Name = "SideNav";
-            Size = new Size(156, 318);
+            Padding = new Padding(5, 10, 5, 10);
+            Size = new Size(180, 424);
             ResumeLayout(false);
         }
 

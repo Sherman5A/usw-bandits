@@ -16,7 +16,7 @@ public partial class Start : UserControl, IStart
     {
         ConnectDatabaseEventArgs args = new ConnectDatabaseEventArgs
         {
-            DatabasePath = "jeff"
+            DatabasePath = "bandits.db"
         };
         ConnectDatabase(this, args);
     }

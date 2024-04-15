@@ -1,10 +1,10 @@
 ﻿namespace USWBandits.models;
 
-public class StartModel : IModel
+public class GenericModel
 {
     public ModelData ModelData { get; set; }
 
-    public StartModel(ModelData modelData)
+    public GenericModel(ModelData modelData)
     {
         ModelData = modelData;
     }

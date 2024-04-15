@@ -3,22 +3,23 @@ using USWBandits.presenters;
 
 namespace USWBandits.views;
 
-public partial class Transactions : UserControl, ITransactions
+public partial class Stats : UserControl, IStats
 {
     public IPresenter? Presenter { get; set; }
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
 
-    public Transactions()
+    public Stats()
     {
         InitializeComponent();
         SideNav.TreeNavSelect += (s, e) =>
         {
-            if (e.SelectedNode != "NodeTransactions") TreeNavSelect?.Invoke(s, e);
+            if (e.SelectedNode != "NodeStats") TreeNavSelect?.Invoke(s, e);
         };
     }
 
-    private void OnTransactionsLoad(object sender, EventArgs e)
+    private void OnProductLoad(object sender, EventArgs e)
     {
-        SideNav.FocusNode("NodeTransactions");
+        SideNav.FocusNode("NodeStats");
     }
+
 }

@@ -1,24 +1,24 @@
-﻿using USWBandits.models;
-using USWBandits.views;
+﻿using USWBandits.views;
+using USWBandits.models;
 
 namespace USWBandits.presenters;
 
-public class ProductPresenter : SideNavPresenters, IPresenter
+internal class CustomersPresenter : SideNavPresenters, IPresenter
 {
     public override Control ParentControl { get; set; }
-    public IProduct View { get; set; }
+    public ICustomers View { get; set; }
     public ProductsModel Model { get; set; }
     public override ModelData ModelData => Model.ModelData;
     public override UserControl ViewControl => View as UserControl;
 
-    public ProductPresenter(Control parentControl, IProduct view)
+    public CustomersPresenter(Control parentControl, ICustomers view, ModelData modelData)
     {
         ParentControl = parentControl;
         View = view;
         View.Presenter = this;
         View.TreeNavSelect += OnTreeNavSelect;
+        Model = new ProductsModel(modelData);
     }
-
 
     public override void ChangePresenter(IPresenter presenter)
     {

@@ -62,7 +62,8 @@
             TableProductDetails.Controls.Add(LabelForTranID, 0, 0);
             TableProductDetails.Controls.Add(ComboAccountID, 1, 1);
             TableProductDetails.Controls.Add(DatePickEvent, 1, 4);
-            TableProductDetails.Location = new Point(191, 40);
+            TableProductDetails.Location = new Point(177, 53);
+            TableProductDetails.Margin = new Padding(3, 4, 3, 4);
             TableProductDetails.Name = "TableProductDetails";
             TableProductDetails.RowCount = 5;
             TableProductDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
@@ -70,7 +71,7 @@
             TableProductDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             TableProductDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             TableProductDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            TableProductDetails.Size = new Size(380, 285);
+            TableProductDetails.Size = new Size(491, 380);
             TableProductDetails.TabIndex = 9;
             // 
             // LabelEvent
@@ -79,9 +80,9 @@
             LabelEvent.AutoSize = true;
             LabelEvent.BackColor = Color.Transparent;
             LabelEvent.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelEvent.Location = new Point(85, 244);
+            LabelEvent.Location = new Point(113, 326);
             LabelEvent.Name = "LabelEvent";
-            LabelEvent.Size = new Size(58, 25);
+            LabelEvent.Size = new Size(73, 32);
             LabelEvent.TabIndex = 12;
             LabelEvent.Text = "Event";
             LabelEvent.TextAlign = ContentAlignment.MiddleRight;
@@ -92,9 +93,9 @@
             LabelAmount.AutoSize = true;
             LabelAmount.BackColor = Color.Transparent;
             LabelAmount.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelAmount.Location = new Point(64, 187);
+            LabelAmount.Location = new Point(86, 250);
             LabelAmount.Name = "LabelAmount";
-            LabelAmount.Size = new Size(79, 25);
+            LabelAmount.Size = new Size(100, 32);
             LabelAmount.TabIndex = 11;
             LabelAmount.Text = "Amount";
             LabelAmount.TextAlign = ContentAlignment.MiddleRight;
@@ -105,9 +106,9 @@
             LabelAccountID.AutoSize = true;
             LabelAccountID.BackColor = Color.Transparent;
             LabelAccountID.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelAccountID.Location = new Point(39, 73);
+            LabelAccountID.Location = new Point(55, 98);
             LabelAccountID.Name = "LabelAccountID";
-            LabelAccountID.Size = new Size(104, 25);
+            LabelAccountID.Size = new Size(131, 32);
             LabelAccountID.TabIndex = 9;
             LabelAccountID.Text = "Account ID";
             LabelAccountID.TextAlign = ContentAlignment.MiddleRight;
@@ -118,9 +119,9 @@
             LabelID.AutoSize = true;
             LabelID.BackColor = Color.Transparent;
             LabelID.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelID.Location = new Point(149, 16);
+            LabelID.Location = new Point(192, 22);
             LabelID.Name = "LabelID";
-            LabelID.Size = new Size(52, 25);
+            LabelID.Size = new Size(66, 32);
             LabelID.TabIndex = 5;
             LabelID.Text = "2321";
             // 
@@ -128,9 +129,10 @@
             // 
             ComboAction.Anchor = AnchorStyles.Left;
             ComboAction.FormattingEnabled = true;
-            ComboAction.Location = new Point(149, 131);
+            ComboAction.Location = new Point(192, 176);
+            ComboAction.Margin = new Padding(3, 4, 3, 4);
             ComboAction.Name = "ComboAction";
-            ComboAction.Size = new Size(228, 23);
+            ComboAction.Size = new Size(260, 28);
             ComboAction.Sorted = true;
             ComboAction.TabIndex = 6;
             // 
@@ -139,9 +141,10 @@
             NumericAmount.Anchor = AnchorStyles.Left;
             NumericAmount.DecimalPlaces = 2;
             NumericAmount.Increment = new decimal(new int[] { 100, 0, 0, 0 });
-            NumericAmount.Location = new Point(149, 188);
+            NumericAmount.Location = new Point(192, 252);
+            NumericAmount.Margin = new Padding(3, 4, 3, 4);
             NumericAmount.Name = "NumericAmount";
-            NumericAmount.Size = new Size(228, 23);
+            NumericAmount.Size = new Size(261, 27);
             NumericAmount.TabIndex = 7;
             // 
             // LabelAction
@@ -150,9 +153,9 @@
             LabelAction.AutoSize = true;
             LabelAction.BackColor = Color.Transparent;
             LabelAction.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelAction.Location = new Point(77, 130);
+            LabelAction.Location = new Point(104, 174);
             LabelAction.Name = "LabelAction";
-            LabelAction.Size = new Size(66, 25);
+            LabelAction.Size = new Size(82, 32);
             LabelAction.TabIndex = 10;
             LabelAction.Text = "Action";
             LabelAction.TextAlign = ContentAlignment.MiddleRight;
@@ -163,9 +166,9 @@
             LabelForTranID.AutoSize = true;
             LabelForTranID.BackColor = Color.Transparent;
             LabelForTranID.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelForTranID.Location = new Point(12, 16);
+            LabelForTranID.Location = new Point(22, 22);
             LabelForTranID.Name = "LabelForTranID";
-            LabelForTranID.Size = new Size(131, 25);
+            LabelForTranID.Size = new Size(164, 32);
             LabelForTranID.TabIndex = 8;
             LabelForTranID.Text = "Transaction ID";
             LabelForTranID.TextAlign = ContentAlignment.MiddleRight;
@@ -174,25 +177,28 @@
             // 
             ComboAccountID.Anchor = AnchorStyles.Left;
             ComboAccountID.FormattingEnabled = true;
-            ComboAccountID.Location = new Point(149, 74);
+            ComboAccountID.Location = new Point(192, 100);
+            ComboAccountID.Margin = new Padding(3, 4, 3, 4);
             ComboAccountID.Name = "ComboAccountID";
-            ComboAccountID.Size = new Size(228, 23);
+            ComboAccountID.Size = new Size(260, 28);
             ComboAccountID.Sorted = true;
             ComboAccountID.TabIndex = 12;
             // 
             // DatePickEvent
             // 
             DatePickEvent.Anchor = AnchorStyles.Left;
-            DatePickEvent.Location = new Point(149, 245);
+            DatePickEvent.Location = new Point(192, 328);
+            DatePickEvent.Margin = new Padding(3, 4, 3, 4);
             DatePickEvent.Name = "DatePickEvent";
-            DatePickEvent.Size = new Size(228, 23);
+            DatePickEvent.Size = new Size(260, 27);
             DatePickEvent.TabIndex = 13;
             // 
             // ButtonUpdate
             // 
-            ButtonUpdate.Location = new Point(191, 331);
+            ButtonUpdate.Location = new Point(177, 441);
+            ButtonUpdate.Margin = new Padding(3, 4, 3, 4);
             ButtonUpdate.Name = "ButtonUpdate";
-            ButtonUpdate.Size = new Size(180, 62);
+            ButtonUpdate.Size = new Size(244, 83);
             ButtonUpdate.TabIndex = 8;
             ButtonUpdate.Text = "Update";
             ButtonUpdate.UseVisualStyleBackColor = true;
@@ -202,17 +208,18 @@
             LabelTitle.AutoSize = true;
             LabelTitle.BackColor = Color.Transparent;
             LabelTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            LabelTitle.Location = new Point(191, 7);
+            LabelTitle.Location = new Point(218, 9);
             LabelTitle.Name = "LabelTitle";
-            LabelTitle.Size = new Size(132, 30);
+            LabelTitle.Size = new Size(165, 37);
             LabelTitle.TabIndex = 7;
             LabelTitle.Text = "Transaction";
             // 
             // ButtonDelete
             // 
-            ButtonDelete.Location = new Point(391, 331);
+            ButtonDelete.Location = new Point(442, 441);
+            ButtonDelete.Margin = new Padding(3, 4, 3, 4);
             ButtonDelete.Name = "ButtonDelete";
-            ButtonDelete.Size = new Size(180, 62);
+            ButtonDelete.Size = new Size(226, 83);
             ButtonDelete.TabIndex = 11;
             ButtonDelete.Text = "Delete";
             ButtonDelete.UseVisualStyleBackColor = true;
@@ -221,21 +228,23 @@
             // 
             SideNav.Dock = DockStyle.Left;
             SideNav.Location = new Point(0, 0);
+            SideNav.Margin = new Padding(3, 5, 3, 5);
             SideNav.Name = "SideNav";
-            SideNav.Size = new Size(150, 400);
+            SideNav.Size = new Size(171, 533);
             SideNav.TabIndex = 10;
             // 
             // Transaction
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(TableProductDetails);
             Controls.Add(ButtonUpdate);
             Controls.Add(LabelTitle);
             Controls.Add(ButtonDelete);
             Controls.Add(SideNav);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Transaction";
-            Size = new Size(600, 400);
+            Size = new Size(686, 533);
             Load += OnTransactionLoad;
             TableProductDetails.ResumeLayout(false);
             TableProductDetails.PerformLayout();

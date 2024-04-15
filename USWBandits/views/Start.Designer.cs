@@ -34,9 +34,11 @@
             // BtnConnect
             // 
             BtnConnect.AutoSize = true;
-            BtnConnect.Location = new Point(21, 16);
+            BtnConnect.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnConnect.Location = new Point(34, 36);
+            BtnConnect.Margin = new Padding(3, 4, 3, 4);
             BtnConnect.Name = "BtnConnect";
-            BtnConnect.Size = new Size(305, 217);
+            BtnConnect.Size = new Size(614, 245);
             BtnConnect.TabIndex = 0;
             BtnConnect.Text = "Connect";
             BtnConnect.UseVisualStyleBackColor = true;
@@ -44,13 +46,14 @@
             // 
             // Start
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = SystemColors.Control;
             Controls.Add(BtnConnect);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Start";
-            Size = new Size(600, 400);
+            Size = new Size(686, 533);
             ResumeLayout(false);
             PerformLayout();
         }

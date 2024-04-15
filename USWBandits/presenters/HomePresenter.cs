@@ -1,4 +1,5 @@
-﻿using USWBandits.views;
+﻿using USWBandits.models;
+using USWBandits.views;
 
 namespace USWBandits.presenters;
 
@@ -6,23 +7,30 @@ public class HomePresenter : SideNavPresenters, IPresenter
 {
     public override Control ParentControl { get; set; }
     public IHome View { get; set; }
+    public HomeModel Model { get; set; }
+    public override ModelData ModelData => Model.ModelData;
     public override UserControl ViewControl => View as UserControl;
 
 
-    public HomePresenter(Control parentControl, IHome view)
+    public HomePresenter(Control parentControl, IHome view, ModelData modelData)
     {
         ParentControl = parentControl;
         View = view;
         View.Presenter = this;
+        Model = new HomeModel(modelData);
         View.TreeNavSelect += OnTreeNavSelect;
-        // View.ButtonCustomersClick += (s, e) => ChangePresenter(new ProductsPresenter(ParentControl, new Products()));
+        View.ButtonCustomersClick += (s, e) => ChangePresenter(new 
+            CustomersPresenter(ParentControl, new Customers(), Model.ModelData)
+        );
         View.ButtonProductsClick += (s, e) => ChangePresenter(
-            new ProductsPresenter(ParentControl, new Products())
+            new ProductsPresenter(ParentControl, new Products(), Model.ModelData)
         );
         View.ButtonAccountsClick += (s, e) => ChangePresenter(
-            new AccountsPresenter(ParentControl, new Accounts())
+            new AccountsPresenter(ParentControl, new Accounts(), Model.ModelData)
         );
-        // View.ButtonTransactionClick += (s, e) => ChangePresenter(new ProductsPresenter(ParentControl, new Products()));
+        View.ButtonTransactionsClick += (s, e) => ChangePresenter(
+            new TransactionsPresenter(ParentControl, new Transactions(), Model.ModelData)
+        );
     }
 
     public override void ChangePresenter(IPresenter presenter)
