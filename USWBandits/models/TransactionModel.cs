@@ -3,18 +3,18 @@ using USWBandits.logic;
 
 namespace USWBandits.models;
 
-public class ProductModel : IModel
+public class TransactionModel : IModel
 {
     public ModelData ModelData { get; set; }
 
-    public ProductModel(ModelData modelData)
+    public TransactionModel(ModelData modelData)
     {
         ModelData = modelData;
     }
 
-    public int GetCurrentProductId()
+    public int GetCurrentTransactionId()
     {
-        const string queryString = "SELECT MAX(prodid) FROM product;";
+        const string queryString = "SELECT MAX(trnxid) FROM tranx;";
         using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))
         {
             connection.Open();
@@ -33,19 +33,20 @@ public class ProductModel : IModel
         return -1;
     }
 
-    public int AddProduct(BankProduct product)
+    public int AddCustomer(BankTransaction transaction)
     {
         const string queryString =
-            @"INSERT INTO product(isaname, status, intrate) 
-              VALUES (@IsaName, @Status, @InterestRate);";
+            @"INSERT INTO tranx(accid, action, amnt, event) 
+              VALUES (@AccountID, @Action, @Amount, @Event);";
         using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))
         {
             connection.Open();
             var sqlCommand = connection.CreateCommand();
             sqlCommand.CommandText = queryString;
-            sqlCommand.Parameters.AddWithValue("@IsaNmae", product.AccountName);
-            sqlCommand.Parameters.AddWithValue("@Status", product.ProductStatus);
-            sqlCommand.Parameters.AddWithValue("@InterestRate", product.ProductInterest);
+            sqlCommand.Parameters.AddWithValue("@AccountID", transaction.TranAccountID);
+            sqlCommand.Parameters.AddWithValue("@Action", transaction.Action);
+            sqlCommand.Parameters.AddWithValue("@Amount", transaction.Amount);
+            sqlCommand.Parameters.AddWithValue("@Event", transaction.Event);
             int result = sqlCommand.ExecuteNonQuery();
             return result;
         }

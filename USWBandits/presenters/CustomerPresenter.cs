@@ -1,4 +1,5 @@
-﻿using USWBandits.models;
+﻿using USWBandits.logic;
+using USWBandits.models;
 using USWBandits.views;
 
 namespace USWBandits.presenters;
@@ -24,5 +25,21 @@ public class CustomerPresenter : SideNavPresenters, IPresenter
     public override void ChangePresenter(IPresenter presenter)
     {
         ParentControl.GoTo(presenter);
+    }
+
+    private void OnAddCustomerClicked(object sender, EventArgs eventArgs)
+    {
+        int customerId = Model.GetCurrentCustomerId() + 1;
+        string title = View.GetCustomerTitle();
+        string firstName = View.GetFirstName();
+        string lastName = View.GetLastName();
+        DateOnly customerDOB = View.GetDateBirth();
+        string niNumber = View.GetNiNumber();
+        string email = View.GetEmail();
+        string password = View.GetPassword();
+        decimal allowance = View.Allowance;
+        BankCustomer customer = new(customerId, title, firstName, lastName, email, password, niNumber, allowance, customerDOB);
+        int result = 1;
+        View.ShowResult(result);
     }
 }

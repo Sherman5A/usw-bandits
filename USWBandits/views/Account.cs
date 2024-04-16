@@ -70,7 +70,6 @@ public partial class Account : UserControl, IAccount
         set => NumericBalance.Value = value;
     }
 
-
     public decimal Accrued
     {
         get => NumericAccrued.Value;
