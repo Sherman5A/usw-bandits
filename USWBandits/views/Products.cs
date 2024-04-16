@@ -7,18 +7,20 @@ public partial class Products : UserControl, IProducts
 {
     public IPresenter? Presenter { get; set; }
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
+    public event EventHandler? ButtonAddProductClick;
 
     public Products()
     {
         InitializeComponent();
+    }
+
+    private void OnProductsLoad(object sender, EventArgs eventArgs)
+    {
+        ButtonAddProduct.Click += (s, e) => ButtonAddProductClick?.Invoke(s, e);
         SideNav.TreeNavSelect += (s, e) =>
         {
             if (e.SelectedNode != "NodeProducts") TreeNavSelect?.Invoke(s, e);
         };
-    }
-
-    private void OnProductsLoad(object sender, EventArgs e)
-    {
         SideNav.FocusNode("NodeProducts");
     }
 }

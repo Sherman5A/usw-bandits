@@ -49,7 +49,7 @@
             TextTitle = new TextBox();
             SideNav = new components.SideNav();
             ButtonDelete = new Button();
-            ButtonUpdate = new Button();
+            ButtonAddCustomer = new Button();
             LabelTitle = new Label();
             TableAccountDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumericAllowance).BeginInit();
@@ -78,8 +78,7 @@
             TableAccountDetails.Controls.Add(LabelEmail, 0, 6);
             TableAccountDetails.Controls.Add(TextFirstName, 1, 2);
             TableAccountDetails.Controls.Add(TextTitle, 1, 1);
-            TableAccountDetails.Location = new Point(178, 52);
-            TableAccountDetails.Margin = new Padding(3, 4, 3, 4);
+            TableAccountDetails.Location = new Point(156, 39);
             TableAccountDetails.Name = "TableAccountDetails";
             TableAccountDetails.RowCount = 9;
             TableAccountDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1111107F));
@@ -91,17 +90,16 @@
             TableAccountDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1111107F));
             TableAccountDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1111107F));
             TableAccountDetails.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1111107F));
-            TableAccountDetails.Size = new Size(596, 385);
+            TableAccountDetails.Size = new Size(522, 289);
             TableAccountDetails.TabIndex = 12;
             // 
             // NumericAllowance
             // 
             NumericAllowance.Anchor = AnchorStyles.Left;
             NumericAllowance.DecimalPlaces = 2;
-            NumericAllowance.Location = new Point(229, 347);
-            NumericAllowance.Margin = new Padding(3, 4, 3, 4);
+            NumericAllowance.Location = new Point(201, 261);
             NumericAllowance.Name = "NumericAllowance";
-            NumericAllowance.Size = new Size(364, 27);
+            NumericAllowance.Size = new Size(318, 23);
             NumericAllowance.TabIndex = 23;
             NumericAllowance.ThousandsSeparator = true;
             // 
@@ -111,9 +109,9 @@
             LabelAllowance.AutoSize = true;
             LabelAllowance.BackColor = Color.Transparent;
             LabelAllowance.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelAllowance.Location = new Point(101, 344);
+            LabelAllowance.Location = new Point(96, 260);
             LabelAllowance.Name = "LabelAllowance";
-            LabelAllowance.Size = new Size(122, 32);
+            LabelAllowance.Size = new Size(99, 25);
             LabelAllowance.TabIndex = 22;
             LabelAllowance.Text = "Allowance";
             LabelAllowance.TextAlign = ContentAlignment.MiddleLeft;
@@ -121,10 +119,9 @@
             // TextPassword
             // 
             TextPassword.Anchor = AnchorStyles.Left;
-            TextPassword.Location = new Point(229, 301);
-            TextPassword.Margin = new Padding(3, 4, 3, 4);
+            TextPassword.Location = new Point(201, 228);
             TextPassword.Name = "TextPassword";
-            TextPassword.Size = new Size(364, 27);
+            TextPassword.Size = new Size(318, 23);
             TextPassword.TabIndex = 21;
             // 
             // LabelPassword
@@ -133,9 +130,9 @@
             LabelPassword.AutoSize = true;
             LabelPassword.BackColor = Color.Transparent;
             LabelPassword.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelPassword.Location = new Point(112, 299);
+            LabelPassword.Location = new Point(104, 227);
             LabelPassword.Name = "LabelPassword";
-            LabelPassword.Size = new Size(111, 32);
+            LabelPassword.Size = new Size(91, 25);
             LabelPassword.TabIndex = 20;
             LabelPassword.Text = "Password";
             LabelPassword.TextAlign = ContentAlignment.MiddleLeft;
@@ -143,19 +140,17 @@
             // MaskedEmail
             // 
             MaskedEmail.Anchor = AnchorStyles.Left;
-            MaskedEmail.Location = new Point(229, 259);
-            MaskedEmail.Margin = new Padding(3, 4, 3, 4);
+            MaskedEmail.Location = new Point(201, 196);
             MaskedEmail.Name = "MaskedEmail";
-            MaskedEmail.Size = new Size(364, 27);
+            MaskedEmail.Size = new Size(318, 23);
             MaskedEmail.TabIndex = 19;
             // 
             // TextLastName
             // 
             TextLastName.Anchor = AnchorStyles.Left;
-            TextLastName.Location = new Point(229, 133);
-            TextLastName.Margin = new Padding(3, 4, 3, 4);
+            TextLastName.Location = new Point(201, 100);
             TextLastName.Name = "TextLastName";
-            TextLastName.Size = new Size(364, 27);
+            TextLastName.Size = new Size(318, 23);
             TextLastName.TabIndex = 18;
             // 
             // LabelDOB
@@ -164,9 +159,9 @@
             LabelDOB.AutoSize = true;
             LabelDOB.BackColor = Color.Transparent;
             LabelDOB.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelDOB.Location = new Point(73, 173);
+            LabelDOB.Location = new Point(77, 131);
             LabelDOB.Name = "LabelDOB";
-            LabelDOB.Size = new Size(150, 32);
+            LabelDOB.Size = new Size(118, 25);
             LabelDOB.TabIndex = 12;
             LabelDOB.Text = "Date of Birth";
             LabelDOB.TextAlign = ContentAlignment.MiddleLeft;
@@ -177,9 +172,9 @@
             LabelBalance.AutoSize = true;
             LabelBalance.BackColor = Color.Transparent;
             LabelBalance.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelBalance.Location = new Point(97, 131);
+            LabelBalance.Location = new Point(95, 99);
             LabelBalance.Name = "LabelBalance";
-            LabelBalance.Size = new Size(126, 32);
+            LabelBalance.Size = new Size(100, 25);
             LabelBalance.TabIndex = 11;
             LabelBalance.Text = "Last Name";
             LabelBalance.TextAlign = ContentAlignment.MiddleLeft;
@@ -190,9 +185,9 @@
             LabelCustomerID.AutoSize = true;
             LabelCustomerID.BackColor = Color.Transparent;
             LabelCustomerID.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelCustomerID.Location = new Point(163, 47);
+            LabelCustomerID.Location = new Point(147, 35);
             LabelCustomerID.Name = "LabelCustomerID";
-            LabelCustomerID.Size = new Size(60, 32);
+            LabelCustomerID.Size = new Size(48, 25);
             LabelCustomerID.TabIndex = 9;
             LabelCustomerID.Text = "Title";
             LabelCustomerID.TextAlign = ContentAlignment.MiddleLeft;
@@ -203,9 +198,9 @@
             LabelAccountID.AutoSize = true;
             LabelAccountID.BackColor = Color.Transparent;
             LabelAccountID.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelAccountID.Location = new Point(229, 5);
+            LabelAccountID.Location = new Point(201, 3);
             LabelAccountID.Name = "LabelAccountID";
-            LabelAccountID.Size = new Size(66, 32);
+            LabelAccountID.Size = new Size(52, 25);
             LabelAccountID.TabIndex = 5;
             LabelAccountID.Text = "2321";
             // 
@@ -215,9 +210,9 @@
             LabelProductID.AutoSize = true;
             LabelProductID.BackColor = Color.Transparent;
             LabelProductID.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelProductID.Location = new Point(94, 89);
+            LabelProductID.Location = new Point(93, 67);
             LabelProductID.Name = "LabelProductID";
-            LabelProductID.Size = new Size(129, 32);
+            LabelProductID.Size = new Size(102, 25);
             LabelProductID.TabIndex = 10;
             LabelProductID.Text = "First Name";
             LabelProductID.TextAlign = ContentAlignment.MiddleLeft;
@@ -228,9 +223,9 @@
             LabelForAccountID.AutoSize = true;
             LabelForAccountID.BackColor = Color.Transparent;
             LabelForAccountID.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelForAccountID.Location = new Point(76, 5);
+            LabelForAccountID.Location = new Point(79, 3);
             LabelForAccountID.Name = "LabelForAccountID";
-            LabelForAccountID.Size = new Size(147, 32);
+            LabelForAccountID.Size = new Size(116, 25);
             LabelForAccountID.TabIndex = 8;
             LabelForAccountID.Text = "Customer ID";
             LabelForAccountID.TextAlign = ContentAlignment.MiddleLeft;
@@ -238,10 +233,9 @@
             // DatePickDOB
             // 
             DatePickDOB.Anchor = AnchorStyles.Left;
-            DatePickDOB.Location = new Point(229, 175);
-            DatePickDOB.Margin = new Padding(3, 4, 3, 4);
+            DatePickDOB.Location = new Point(201, 132);
             DatePickDOB.Name = "DatePickDOB";
-            DatePickDOB.Size = new Size(364, 27);
+            DatePickDOB.Size = new Size(318, 23);
             DatePickDOB.TabIndex = 13;
             // 
             // LabelNI
@@ -250,9 +244,9 @@
             LabelNI.AutoSize = true;
             LabelNI.BackColor = Color.Transparent;
             LabelNI.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelNI.Location = new Point(10, 215);
+            LabelNI.Location = new Point(24, 163);
             LabelNI.Name = "LabelNI";
-            LabelNI.Size = new Size(213, 32);
+            LabelNI.Size = new Size(171, 25);
             LabelNI.TabIndex = 14;
             LabelNI.Text = "National Insurance";
             LabelNI.TextAlign = ContentAlignment.MiddleLeft;
@@ -260,10 +254,9 @@
             // MaskedNI
             // 
             MaskedNI.Anchor = AnchorStyles.Left;
-            MaskedNI.Location = new Point(229, 217);
-            MaskedNI.Margin = new Padding(3, 4, 3, 4);
+            MaskedNI.Location = new Point(201, 164);
             MaskedNI.Name = "MaskedNI";
-            MaskedNI.Size = new Size(364, 27);
+            MaskedNI.Size = new Size(318, 23);
             MaskedNI.TabIndex = 15;
             // 
             // LabelEmail
@@ -272,9 +265,9 @@
             LabelEmail.AutoSize = true;
             LabelEmail.BackColor = Color.Transparent;
             LabelEmail.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelEmail.Location = new Point(152, 257);
+            LabelEmail.Location = new Point(137, 195);
             LabelEmail.Name = "LabelEmail";
-            LabelEmail.Size = new Size(71, 32);
+            LabelEmail.Size = new Size(58, 25);
             LabelEmail.TabIndex = 16;
             LabelEmail.Text = "Email";
             LabelEmail.TextAlign = ContentAlignment.MiddleLeft;
@@ -282,74 +275,69 @@
             // TextFirstName
             // 
             TextFirstName.Anchor = AnchorStyles.Left;
-            TextFirstName.Location = new Point(229, 91);
-            TextFirstName.Margin = new Padding(3, 4, 3, 4);
+            TextFirstName.Location = new Point(201, 68);
             TextFirstName.Name = "TextFirstName";
-            TextFirstName.Size = new Size(364, 27);
+            TextFirstName.Size = new Size(318, 23);
             TextFirstName.TabIndex = 17;
             // 
             // TextTitle
             // 
             TextTitle.Anchor = AnchorStyles.Left;
-            TextTitle.Location = new Point(229, 49);
-            TextTitle.Margin = new Padding(3, 4, 3, 4);
+            TextTitle.Location = new Point(201, 36);
             TextTitle.Name = "TextTitle";
-            TextTitle.Size = new Size(364, 27);
+            TextTitle.Size = new Size(318, 23);
             TextTitle.TabIndex = 18;
             // 
             // SideNav
             // 
             SideNav.Dock = DockStyle.Left;
             SideNav.Location = new Point(0, 0);
-            SideNav.Margin = new Padding(3, 5, 3, 5);
+            SideNav.Margin = new Padding(3, 4, 3, 4);
             SideNav.Name = "SideNav";
-            SideNav.Padding = new Padding(5, 8, 5, 8);
-            SideNav.Size = new Size(171, 533);
+            SideNav.Padding = new Padding(4, 6, 4, 6);
+            SideNav.Size = new Size(150, 400);
             SideNav.TabIndex = 10;
             // 
             // ButtonDelete
             // 
-            ButtonDelete.Location = new Point(489, 445);
-            ButtonDelete.Margin = new Padding(3, 4, 3, 4);
+            ButtonDelete.Location = new Point(428, 334);
             ButtonDelete.Name = "ButtonDelete";
-            ButtonDelete.Size = new Size(285, 83);
+            ButtonDelete.Size = new Size(249, 62);
             ButtonDelete.TabIndex = 14;
             ButtonDelete.Text = "Delete";
             ButtonDelete.UseVisualStyleBackColor = true;
             // 
-            // ButtonUpdate
+            // ButtonAddCustomer
             // 
-            ButtonUpdate.Location = new Point(178, 445);
-            ButtonUpdate.Margin = new Padding(3, 4, 3, 4);
-            ButtonUpdate.Name = "ButtonUpdate";
-            ButtonUpdate.Size = new Size(289, 83);
-            ButtonUpdate.TabIndex = 13;
-            ButtonUpdate.Text = "Add Account";
-            ButtonUpdate.UseVisualStyleBackColor = true;
+            ButtonAddCustomer.Location = new Point(156, 334);
+            ButtonAddCustomer.Name = "ButtonAddCustomer";
+            ButtonAddCustomer.Size = new Size(253, 62);
+            ButtonAddCustomer.TabIndex = 13;
+            ButtonAddCustomer.Text = "Add customer";
+            ButtonAddCustomer.UseVisualStyleBackColor = true;
             // 
             // LabelTitle
             // 
             LabelTitle.AutoSize = true;
             LabelTitle.BackColor = Color.Transparent;
             LabelTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            LabelTitle.Location = new Point(178, 8);
+            LabelTitle.Location = new Point(156, 6);
             LabelTitle.Name = "LabelTitle";
-            LabelTitle.Size = new Size(141, 37);
+            LabelTitle.Size = new Size(113, 30);
             LabelTitle.TabIndex = 11;
             LabelTitle.Text = "Customer";
             // 
             // Customer
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(TableAccountDetails);
             Controls.Add(SideNav);
             Controls.Add(ButtonDelete);
-            Controls.Add(ButtonUpdate);
+            Controls.Add(ButtonAddCustomer);
             Controls.Add(LabelTitle);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Customer";
-            Size = new Size(800, 533);
+            Size = new Size(700, 400);
             Load += OnCustomerLoad;
             TableAccountDetails.ResumeLayout(false);
             TableAccountDetails.PerformLayout();
@@ -369,7 +357,7 @@
         private Label LabelForAccountID;
         private components.SideNav SideNav;
         private Button ButtonDelete;
-        private Button ButtonUpdate;
+        private Button ButtonAddCustomer;
         private Label LabelTitle;
         private DateTimePicker DatePickDOB;
         private Label LabelNI;

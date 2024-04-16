@@ -18,6 +18,8 @@ public class ProductsPresenter : SideNavPresenters, IPresenter
         View = view;
         View.Presenter = this;
         View.TreeNavSelect += OnTreeNavSelect;
+        View.ButtonAddProductClick += (s, e) =>
+            ChangePresenter(new ProductPresenter(ParentControl, new Product(), Model.ModelData));
         Model = new GenericModel(modelData);
     }
 

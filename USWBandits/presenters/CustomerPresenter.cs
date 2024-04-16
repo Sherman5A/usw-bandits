@@ -19,6 +19,7 @@ public class CustomerPresenter : SideNavPresenters, IPresenter
         View = view;
         View.Presenter = this;
         View.TreeNavSelect += OnTreeNavSelect;
+        View.ButtonAddCustomersClicked += OnAddCustomerClicked;
         Model = new CustomerModel(modelData);
     }
 
@@ -27,7 +28,7 @@ public class CustomerPresenter : SideNavPresenters, IPresenter
         ParentControl.GoTo(presenter);
     }
 
-    private void OnAddCustomerClicked(object sender, EventArgs eventArgs)
+    private void OnAddCustomerClicked(object? sender, EventArgs eventArgs)
     {
         int customerId = Model.GetCurrentCustomerId() + 1;
         string title = View.GetCustomerTitle();
@@ -38,8 +39,9 @@ public class CustomerPresenter : SideNavPresenters, IPresenter
         string email = View.GetEmail();
         string password = View.GetPassword();
         decimal allowance = View.Allowance;
-        BankCustomer customer = new(customerId, title, firstName, lastName, email, password, niNumber, allowance, customerDOB);
-        int result = 1;
+        BankCustomer customer = new(customerId, title, firstName, lastName, email, password, niNumber, allowance,
+            customerDOB);
+        int result = Model.AddCustomer(customer);
         View.ShowResult(result);
     }
 }

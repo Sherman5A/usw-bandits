@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             LabelTitle = new Label();
-            ButtonUpdate = new Button();
+            ButtonAddProduct = new Button();
             TableProductDetails = new TableLayoutPanel();
             LabelRate = new Label();
             LabelAccName = new Label();
@@ -56,14 +56,14 @@
             LabelTitle.TabIndex = 1;
             LabelTitle.Text = "Product";
             // 
-            // ButtonUpdate
+            // ButtonAddProduct
             // 
-            ButtonUpdate.Location = new Point(162, 287);
-            ButtonUpdate.Name = "ButtonUpdate";
-            ButtonUpdate.Size = new Size(180, 62);
-            ButtonUpdate.TabIndex = 3;
-            ButtonUpdate.Text = "Update";
-            ButtonUpdate.UseVisualStyleBackColor = true;
+            ButtonAddProduct.Location = new Point(162, 287);
+            ButtonAddProduct.Name = "ButtonAddProduct";
+            ButtonAddProduct.Size = new Size(180, 62);
+            ButtonAddProduct.TabIndex = 3;
+            ButtonAddProduct.Text = "Add Product";
+            ButtonAddProduct.UseVisualStyleBackColor = true;
             // 
             // TableProductDetails
             // 
@@ -137,8 +137,11 @@
             // ComboStatus
             // 
             ComboStatus.Anchor = AnchorStyles.Left;
+            ComboStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboStatus.FormattingEnabled = true;
+            ComboStatus.Items.AddRange(new object[] { "Closed", "Open" });
             ComboStatus.Location = new Point(149, 138);
+            ComboStatus.MaxDropDownItems = 2;
             ComboStatus.Name = "ComboStatus";
             ComboStatus.Size = new Size(221, 23);
             ComboStatus.Sorted = true;
@@ -205,7 +208,7 @@
             Controls.Add(ButtonDelete);
             Controls.Add(SideNav);
             Controls.Add(TableProductDetails);
-            Controls.Add(ButtonUpdate);
+            Controls.Add(ButtonAddProduct);
             Controls.Add(LabelTitle);
             Name = "Product";
             Size = new Size(700, 400);
@@ -220,7 +223,7 @@
         #endregion
 
         private Label LabelTitle;
-        private Button ButtonUpdate;
+        private Button ButtonAddProduct;
         private TableLayoutPanel TableProductDetails;
         private TextBox TextAccName;
         private Label LabelID;

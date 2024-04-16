@@ -31,7 +31,7 @@ internal class AccountPresenter : SideNavPresenters, IPresenter
         View.SetProductOptions(Model.GetProducts());
     }
 
-    private void OnAddAccountClicked(object sender, EventArgs e)
+    private void OnAddAccountClicked(object? sender, EventArgs e)
     {
         int accID = Model.GetAccountNumber() + 1;
         int customerID = View.GetCustomerID();

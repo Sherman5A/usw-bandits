@@ -127,6 +127,7 @@
             // ComboAction
             // 
             ComboAction.Anchor = AnchorStyles.Left;
+            ComboAction.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboAction.FormattingEnabled = true;
             ComboAction.Location = new Point(168, 131);
             ComboAction.Name = "ComboAction";

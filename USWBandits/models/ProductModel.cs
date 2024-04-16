@@ -43,8 +43,8 @@ public class ProductModel : IModel
             connection.Open();
             var sqlCommand = connection.CreateCommand();
             sqlCommand.CommandText = queryString;
-            sqlCommand.Parameters.AddWithValue("@IsaNmae", product.AccountName);
-            sqlCommand.Parameters.AddWithValue("@Status", product.ProductStatus);
+            sqlCommand.Parameters.AddWithValue("@IsaName", product.AccountName);
+            sqlCommand.Parameters.AddWithValue("@Status", product.ProductStatus.ToString());
             sqlCommand.Parameters.AddWithValue("@InterestRate", product.ProductInterest);
             int result = sqlCommand.ExecuteNonQuery();
             return result;

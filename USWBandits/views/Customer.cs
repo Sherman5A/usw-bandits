@@ -17,6 +17,7 @@ public partial class Customer : UserControl, ICustomer
     private void OnCustomerLoad(object sender, EventArgs eventArgs)
     {
         NumericAllowance.Maximum = decimal.MaxValue;
+        ButtonAddCustomer.Click += (s, e) => ButtonAddCustomersClicked?.Invoke(s, e);
         SideNav.TreeNavSelect += (s, e) =>
         {
             if (e.SelectedNode != "NodeCustomers") TreeNavSelect?.Invoke(s, e);
