@@ -33,7 +33,7 @@ public partial class Customer : UserControl, ICustomer
 
     public DateOnly GetDateBirth()
     {
-        // TODO: Create parser for this
+        // TODO: Create parser for 
         throw new NotImplementedException();
     }
 

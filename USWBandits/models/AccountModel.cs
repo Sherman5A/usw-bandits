@@ -46,7 +46,7 @@ public class AccountModel : IModel
             {
                 while (reader.Read())
                 {
-                    returnList.Add((reader.GetInt16(0), reader.GetString(1), reader.GetString(2)));
+                    returnList.Add((reader.GetInt32(0), reader.GetString(1), reader.GetString(2)));
                 }
             }
         }

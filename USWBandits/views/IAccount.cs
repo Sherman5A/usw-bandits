@@ -9,9 +9,9 @@ public interface IAccount : IView
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
     public event EventHandler? ButtonAddAccountClicked;
     void SetAccountID(int accID);
-    void SetCustomerOptions(List<(int id, string firstName, string lastName)> list);
+    void SetCustomerOptions(List<(int id, string firstName, string lastName)> customers);
     int GetCustomerID();
-    void SetProductOptions(List<(int id, string isaName)> list);
+    void SetProductOptions(List<(int id, string isaName)> products);
     int GetProductID();
     void ShowResult(int addResult);
 }

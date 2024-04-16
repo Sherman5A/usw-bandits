@@ -33,7 +33,29 @@ public class TransactionModel : IModel
         return -1;
     }
 
-    public int AddCustomer(BankTransaction transaction)
+    public List<int> GetAccounts()
+    {
+        const string queryString = @"SELECT accid FROM account;";
+        List<int> returnList = new();
+        using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))
+        {
+            connection.Open();
+
+            var sqlCommand = connection.CreateCommand();
+            sqlCommand.CommandText = queryString;
+            using (var reader = sqlCommand.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    returnList.Add((reader.GetInt32(0)));
+                }
+            }
+        }
+
+        return returnList;
+    }
+
+    public int AddTransaction(BankTransaction transaction)
     {
         const string queryString =
             @"INSERT INTO tranx(accid, action, amnt, event) 
@@ -44,7 +66,7 @@ public class TransactionModel : IModel
             var sqlCommand = connection.CreateCommand();
             sqlCommand.CommandText = queryString;
             sqlCommand.Parameters.AddWithValue("@AccountID", transaction.TranAccountID);
-            sqlCommand.Parameters.AddWithValue("@Action", transaction.Action);
+            sqlCommand.Parameters.AddWithValue("@Action", transaction.GetActionString());
             sqlCommand.Parameters.AddWithValue("@Amount", transaction.Amount);
             sqlCommand.Parameters.AddWithValue("@Event", transaction.Event);
             int result = sqlCommand.ExecuteNonQuery();

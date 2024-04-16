@@ -31,10 +31,10 @@ public partial class Account : UserControl, IAccount
         LabelAccountID.Text = accID.ToString();
     }
 
-    public void SetCustomerOptions(List<(int id, string firstName, string lastName)> list)
+    public void SetCustomerOptions(List<(int id, string firstName, string lastName)> customers)
     {
         Dictionary<int, string> optionsDict = new();
-        foreach (var item in list)
+        foreach (var item in customers)
         {
             optionsDict.Add(item.id, $"ID: {item.id} - {item.firstName} {item.lastName}");
         }
@@ -46,10 +46,10 @@ public partial class Account : UserControl, IAccount
 
     public int GetCustomerID() => ((KeyValuePair<int, string>)ComboCustomerID.SelectedItem).Key;
 
-    public void SetProductOptions(List<(int id, string isaName)> list)
+    public void SetProductOptions(List<(int id, string isaName)> products)
     {
         Dictionary<int, string> optionsDict = new();
-        foreach (var item in list)
+        foreach (var item in products)
         {
             optionsDict.Add(item.id, $"ID: {item.id} - {item.isaName}");
         }
