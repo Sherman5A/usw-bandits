@@ -1,4 +1,5 @@
 ﻿using USWBandits.components;
+using USWBandits.logic;
 using USWBandits.presenters;
 
 namespace USWBandits.views;
@@ -63,6 +64,8 @@ public partial class Account : UserControl, IAccount
     {
         MessageBox.Show($"Database added {addResult} rows");
     }
+
+    public void AddNavItems(List<BankAccount> accounts) => SideNav.AddItem(accounts);
 
     public decimal Balance
     {

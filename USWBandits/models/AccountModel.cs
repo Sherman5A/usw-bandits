@@ -6,6 +6,7 @@ namespace USWBandits.models;
 public class AccountModel : IModel
 {
     public ModelData ModelData { get; set; }
+
     public AccountModel(ModelData modelData)
     {
         ModelData = modelData;
@@ -94,5 +95,10 @@ public class AccountModel : IModel
             int result = sqlCommand.ExecuteNonQuery();
             return result;
         }
+    }
+
+    public List<BankAccount> GetAccounts()
+    {
+        return SqlHelper.GetAllAccounts(ModelData.SQLPath);
     }
 }

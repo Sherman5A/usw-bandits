@@ -1,6 +1,6 @@
 ﻿namespace USWBandits.models;
 
-public class GenericModel
+public class GenericModel : IModel
 {
     public ModelData ModelData { get; set; }
 

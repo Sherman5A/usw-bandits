@@ -24,6 +24,11 @@ public class ProductPresenter : SideNavPresenters, IPresenter
         InitView();
     }
 
+    public ProductPresenter(Control parentControl, Product view, ModelData modelData, int tableKey)
+    {
+        throw new NotImplementedException();
+    }
+
     public override void ChangePresenter(IPresenter presenter)
     {
         ParentControl.GoTo(presenter);

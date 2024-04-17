@@ -1,4 +1,6 @@
 ﻿using System.Data.SQLite;
+using System.Diagnostics;
+using System.Globalization;
 using USWBandits.logic;
 
 namespace USWBandits.models;
@@ -25,12 +27,52 @@ public class TransactionModel : IModel
             {
                 while (reader.Read())
                 {
-                    return reader.GetInt16(0);
+                    return reader.GetInt32(0);
                 }
             }
         }
 
         return -1;
+    }
+
+    public BankTransaction? GetTransactionByKey(int key)
+    {
+        const string queryString = @"SELECT trnxid, accid, action, amnt, event FROM tranx WHERE trnxid = @Key;";
+        using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))
+        {
+            connection.Open();
+
+            var sqlCommand = connection.CreateCommand();
+            sqlCommand.CommandText = queryString;
+            sqlCommand.Parameters.AddWithValue("@Key", key);
+            using (var reader = sqlCommand.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    DateTime transactionEvent;
+                    try
+                    {
+                        transactionEvent = DateTime.ParseExact(reader.GetString(4), "yyyy:MM:dd HH:mm",
+                            CultureInfo.InvariantCulture);
+                    }
+                    // catch impossible dates present in db like 2019:02:30 08:15 
+                    catch (FormatException)
+                    {
+                        transactionEvent = DateTime.UnixEpoch;
+                    }
+
+                    return new BankTransaction(
+                        reader.GetInt32(0),
+                        reader.GetInt32(1),
+                        reader.GetString(2),
+                        reader.GetDecimal(3),
+                        transactionEvent
+                    );
+                }
+            }
+        }
+
+        return null;
     }
 
     public List<int> GetAccounts()
@@ -69,6 +111,27 @@ public class TransactionModel : IModel
             sqlCommand.Parameters.AddWithValue("@Action", transaction.GetActionString());
             sqlCommand.Parameters.AddWithValue("@Amount", transaction.Amount);
             sqlCommand.Parameters.AddWithValue("@Event", transaction.Event.ToString("yyyy:MM:dd HH:mm"));
+            int result = sqlCommand.ExecuteNonQuery();
+            return result;
+        }
+    }
+
+    public List<BankTransaction> GetTransactions()
+    {
+        return SqlHelper.GetAllTransactions(ModelData.SQLPath);
+    }
+
+    public int DeleteTransactionByKey(int transactionId)
+    {
+        Debug.WriteLine(transactionId);
+        const string queryString =
+            @"DELETE FROM tranx WHERE trnxid = @Key;";
+        using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))
+        {
+            connection.Open();
+            var sqlCommand = connection.CreateCommand();
+            sqlCommand.CommandText = queryString;
+            sqlCommand.Parameters.AddWithValue("@Key", transactionId);
             int result = sqlCommand.ExecuteNonQuery();
             return result;
         }

@@ -36,7 +36,7 @@ public class CustomerModel : IModel
     public int AddCustomer(BankCustomer customer)
     {
         const string queryString =
-            @"INSERT INTO account(title, firstname, lastname, dob, nicode, email, password, allowance) 
+            @"INSERT INTO customer(title, firstname, lastname, dob, nicode, email, password, allowance) 
               VALUES (@Title, @Firstname, @Lastname, @DOB, @Nicode, @Email, @Password, @Allowance);";
         using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))
         {
@@ -46,8 +46,8 @@ public class CustomerModel : IModel
             sqlCommand.Parameters.AddWithValue("@Title", customer.Title);
             sqlCommand.Parameters.AddWithValue("@Firstname", customer.FirstName);
             sqlCommand.Parameters.AddWithValue("@Lastname", customer.LastName);
-            sqlCommand.Parameters.AddWithValue("@DOB", customer.CustomerDOB);
-            sqlCommand.Parameters.AddWithValue("@Nicode", customer.CustomerDOB);
+            sqlCommand.Parameters.AddWithValue("@DOB", customer.CustomerDOB.ToString("yyyy-MM-dd"));
+            sqlCommand.Parameters.AddWithValue("@Nicode", customer.NiNumber);
             sqlCommand.Parameters.AddWithValue("@Email", customer.Email);
             sqlCommand.Parameters.AddWithValue("@Password", customer.Password);
             sqlCommand.Parameters.AddWithValue("@Allowance", customer.Allowance);

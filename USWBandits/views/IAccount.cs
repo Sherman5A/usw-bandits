@@ -1,4 +1,5 @@
 ﻿using USWBandits.components;
+using USWBandits.logic;
 
 namespace USWBandits.views;
 
@@ -14,4 +15,5 @@ public interface IAccount : IView
     void SetProductOptions(List<(int id, string isaName)> products);
     int GetProductID();
     void ShowResult(int addResult);
+    void AddNavItems(List<BankAccount> accounts);
 }

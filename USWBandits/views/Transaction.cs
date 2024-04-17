@@ -9,6 +9,9 @@ public partial class Transaction : UserControl, ITransaction
     public IPresenter? Presenter { get; set; }
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
     public event EventHandler? ButtonAddTransactionClicked;
+    public event EventHandler? ButtonEditTransactionClicked;
+    public event EventHandler? ButtonDeleteTransactionClicked;
+
 
     public Transaction()
     {
@@ -27,9 +30,24 @@ public partial class Transaction : UserControl, ITransaction
         SideNav.FocusNode("NodeTransactions");
     }
 
-    public void SetTransactionId(int accID)
+    public void EditMode()
     {
-        LabelId.Text = accID.ToString();
+        ButtonAddTran.Text = "Edit transaction";
+        ButtonAddTran.Click += (s, e) => ButtonEditTransactionClicked?.Invoke(s, e);
+        ButtonDelete.Enabled = true;
+        ButtonDelete.Click += (s, e) => ButtonDeleteTransactionClicked?.Invoke(s, e);
+    }
+
+    public int TransactionId
+    {
+        get => Convert.ToInt32(LabelId.Text);
+        set => LabelId.Text = value.ToString();
+    }
+
+    public int AccountId
+    {
+        get => Convert.ToInt32(ComboAccountID.SelectedItem);
+        set => ComboAccountID.SelectedItem = value;
     }
 
     public void SetAccountOptions(List<int> accounts)
@@ -37,13 +55,18 @@ public partial class Transaction : UserControl, ITransaction
         ComboAccountID.DataSource = new BindingSource(accounts, null);
     }
 
-    public TransactionAction? GetAction()
+    public TransactionAction? Action
     {
-        if (Enum.TryParse<TransactionAction>(ComboAction.Text.Replace(" ", ""), true, out var returnValue))
+        get
         {
-            return Enum.IsDefined(typeof(TransactionAction), returnValue) ? returnValue : null;
+            if (Enum.TryParse<TransactionAction>(ComboAction.Text.Replace(" ", ""), true, out var returnValue))
+            {
+                return Enum.IsDefined(typeof(TransactionAction), returnValue) ? returnValue : null;
+            }
+
+            return null;
         }
-        return null;
+        set => ComboAction.Text = TransactionHelper.StringFromTransaction((TransactionAction)value);
     }
 
     public decimal Amount
@@ -58,15 +81,16 @@ public partial class Transaction : UserControl, ITransaction
         set => DateTransactionEvent.Value = value;
     }
 
+    public void AddNavItems(List<BankTransaction> transactions) => SideNav.AddItem(transactions);
+
+
     public void ShowResult(int result)
     {
-        MessageBox.Show($"Database added {result} rows to transaction table");
+        MessageBox.Show($"Database changed {result} rows to transaction table");
     }
 
     public void ShowError(string message)
     {
         MessageBox.Show(message);
     }
-
-    public int GetAccountId() => Convert.ToInt32(ComboAccountID.SelectedItem);
 }

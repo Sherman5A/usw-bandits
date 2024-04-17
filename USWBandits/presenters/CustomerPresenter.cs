@@ -24,6 +24,11 @@ public class CustomerPresenter : SideNavPresenters, IPresenter
         InitView();
     }
 
+    public CustomerPresenter(Control parentControl, Customer view, ModelData modelData, int tableIndex)
+    {
+        throw new NotImplementedException();
+    }
+
     private void InitView()
     {
         View.SetCustomerId(Model.GetCurrentCustomerId() + 1);
@@ -40,13 +45,13 @@ public class CustomerPresenter : SideNavPresenters, IPresenter
         string title = View.GetCustomerTitle();
         string firstName = View.GetFirstName();
         string lastName = View.GetLastName();
-        DateOnly customerDOB = View.GetDateBirth();
+        DateOnly customerDob = View.GetDateBirth();
         string niNumber = View.GetNiNumber();
         string email = View.GetEmail();
         string password = View.GetPassword();
         decimal allowance = View.Allowance;
         BankCustomer customer = new(customerId, title, firstName, lastName, email, password, niNumber, allowance,
-            customerDOB);
+            customerDob);
         int result = Model.AddCustomer(customer);
         View.ShowResult(result);
         if (result == 1)

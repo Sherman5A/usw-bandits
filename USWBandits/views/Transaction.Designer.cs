@@ -217,6 +217,7 @@
             // ButtonDelete
             // 
             ButtonDelete.Dock = DockStyle.Fill;
+            ButtonDelete.Enabled = false;
             ButtonDelete.Location = new Point(262, 3);
             ButtonDelete.Name = "ButtonDelete";
             ButtonDelete.Size = new Size(253, 56);

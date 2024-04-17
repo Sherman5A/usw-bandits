@@ -38,8 +38,7 @@ public partial class Customer : UserControl, ICustomer
 
     public DateOnly GetDateBirth()
     {
-        // TODO: Create parser for 
-        throw new NotImplementedException();
+        return DateOnly.FromDateTime(DatePickDOB.Value);
     }
 
     public string GetEmail()

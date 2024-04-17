@@ -7,12 +7,16 @@ public interface ITransaction : IView
 {
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
     public event EventHandler ButtonAddTransactionClicked;
+    public event EventHandler? ButtonDeleteTransactionClicked;
+    public event EventHandler? ButtonEditTransactionClicked;
     decimal Amount { get; set; }
     DateTime TransactionEvent { get; set; }
-    TransactionAction? GetAction();
+    TransactionAction? Action { get; set; }
+    int TransactionId { get; set; }
+    int AccountId { get; set; }
     void ShowResult(int result);
-    int GetAccountId();
     void SetAccountOptions(List<int> accounts);
     void ShowError(string message);
-    void SetTransactionId(int accID);
+    void EditMode();
+    void AddNavItems(List<BankTransaction> transactions);
 }

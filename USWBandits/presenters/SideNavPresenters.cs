@@ -1,4 +1,6 @@
-﻿using USWBandits.components;
+﻿using System.Diagnostics;
+using System.Reflection.Metadata.Ecma335;
+using USWBandits.components;
 using USWBandits.models;
 using USWBandits.views;
 
@@ -22,7 +24,33 @@ public abstract class SideNavPresenters : IPresenter
             "NodeStats" => new StatsPresenter(ParentControl, new Stats(), ModelData),
             _ => null
         };
-        if (nextPresenter != null) ChangePresenter(nextPresenter);
+        if (nextPresenter != null)
+        {
+            ChangePresenter(nextPresenter);
+            return;
+        }
+
+        HandleChildSelected(e.SelectedNode);
+    }
+
+    private void HandleChildSelected(string nodeName)
+    {
+        var splitNode = nodeName.Split("-");
+        var tableType = splitNode[0];
+        var tableKey = Convert.ToInt32(splitNode[1]);
+
+        IPresenter? nextPresenter = tableType switch
+        {
+            "Account" => new AccountPresenter(ParentControl, new Account(), ModelData, tableKey),
+            "Product" => new ProductPresenter(ParentControl, new Product(), ModelData, tableKey),
+            "Transaction" => new TransactionPresenter(ParentControl, new Transaction(), ModelData, tableKey),
+            "Customer" => new CustomerPresenter(ParentControl, new Customer(), ModelData, tableKey),
+            _ => null
+        };
+        if (nextPresenter != null)
+        {
+            ChangePresenter(nextPresenter);
+        }
     }
 
     public abstract void ChangePresenter(IPresenter presenter);

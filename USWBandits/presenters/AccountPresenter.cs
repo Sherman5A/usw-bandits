@@ -1,4 +1,5 @@
-﻿using USWBandits.logic;
+﻿using System.Diagnostics;
+using USWBandits.logic;
 using USWBandits.models;
 using USWBandits.views;
 
@@ -24,8 +25,14 @@ internal class AccountPresenter : SideNavPresenters, IPresenter
         InitView();
     }
 
+    public AccountPresenter(Control parentControl, Account view, ModelData modelData, int tableIndex)
+    {
+        throw new NotImplementedException();
+    }
+
     private void InitView()
     {
+        View.AddNavItems(Model.GetAccounts());
         View.SetAccountId(Model.GetAccountNumber() + 1);
         View.SetCustomerOptions(Model.GetCustomers());
         View.SetProductOptions(Model.GetProducts());

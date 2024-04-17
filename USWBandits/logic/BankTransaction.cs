@@ -1,4 +1,6 @@
-﻿namespace USWBandits.logic;
+﻿using System.Diagnostics;
+
+namespace USWBandits.logic;
 
 public class BankTransaction
 {
@@ -9,14 +11,28 @@ public class BankTransaction
     public decimal Amount { get; }
     public DateTime Event { get; }
 
-    public BankTransaction(int transactionID, int tranAccountID, TransactionAction action, decimal amount,
-        DateTime @event)
+    public BankTransaction(int transactionId, int tranAccountId, TransactionAction action, decimal amount,
+        DateTime dateEvent)
     {
-        TransactionID = transactionID;
-        TranAccountID = tranAccountID;
+        TransactionID = transactionId;
+        TranAccountID = tranAccountId;
         Action = action;
         Amount = amount;
-        Event = @event;
+        Event = dateEvent;
+    }
+
+    public BankTransaction(int transactionId, int tranAccountId, string action, decimal amount,
+        DateTime dateEvent)
+    {
+        TransactionID = transactionId;
+        TranAccountID = tranAccountId;
+        if (Enum.TryParse<TransactionAction>(action.Replace(" ", ""), true, out var returnValue))
+        {
+            Action = Enum.IsDefined(typeof(TransactionAction), returnValue) ? returnValue : TransactionAction.Deposit;
+        }
+
+        Amount = amount;
+        Event = dateEvent;
     }
 
     public string? GetActionString()
