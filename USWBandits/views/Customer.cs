@@ -25,6 +25,11 @@ public partial class Customer : UserControl, ICustomer
         SideNav.FocusNode("NodeCustomers");
     }
 
+    public void SetCustomerId(int customerId)
+    {
+        LabelCustomerId.Text = customerId.ToString();
+    }
+
     public decimal Allowance
     {
         get => NumericAllowance.Value;

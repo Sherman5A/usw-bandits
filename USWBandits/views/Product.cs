@@ -1,4 +1,5 @@
-﻿using USWBandits.components;
+﻿using System.Diagnostics;
+using USWBandits.components;
 using USWBandits.logic;
 using USWBandits.presenters;
 
@@ -23,6 +24,13 @@ public partial class Product : UserControl, IProduct
             if (e.SelectedNode != "NodeProducts") TreeNavSelect?.Invoke(s, e);
         };
         SideNav.FocusNode("NodeProducts");
+    }
+
+    public void SetProductId(int productId)
+    {
+        Debug.WriteLine("starting");
+        Debug.WriteLine(productId.ToString());
+        LabelId.Text = productId.ToString();
     }
 
     public string GetAccountName()

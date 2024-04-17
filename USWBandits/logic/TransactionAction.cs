@@ -12,18 +12,13 @@ public class TransactionHelper
 {
     public static string? StringFromTransaction(TransactionAction action)
     {
-        switch (action)
+        return action switch
         {
-            case TransactionAction.TransferIn:
-                return "transfer in";
-            case TransactionAction.TransferOut:
-                return "transfer out";
-            case TransactionAction.Deposit:
-                return "deposit";
-            case TransactionAction.Withdraw:
-                return "widthdraw";
-            default:
-                return null;
-        }
+            TransactionAction.TransferIn => "transfer in",
+            TransactionAction.TransferOut => "transfer out",
+            TransactionAction.Deposit => "deposit",
+            TransactionAction.Withdraw => "widthdraw",
+            _ => null,
+        };
     }
 }

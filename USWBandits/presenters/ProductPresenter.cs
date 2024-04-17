@@ -1,4 +1,5 @@
-﻿using USWBandits.logic;
+﻿using System.Diagnostics;
+using USWBandits.logic;
 using USWBandits.models;
 using USWBandits.views;
 
@@ -19,13 +20,19 @@ public class ProductPresenter : SideNavPresenters, IPresenter
         View.Presenter = this;
         View.TreeNavSelect += OnTreeNavSelect;
         View.ButtonAddProductClicked += OnAddProductClicked;
-
         Model = new ProductModel(modelData);
+        InitView();
     }
 
     public override void ChangePresenter(IPresenter presenter)
     {
         ParentControl.GoTo(presenter);
+    }
+
+    private void InitView()
+    {
+        Debug.WriteLine("double running");
+        View.SetProductId(Model.GetCurrentProductId() + 1);
     }
 
     private void OnAddProductClicked(object? sender, EventArgs eventArgs)
@@ -43,5 +50,9 @@ public class ProductPresenter : SideNavPresenters, IPresenter
         BankProduct product = new(productId, accountName, productStatus, productInterest);
         int result = Model.AddProduct(product);
         View.ShowResult(result);
+        if (result == 1)
+        {
+            View.SetProductId(Model.GetCurrentProductId() + 1);
+        }
     }
 }

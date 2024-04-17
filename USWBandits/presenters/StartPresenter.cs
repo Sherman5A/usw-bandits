@@ -21,9 +21,8 @@ public class StartPresenter : IPresenter
         View.ConnectDatabase += HandleDatabaseConnect;
     }
 
-    private void HandleDatabaseConnect(object sender, ConnectDatabaseEventArgs e)
+    private void HandleDatabaseConnect(object? sender, ConnectDatabaseEventArgs e)
     {
-        Debug.WriteLine(e.DatabasePath);
         if (!File.Exists(@e.DatabasePath))
         {
             return;

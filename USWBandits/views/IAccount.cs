@@ -8,7 +8,7 @@ public interface IAccount : IView
     decimal Balance { get; set; }
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
     public event EventHandler? ButtonAddAccountClicked;
-    void SetAccountID(int accID);
+    void SetAccountId(int accID);
     void SetCustomerOptions(List<(int id, string firstName, string lastName)> customers);
     int GetCustomerID();
     void SetProductOptions(List<(int id, string isaName)> products);

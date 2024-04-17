@@ -12,4 +12,5 @@ public interface IProduct : IView
     ProductOpenStatus? GetStatus();
     void ShowResult(int result);
     void ShowError(string message);
+    void SetProductId(int productId);
 }

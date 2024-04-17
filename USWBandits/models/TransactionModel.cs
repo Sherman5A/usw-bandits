@@ -68,7 +68,7 @@ public class TransactionModel : IModel
             sqlCommand.Parameters.AddWithValue("@AccountID", transaction.TranAccountID);
             sqlCommand.Parameters.AddWithValue("@Action", transaction.GetActionString());
             sqlCommand.Parameters.AddWithValue("@Amount", transaction.Amount);
-            sqlCommand.Parameters.AddWithValue("@Event", transaction.Event);
+            sqlCommand.Parameters.AddWithValue("@Event", transaction.Event.ToString("yyyy:MM:dd HH:mm"));
             int result = sqlCommand.ExecuteNonQuery();
             return result;
         }

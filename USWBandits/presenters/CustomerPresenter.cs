@@ -21,6 +21,12 @@ public class CustomerPresenter : SideNavPresenters, IPresenter
         View.TreeNavSelect += OnTreeNavSelect;
         View.ButtonAddCustomersClicked += OnAddCustomerClicked;
         Model = new CustomerModel(modelData);
+        InitView();
+    }
+
+    private void InitView()
+    {
+        View.SetCustomerId(Model.GetCurrentCustomerId() + 1);
     }
 
     public override void ChangePresenter(IPresenter presenter)
@@ -43,5 +49,9 @@ public class CustomerPresenter : SideNavPresenters, IPresenter
             customerDOB);
         int result = Model.AddCustomer(customer);
         View.ShowResult(result);
+        if (result == 1)
+        {
+            View.SetCustomerId(Model.GetCurrentCustomerId() + 1);
+        }
     }
 }

@@ -25,6 +25,7 @@ public class TransactionPresenter : SideNavPresenters, IPresenter
 
     private void InitView()
     {
+        View.SetTransactionId(Model.GetCurrentTransactionId() + 1);
         View.SetAccountOptions(Model.GetAccounts());
     }
 
@@ -37,11 +38,20 @@ public class TransactionPresenter : SideNavPresenters, IPresenter
     {
         int transactionId = Model.GetCurrentTransactionId() + 1;
         int accountID = View.GetAccountId();
-        TransactionAction action = View.GetAction();
+        TransactionAction? getResult = View.GetAction();
+        if (getResult is null)
+        {
+            View.ShowError("Invalid transaction event");
+        }
+        TransactionAction transactionAction = (TransactionAction)getResult;
+
         decimal amount = View.Amount;
-        DateTime tranEvent = View.GetEvent();
-        BankTransaction product = new(transactionId, accountID, action, amount, tranEvent);
+        DateTime tranEvent = View.TransactionEvent;
+        BankTransaction product = new(transactionId, accountID, transactionAction, amount, tranEvent);
         int result = Model.AddTransaction(product);
         View.ShowResult(result);
+        if (result == 1) {
+            View.SetTransactionId(Model.GetCurrentTransactionId() + 1);
+        }
     }
 }

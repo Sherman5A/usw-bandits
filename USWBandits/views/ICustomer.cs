@@ -14,5 +14,6 @@ public interface ICustomer : IView
     string GetLastName();
     string GetNiNumber();
     string GetPassword();
+    void SetCustomerId(int v);
     void ShowResult(int result);
 }

@@ -26,7 +26,7 @@ internal class AccountPresenter : SideNavPresenters, IPresenter
 
     private void InitView()
     {
-        View.SetAccountID(Model.GetAccountNumber() + 1);
+        View.SetAccountId(Model.GetAccountNumber() + 1);
         View.SetCustomerOptions(Model.GetCustomers());
         View.SetProductOptions(Model.GetProducts());
     }
@@ -39,8 +39,12 @@ internal class AccountPresenter : SideNavPresenters, IPresenter
         decimal balance = View.Balance;
         decimal accrued = View.Accrued;
         BankAccount account = new(accID, customerID, productID, balance, accrued);
-        int addResult = Model.AddAccount(account);
-        View.ShowResult(addResult);
+        int result = Model.AddAccount(account);
+        View.ShowResult(result);
+        if (result == 1)
+        {
+            View.SetAccountId(Model.GetAccountNumber() + 1);
+        }
     }
 
     public override void ChangePresenter(IPresenter presenter)

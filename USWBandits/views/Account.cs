@@ -26,7 +26,7 @@ public partial class Account : UserControl, IAccount
         SideNav.FocusNode("NodeAccounts");
     }
 
-    public void SetAccountID(int accID)
+    public void SetAccountId(int accID)
     {
         LabelAccountID.Text = accID.ToString();
     }
