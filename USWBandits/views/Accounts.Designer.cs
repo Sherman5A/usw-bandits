@@ -32,13 +32,19 @@
             SideNav = new components.SideNav();
             ButtonSearch = new Button();
             ButtonAddAccount = new Button();
+            TableButtons = new TableLayoutPanel();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            button1 = new Button();
+            button2 = new Button();
+            TableButtons.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // LabelTitle
             // 
             LabelTitle.AutoSize = true;
             LabelTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            LabelTitle.Location = new Point(162, 11);
+            LabelTitle.Location = new Point(156, 10);
             LabelTitle.Name = "LabelTitle";
             LabelTitle.Size = new Size(108, 30);
             LabelTitle.TabIndex = 1;
@@ -51,38 +57,91 @@
             SideNav.Margin = new Padding(3, 4, 3, 4);
             SideNav.Name = "SideNav";
             SideNav.Padding = new Padding(4, 6, 4, 6);
-            SideNav.Size = new Size(150, 400);
+            SideNav.Size = new Size(150, 412);
             SideNav.TabIndex = 2;
             // 
             // ButtonSearch
             // 
-            ButtonSearch.Location = new Point(396, 71);
+            ButtonSearch.Dock = DockStyle.Fill;
+            ButtonSearch.Location = new Point(260, 3);
             ButtonSearch.Name = "ButtonSearch";
-            ButtonSearch.Size = new Size(178, 63);
+            ButtonSearch.Size = new Size(252, 359);
             ButtonSearch.TabIndex = 5;
             ButtonSearch.Text = "Search for product";
             ButtonSearch.UseVisualStyleBackColor = true;
             // 
             // ButtonAddAccount
             // 
-            ButtonAddAccount.Location = new Point(162, 71);
+            ButtonAddAccount.Dock = DockStyle.Fill;
+            ButtonAddAccount.Location = new Point(3, 3);
             ButtonAddAccount.Name = "ButtonAddAccount";
-            ButtonAddAccount.Size = new Size(178, 63);
+            ButtonAddAccount.Size = new Size(251, 359);
             ButtonAddAccount.TabIndex = 4;
             ButtonAddAccount.Text = "Add new account";
             ButtonAddAccount.UseVisualStyleBackColor = true;
+            // 
+            // TableButtons
+            // 
+            TableButtons.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            TableButtons.ColumnCount = 2;
+            TableButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TableButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TableButtons.Controls.Add(ButtonSearch, 1, 0);
+            TableButtons.Controls.Add(ButtonAddAccount, 0, 0);
+            TableButtons.Location = new Point(156, 44);
+            TableButtons.Name = "TableButtons";
+            TableButtons.RowCount = 1;
+            TableButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            TableButtons.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableButtons.Size = new Size(515, 365);
+            TableButtons.TabIndex = 6;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(button1, 1, 0);
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(200, 100);
+            tableLayoutPanel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            button1.Dock = DockStyle.Fill;
+            button1.Location = new Point(103, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 94);
+            button1.TabIndex = 5;
+            button1.Text = "Search for product";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Dock = DockStyle.Fill;
+            button2.Location = new Point(3, 3);
+            button2.Name = "button2";
+            button2.Size = new Size(94, 347);
+            button2.TabIndex = 4;
+            button2.Text = "Add new account";
+            button2.UseVisualStyleBackColor = true;
             // 
             // Accounts
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(ButtonSearch);
-            Controls.Add(ButtonAddAccount);
+            Controls.Add(TableButtons);
             Controls.Add(SideNav);
             Controls.Add(LabelTitle);
             Name = "Accounts";
-            Size = new Size(700, 400);
+            Size = new Size(684, 412);
             Load += OnAccountsLoad;
+            TableButtons.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -93,5 +152,9 @@
         private components.SideNav SideNav;
         private Button ButtonSearch;
         private Button ButtonAddAccount;
+        private TableLayoutPanel TableButtons;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Button button1;
+        private Button button2;
     }
 }

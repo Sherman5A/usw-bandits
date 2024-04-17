@@ -34,6 +34,8 @@
             ButtonTransactions = new Button();
             ButtonProducts = new Button();
             LabelTitle = new Label();
+            TableButtons = new TableLayoutPanel();
+            TableButtons.SuspendLayout();
             SuspendLayout();
             // 
             // SideNav
@@ -43,41 +45,45 @@
             SideNav.Margin = new Padding(3, 4, 3, 4);
             SideNav.Name = "SideNav";
             SideNav.Padding = new Padding(4, 6, 4, 6);
-            SideNav.Size = new Size(150, 400);
+            SideNav.Size = new Size(150, 412);
             SideNav.TabIndex = 6;
             // 
             // ButtonCustomers
             // 
-            ButtonCustomers.Location = new Point(156, 40);
+            ButtonCustomers.Dock = DockStyle.Fill;
+            ButtonCustomers.Location = new Point(3, 3);
             ButtonCustomers.Name = "ButtonCustomers";
-            ButtonCustomers.Size = new Size(201, 82);
+            ButtonCustomers.Size = new Size(251, 178);
             ButtonCustomers.TabIndex = 7;
             ButtonCustomers.Text = "Customers";
             ButtonCustomers.UseVisualStyleBackColor = true;
             // 
             // ButtonAccount
             // 
-            ButtonAccount.Location = new Point(380, 40);
+            ButtonAccount.Dock = DockStyle.Fill;
+            ButtonAccount.Location = new Point(260, 3);
             ButtonAccount.Name = "ButtonAccount";
-            ButtonAccount.Size = new Size(201, 82);
+            ButtonAccount.Size = new Size(252, 178);
             ButtonAccount.TabIndex = 8;
             ButtonAccount.Text = "Accounts";
             ButtonAccount.UseVisualStyleBackColor = true;
             // 
             // ButtonTransactions
             // 
-            ButtonTransactions.Location = new Point(156, 146);
+            ButtonTransactions.Dock = DockStyle.Fill;
+            ButtonTransactions.Location = new Point(3, 187);
             ButtonTransactions.Name = "ButtonTransactions";
-            ButtonTransactions.Size = new Size(201, 82);
+            ButtonTransactions.Size = new Size(251, 179);
             ButtonTransactions.TabIndex = 9;
             ButtonTransactions.Text = "Transactions";
             ButtonTransactions.UseVisualStyleBackColor = true;
             // 
             // ButtonProducts
             // 
-            ButtonProducts.Location = new Point(380, 146);
+            ButtonProducts.Dock = DockStyle.Fill;
+            ButtonProducts.Location = new Point(260, 187);
             ButtonProducts.Name = "ButtonProducts";
-            ButtonProducts.Size = new Size(201, 82);
+            ButtonProducts.Size = new Size(252, 179);
             ButtonProducts.TabIndex = 10;
             ButtonProducts.Text = "Products";
             ButtonProducts.UseVisualStyleBackColor = true;
@@ -92,19 +98,35 @@
             LabelTitle.TabIndex = 11;
             LabelTitle.Text = "Home";
             // 
+            // TableButtons
+            // 
+            TableButtons.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            TableButtons.ColumnCount = 2;
+            TableButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TableButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TableButtons.Controls.Add(ButtonCustomers, 0, 0);
+            TableButtons.Controls.Add(ButtonAccount, 1, 0);
+            TableButtons.Controls.Add(ButtonProducts, 1, 1);
+            TableButtons.Controls.Add(ButtonTransactions, 0, 1);
+            TableButtons.Location = new Point(156, 40);
+            TableButtons.Name = "TableButtons";
+            TableButtons.RowCount = 2;
+            TableButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            TableButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            TableButtons.Size = new Size(515, 369);
+            TableButtons.TabIndex = 13;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(TableButtons);
             Controls.Add(LabelTitle);
-            Controls.Add(ButtonProducts);
-            Controls.Add(ButtonTransactions);
-            Controls.Add(ButtonAccount);
-            Controls.Add(ButtonCustomers);
             Controls.Add(SideNav);
             Name = "Home";
-            Size = new Size(700, 400);
+            Size = new Size(684, 412);
             Load += OnHomeLoad;
+            TableButtons.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -117,5 +139,6 @@
         private Button ButtonTransactions;
         private Button ButtonProducts;
         private Label LabelTitle;
+        private TableLayoutPanel TableButtons;
     }
 }

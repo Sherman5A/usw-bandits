@@ -33,6 +33,8 @@
             ButtonListCustByDeposit = new Button();
             ButtonTotalTransaction = new Button();
             LabelTitle = new Label();
+            TableButtons = new TableLayoutPanel();
+            TableButtons.SuspendLayout();
             SuspendLayout();
             // 
             // SideNav
@@ -42,35 +44,38 @@
             SideNav.Margin = new Padding(3, 4, 3, 4);
             SideNav.Name = "SideNav";
             SideNav.Padding = new Padding(4, 6, 4, 6);
-            SideNav.Size = new Size(150, 400);
+            SideNav.Size = new Size(150, 412);
             SideNav.TabIndex = 5;
             // 
             // ButtonCalcInterest
             // 
-            ButtonCalcInterest.Location = new Point(163, 42);
-            ButtonCalcInterest.Margin = new Padding(3, 2, 3, 2);
+            ButtonCalcInterest.Dock = DockStyle.Fill;
+            ButtonCalcInterest.Location = new Point(20, 20);
+            ButtonCalcInterest.Margin = new Padding(20);
             ButtonCalcInterest.Name = "ButtonCalcInterest";
-            ButtonCalcInterest.Size = new Size(424, 52);
+            ButtonCalcInterest.Size = new Size(474, 83);
             ButtonCalcInterest.TabIndex = 6;
             ButtonCalcInterest.Text = "Calculate Accrued Interest";
             ButtonCalcInterest.UseVisualStyleBackColor = true;
             // 
             // ButtonListCustByDeposit
             // 
-            ButtonListCustByDeposit.Location = new Point(163, 112);
-            ButtonListCustByDeposit.Margin = new Padding(3, 2, 3, 2);
+            ButtonListCustByDeposit.Dock = DockStyle.Fill;
+            ButtonListCustByDeposit.Location = new Point(20, 143);
+            ButtonListCustByDeposit.Margin = new Padding(20);
             ButtonListCustByDeposit.Name = "ButtonListCustByDeposit";
-            ButtonListCustByDeposit.Size = new Size(424, 52);
+            ButtonListCustByDeposit.Size = new Size(474, 83);
             ButtonListCustByDeposit.TabIndex = 7;
             ButtonListCustByDeposit.Text = "List Customers by Deposit";
             ButtonListCustByDeposit.UseVisualStyleBackColor = true;
             // 
             // ButtonTotalTransaction
             // 
-            ButtonTotalTransaction.Location = new Point(163, 184);
-            ButtonTotalTransaction.Margin = new Padding(3, 2, 3, 2);
+            ButtonTotalTransaction.Dock = DockStyle.Fill;
+            ButtonTotalTransaction.Location = new Point(20, 266);
+            ButtonTotalTransaction.Margin = new Padding(20);
             ButtonTotalTransaction.Name = "ButtonTotalTransaction";
-            ButtonTotalTransaction.Size = new Size(424, 52);
+            ButtonTotalTransaction.Size = new Size(474, 83);
             ButtonTotalTransaction.TabIndex = 8;
             ButtonTotalTransaction.Text = "Report Total Transactions by Date";
             ButtonTotalTransaction.UseVisualStyleBackColor = true;
@@ -79,24 +84,40 @@
             // 
             LabelTitle.AutoSize = true;
             LabelTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            LabelTitle.Location = new Point(163, 7);
+            LabelTitle.Location = new Point(156, 7);
             LabelTitle.Name = "LabelTitle";
             LabelTitle.Size = new Size(64, 30);
             LabelTitle.TabIndex = 12;
             LabelTitle.Text = "Stats";
             // 
+            // TableButtons
+            // 
+            TableButtons.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            TableButtons.ColumnCount = 1;
+            TableButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            TableButtons.Controls.Add(ButtonCalcInterest, 0, 0);
+            TableButtons.Controls.Add(ButtonListCustByDeposit, 0, 1);
+            TableButtons.Controls.Add(ButtonTotalTransaction, 0, 2);
+            TableButtons.Location = new Point(156, 40);
+            TableButtons.Name = "TableButtons";
+            TableButtons.RowCount = 3;
+            TableButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            TableButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            TableButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            TableButtons.Size = new Size(514, 369);
+            TableButtons.TabIndex = 13;
+            // 
             // Stats
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(TableButtons);
             Controls.Add(LabelTitle);
-            Controls.Add(ButtonTotalTransaction);
-            Controls.Add(ButtonListCustByDeposit);
-            Controls.Add(ButtonCalcInterest);
             Controls.Add(SideNav);
             Name = "Stats";
-            Size = new Size(700, 400);
+            Size = new Size(684, 412);
             Load += OnProductLoad;
+            TableButtons.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -107,5 +128,6 @@
         private Button ButtonListCustByDeposit;
         private Button ButtonTotalTransaction;
         private Label LabelTitle;
+        private TableLayoutPanel TableButtons;
     }
 }

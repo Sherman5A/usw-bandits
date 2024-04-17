@@ -161,7 +161,7 @@
             Controls.Add(ButtonMenu);
             Controls.Add(TopMenu);
             MainMenuStrip = TopMenu;
-            MinimumSize = new Size(600, 500);
+            MinimumSize = new Size(700, 500);
             Name = "MainForm";
             Text = "Outlaw Hess";
             Load += MainFormLoad;
