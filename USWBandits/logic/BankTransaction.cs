@@ -26,8 +26,10 @@ public class BankTransaction
     {
         TransactionID = transactionId;
         TranAccountID = tranAccountId;
+        // Try to convert the string into an enum
         if (Enum.TryParse<TransactionAction>(action.Replace(" ", ""), true, out var returnValue))
         {
+            // Check that the new enum is actually a member of TransactionAction, if not set it to a default value
             Action = Enum.IsDefined(typeof(TransactionAction), returnValue) ? returnValue : TransactionAction.Deposit;
         }
 

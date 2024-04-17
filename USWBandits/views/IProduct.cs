@@ -3,6 +3,9 @@ using USWBandits.logic;
 
 namespace USWBandits.views;
 
+/// <summary>
+/// Contract between Product and StartProduct
+/// </summary>
 public interface IProduct : IView
 {
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;

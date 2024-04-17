@@ -2,6 +2,9 @@
 
 namespace USWBandits.views;
 
+/// <summary>
+/// Contract between Customer and CustomerPresenter
+/// </summary>
 public interface ICustomer : IView
 {
     decimal Allowance { get; set; }

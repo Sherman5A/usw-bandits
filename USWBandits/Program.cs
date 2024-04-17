@@ -12,7 +12,6 @@ internal static class Program
         // see https://aka.ms/applicationconfiguration.
         ApplicationConfiguration.Initialize();
         // Application.Run(new MainForm());
-        // TODO: Init for model
         MainForm form = new MainForm();
         Control control = new Control(form);
         control.Start();

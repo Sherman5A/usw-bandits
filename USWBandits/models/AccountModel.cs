@@ -12,6 +12,10 @@ public class AccountModel : IModel
         ModelData = modelData;
     }
 
+    /// <summary>
+    /// Get the highest accid
+    /// </summary>
+    /// <returns>Highest account id key</returns>
     public int GetAccountNumber()
     {
         const string queryString = "SELECT MAX(accid) FROM account;";
@@ -33,6 +37,10 @@ public class AccountModel : IModel
         return -1;
     }
 
+    /// <summary>
+    /// Get an ordered list of customers
+    /// </summary>
+    /// <returns>Ordered list of tuples containing custid, firstname, and lastname</returns>
     public List<(int id, string firstName, string lastName)> GetCustomers()
     {
         const string queryString = "SELECT custid, firstname, lastname FROM customer ORDER BY custid;";
@@ -55,9 +63,12 @@ public class AccountModel : IModel
         return returnList;
     }
 
+    /// <summary>
+    /// Get an ordered list of products
+    /// </summary>
+    /// <returns>Ordered list of tuples containing prodid, and isaname</returns>
     public List<(int id, string isaName)> GetProducts()
     {
-        // TODO: Shorten this stuff with a helper
         const string queryString = "SELECT prodid, isaname FROM product ORDER BY prodid;";
         List<(int id, string isaName)> returnList = new();
         using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))
@@ -78,6 +89,11 @@ public class AccountModel : IModel
         return returnList;
     }
 
+    /// <summary>
+    /// Add an account to the accounts table
+    /// </summary>
+    /// <param name="account">Account to add to table</param>
+    /// <returns>Number of tables affected by query</returns>
     public int AddAccount(BankAccount account)
     {
         const string queryString =
@@ -97,6 +113,10 @@ public class AccountModel : IModel
         }
     }
 
+    /// <summary>
+    /// Get all records in the account table
+    /// </summary>
+    /// <returns>List of records placed into BankAccount class</returns>
     public List<BankAccount> GetAccounts()
     {
         return SqlHelper.GetAllAccounts(ModelData.SQLPath);

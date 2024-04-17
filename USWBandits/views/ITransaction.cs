@@ -3,6 +3,9 @@ using USWBandits.logic;
 
 namespace USWBandits.views;
 
+/// <summary>
+/// Contract that must be enforced between Transaction and TransactionPresenter
+/// </summary>
 public interface ITransaction : IView
 {
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;

@@ -1,7 +1,12 @@
-﻿namespace USWBandits;
+﻿using USWBandits.views;
+
+namespace USWBandits;
 
 public partial class MainForm : Form
 {
+    /// <summary>
+    /// The controller that provides functions to swap between views
+    /// </summary>
     public Control Control { get; set; }
 
     public MainForm()
@@ -9,6 +14,10 @@ public partial class MainForm : Form
         InitializeComponent();
     }
 
+    /// <summary>
+    /// Change the view to another one that implements IView interface
+    /// </summary>
+    /// <param name="view">UserControl that implements the IView interface</param>
     public void ChangeView(UserControl view)
     {
         Host.Controls.Clear();

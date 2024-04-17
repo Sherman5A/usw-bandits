@@ -33,6 +33,11 @@ public class CustomerModel : IModel
         return -1;
     }
 
+    /// <summary>
+    /// Add a new customer to the customer database table
+    /// </summary>
+    /// <param name="customer">Customer to add</param>
+    /// <returns></returns>
     public int AddCustomer(BankCustomer customer)
     {
         const string queryString =
@@ -46,6 +51,7 @@ public class CustomerModel : IModel
             sqlCommand.Parameters.AddWithValue("@Title", customer.Title);
             sqlCommand.Parameters.AddWithValue("@Firstname", customer.FirstName);
             sqlCommand.Parameters.AddWithValue("@Lastname", customer.LastName);
+            // Format string to database standard
             sqlCommand.Parameters.AddWithValue("@DOB", customer.CustomerDOB.ToString("yyyy-MM-dd"));
             sqlCommand.Parameters.AddWithValue("@Nicode", customer.NiNumber);
             sqlCommand.Parameters.AddWithValue("@Email", customer.Email);

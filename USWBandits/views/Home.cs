@@ -15,7 +15,6 @@ public partial class Home : UserControl, IHome
     public Home()
     {
         InitializeComponent();
-
     }
 
     private void OnHomeLoad(object sender, EventArgs eventArgs)

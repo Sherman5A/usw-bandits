@@ -35,6 +35,11 @@ public class TransactionModel : IModel
         return -1;
     }
 
+    /// <summary>
+    /// Query the database for a transaction record with the given key
+    /// </summary>
+    /// <param name="key">Key of the record to get</param>
+    /// <returns>The retrieve record</returns>
     public BankTransaction? GetTransactionByKey(int key)
     {
         const string queryString = @"SELECT trnxid, accid, action, amnt, event FROM tranx WHERE trnxid = @Key;";
@@ -52,12 +57,14 @@ public class TransactionModel : IModel
                     DateTime transactionEvent;
                     try
                     {
+                        // Parse the database time format into a DateTime object
                         transactionEvent = DateTime.ParseExact(reader.GetString(4), "yyyy:MM:dd HH:mm",
                             CultureInfo.InvariantCulture);
                     }
-                    // catch impossible dates present in db like 2019:02:30 08:15 
+                    // Catch impossible dates present in db like 2019:02:30 08:15 
                     catch (FormatException)
                     {
+                        // Impossible dates are set to default constant value
                         transactionEvent = DateTime.UnixEpoch;
                     }
 

@@ -3,6 +3,9 @@ using USWBandits.logic;
 
 namespace USWBandits.views;
 
+/// <summary>
+/// Contract between Account and AccountPresenter
+/// </summary>
 public interface IAccount : IView
 {
     decimal Accrued { get; set; }

@@ -4,7 +4,8 @@ using USWBandits.views;
 namespace USWBandits;
 
 /// <summary>
-/// Controller class. Interfaces between the model and views
+/// Controller class. Interfaces between the main form and presenters, allowing
+/// for swapping views
 /// </summary>
 public class Control : INav
 {
@@ -12,7 +13,7 @@ public class Control : INav
     public IPresenter CurrentPresenter { get; private set; }
 
     /// <summary>
-    /// Starts controller class, injects into form
+    /// Starts controller class, injects itself into form
     /// </summary>
     /// <param name="form">The form that the controller will handle</param>
     public Control(MainForm form)
@@ -22,9 +23,9 @@ public class Control : INav
     }
 
     /// <summary>
-    /// Swap to a given view
+    /// Swap to a given presenter that has is coupled to a view
     /// </summary>
-    /// <param name="view">The view to swap to</param>
+    /// <param name="view">The presenter to swap to</param>
     public void GoTo(IPresenter presenter)
     {
         CurrentPresenter = presenter;
@@ -32,7 +33,7 @@ public class Control : INav
     }
 
     /// <summary>
-    /// Swap to the default view of the program
+    /// Swap to the default starting view of the program
     /// </summary>
     public void GoToDefault()
     {
