@@ -22,7 +22,6 @@ public partial class Transaction : UserControl, ITransaction
     private void OnTransactionLoad(object sender, EventArgs eventArgs)
     {
         NumericAmount.Maximum = decimal.MaxValue;
-        DateTransactionEvent.CustomFormat = "yyyy:MM:dd HH:mm";
         ButtonAddTran.Click += (s, e) => ButtonAddTransactionClicked?.Invoke(s, e);
         SideNav.TreeNavSelect += (s, e) =>
         {
@@ -74,13 +73,7 @@ public partial class Transaction : UserControl, ITransaction
     public decimal Amount
     {
         get => NumericAmount.Value;
-        set
-        {
-            Debug.WriteLine(NumericAmount.Maximum);
-            Debug.WriteLine(NumericAmount.Minimum);
-            Debug.WriteLine(value);
-            NumericAmount.Value = value;
-        }
+        set => NumericAmount.Value = value;
     }
 
     public DateTime TransactionEvent

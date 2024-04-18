@@ -187,6 +187,7 @@
             // DateTransactionEvent
             // 
             DateTransactionEvent.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            DateTransactionEvent.CustomFormat = "yyyy:MM:dd HH:mm";
             DateTransactionEvent.Format = DateTimePickerFormat.Custom;
             DateTransactionEvent.Location = new Point(202, 249);
             DateTransactionEvent.Name = "DateTransactionEvent";
