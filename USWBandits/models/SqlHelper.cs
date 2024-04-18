@@ -1,8 +1,6 @@
 ﻿using System.Data.SQLite;
 using System.Globalization;
-using System.Runtime.InteropServices.JavaScript;
 using USWBandits.logic;
-using USWBandits.views;
 
 namespace USWBandits.models;
 
@@ -10,7 +8,7 @@ public class SqlHelper
 {
     public static List<BankAccount> GetAllAccounts(string sqlPath)
     {
-        List<BankAccount> accounts = new List<BankAccount>();
+        List<BankAccount> accounts = new();
         const string queryString = "SELECT accid, custid, prodid, balance, accrued FROM account;";
         using (var connection = new SQLiteConnection($@"Data Source={sqlPath}"))
         {
@@ -38,7 +36,7 @@ public class SqlHelper
 
     public static List<BankProduct> GetAllProducts(string sqlPath)
     {
-        List<BankProduct> products = new List<BankProduct>();
+        List<BankProduct> products = new();
         const string queryString = "SELECT prodid, isaname, status, intrate FROM product;";
         using (var connection = new SQLiteConnection($@"Data Source={sqlPath}"))
         {
@@ -65,7 +63,7 @@ public class SqlHelper
 
     public static List<BankCustomer> GetAllCustomers(string sqlPath)
     {
-        List<BankCustomer> customers = new List<BankCustomer>();
+        List<BankCustomer> customers = new();
         const string queryString =
             "SELECT custid, title, firstname, lastname, dob, nicode, email, password, allowance FROM customer;";
         using (var connection = new SQLiteConnection($@"Data Source={sqlPath}"))
@@ -98,7 +96,7 @@ public class SqlHelper
 
     public static List<BankTransaction> GetAllTransactions(string sqlPath)
     {
-        List<BankTransaction> accounts = new List<BankTransaction>();
+        List<BankTransaction> accounts = new();
         const string queryString = "SELECT trnxid, accid, action, amnt, event FROM tranx;";
         using (var connection = new SQLiteConnection($@"Data Source={sqlPath}"))
         {

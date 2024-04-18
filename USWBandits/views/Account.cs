@@ -35,9 +35,9 @@ public partial class Account : UserControl, IAccount
     public void SetCustomerOptions(List<(int id, string firstName, string lastName)> customers)
     {
         Dictionary<int, string> optionsDict = new();
-        foreach (var item in customers)
+        foreach (var (id, firstName, lastName) in customers)
         {
-            optionsDict.Add(item.id, $"ID: {item.id} - {item.firstName} {item.lastName}");
+            optionsDict.Add(id, $"ID: {id} - {firstName} {lastName}");
         }
 
         ComboCustomerID.DataSource = new BindingSource(optionsDict, null);
@@ -50,9 +50,9 @@ public partial class Account : UserControl, IAccount
     public void SetProductOptions(List<(int id, string isaName)> products)
     {
         Dictionary<int, string> optionsDict = new();
-        foreach (var item in products)
+        foreach (var (id, isaName) in products)
         {
-            optionsDict.Add(item.id, $"ID: {item.id} - {item.isaName}");
+            optionsDict.Add(id, $"ID: {id} - {isaName}");
         }
 
         ComboProductID.DataSource = new BindingSource(optionsDict, null);

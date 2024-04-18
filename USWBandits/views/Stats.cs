@@ -7,6 +7,11 @@ public partial class Stats : UserControl, IStats
 {
     public IPresenter? Presenter { get; set; }
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
+    public event EventHandler? ButtonCalculateInterestClicked;
+    public event EventHandler? ButtonCustomerByHoldingsClicked;
+    public event EventHandler? ButtonTranscationsByDateClicked;
+    public event EventHandler? ButtonTransactionByCustomerClicked;
+
 
     public Stats()
     {
@@ -17,9 +22,13 @@ public partial class Stats : UserControl, IStats
         };
     }
 
-    private void OnProductLoad(object sender, EventArgs e)
+    private void OnProductLoad(object sender, EventArgs eventArgs)
     {
         SideNav.FocusNode("NodeStats");
+        ButtonCalcInterest.Click += (s, e) => ButtonCalculateInterestClicked?.Invoke(s, e);
+        ButtonCustomerByHoldings.Click += (s, e) => ButtonCustomerByHoldingsClicked?.Invoke(s, e);
+        ButtonTotalTransaction.Click += (s, e) => ButtonTranscationsByDateClicked?.Invoke(s, e);
+        ButtonTransactionByCustomer.Click += (s, e) => ButtonTransactionByCustomerClicked?.Invoke(s, e);
     }
 
 }

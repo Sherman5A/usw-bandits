@@ -6,7 +6,7 @@ namespace USWBandits.presenters;
 internal class StatsPresenter : SideNavPresenters, IPresenter
 {
     public override Control ParentControl { get; set; }
-    public IStats View {  get; set; }
+    public IStats View { get; set; }
     public override UserControl ViewControl => View as UserControl;
     public GenericModel Model { get; set; }
     public override ModelData ModelData => Model.ModelData;
@@ -17,7 +17,17 @@ internal class StatsPresenter : SideNavPresenters, IPresenter
         View = view;
         View.Presenter = this;
         View.TreeNavSelect += OnTreeNavSelect;
+        View.ButtonCalculateInterestClicked += (s, e) => OnCalculateInterest();
+        View.ButtonCustomerByHoldingsClicked += (s, e) => ChangePresenter(new CustomersByHoldingsPresenter(ParentControl, new CustomersByHoldings(), ModelData));
+        View.ButtonTranscationsByDateClicked += (s, e) => ChangePresenter(
+            new TotalDepWithPresenter(ParentControl, new TotalDepWith(), ModelData));
+        View.ButtonTransactionByCustomerClicked += (s, e) => ChangePresenter(new TransactionsByCustomerPresenter(ParentControl, new TransactionsByCustomer(), ModelData));
         Model = new GenericModel(modelData);
+    }
+
+    private void OnCalculateInterest()
+    {
+        throw new NotImplementedException();
     }
 
     public override void ChangePresenter(IPresenter presenter)
