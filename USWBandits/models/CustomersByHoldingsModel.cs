@@ -1,18 +1,15 @@
 ﻿using System.Data.SQLite;
-using System.Diagnostics;
-using System.Globalization;
-using USWBandits.logic;
 
 namespace USWBandits.models;
 
 public class CustomersByHoldingsModel : IModel
 {
-    public ModelData ModelData { get; set; }
-
     public CustomersByHoldingsModel(ModelData modelData)
     {
         ModelData = modelData;
     }
+
+    public ModelData ModelData { get; set; }
 
     public List<(int customerId, string firstName, string lastName, decimal totalBalance)> GetMostValuableCustomers()
     {
@@ -27,14 +24,12 @@ public class CustomersByHoldingsModel : IModel
             using (var reader = sqlCommand.ExecuteReader())
             {
                 while (reader.Read())
-                {
                     transactions.Add((
                         reader.GetInt32(0),
                         reader.GetString(1),
                         reader.GetString(2),
                         reader.GetDecimal(3)
                     ));
-                }
             }
         }
 

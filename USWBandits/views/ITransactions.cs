@@ -3,7 +3,7 @@
 namespace USWBandits.views;
 
 /// <summary>
-/// Contract that must be enforced between Transactions and TransactionsPresenter
+///     Contract that must be enforced between Transactions and TransactionsPresenter
 /// </summary>
 public interface ITransactions : IView
 {

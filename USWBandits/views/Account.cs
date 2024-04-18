@@ -6,13 +6,80 @@ namespace USWBandits.views;
 
 public partial class Account : UserControl, IAccount
 {
-    public IPresenter? Presenter { get; set; }
-    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
-    public event EventHandler? ButtonAddAccountClicked;
-
     public Account()
     {
         InitializeComponent();
+    }
+
+    public IPresenter? Presenter { get; set; }
+    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
+    public event EventHandler? ButtonAddAccountClicked;
+    public event EventHandler? ButtonEditAccountClicked;
+    public event EventHandler? ButtonDeleteAccountClicked;
+
+    public void SetCustomerOptions(List<int> customers)
+    {
+        ComboCustomerID.DataSource = new BindingSource(customers, null);
+    }
+
+    public void SetProductOptions(List<int> products)
+    {
+        ComboProductID.DataSource = new BindingSource(products, null);
+    }
+
+    public void ShowResult(int addResult)
+    {
+        MessageBox.Show($"Database added {addResult} rows");
+    }
+
+    public void AddNavItems(List<BankAccount> accounts)
+    {
+        SideNav.AddItem(accounts);
+    }
+
+    public void ShowError(string message)
+    {
+        MessageBox.Show(message);
+    }
+
+    public void EditMode()
+    {
+        NumericBalance.Maximum = decimal.MaxValue;
+        ButtonAdd.Text = "Edit transaction";
+        ButtonAdd.Click += (s, e) => ButtonEditAccountClicked?.Invoke(s, e);
+        ButtonDelete.Enabled = true;
+        ButtonDelete.Click += (s, e) => ButtonDeleteAccountClicked?.Invoke(s, e);
+    }
+
+    public decimal Balance
+    {
+        get => NumericBalance.Value;
+        set => NumericBalance.Value = value;
+    }
+
+    public int AccountId
+    {
+        get =>
+            Convert.ToInt32(LabelAccountID.Text);
+        set => LabelAccountID.Text = value.ToString();
+    }
+
+    public int ProductId
+    {
+        get => Convert.ToInt32(ComboProductID.SelectedItem);
+        set => ComboProductID.SelectedItem = value;
+    }
+
+    public int CustomerId
+    {
+        get => Convert.ToInt32(ComboCustomerID.SelectedItem);
+        set => ComboCustomerID.SelectedItem = value;
+    }
+
+    public decimal Accrued
+    {
+        get => NumericAccrued.Value;
+        set => NumericAccrued.Value = value;
     }
 
     private void OnAccountLoad(object sender, EventArgs eventArgs)
@@ -26,58 +93,4 @@ public partial class Account : UserControl, IAccount
         };
         SideNav.FocusNode("NodeAccounts");
     }
-
-    public void SetAccountId(int accID)
-    {
-        LabelAccountID.Text = accID.ToString();
-    }
-
-    public void SetCustomerOptions(List<(int id, string firstName, string lastName)> customers)
-    {
-        Dictionary<int, string> optionsDict = new();
-        foreach (var (id, firstName, lastName) in customers)
-        {
-            optionsDict.Add(id, $"ID: {id} - {firstName} {lastName}");
-        }
-
-        ComboCustomerID.DataSource = new BindingSource(optionsDict, null);
-        ComboCustomerID.DisplayMember = "Value";
-        ComboCustomerID.ValueMember = "Key";
-    }
-
-    public int GetCustomerID() => ((KeyValuePair<int, string>)ComboCustomerID.SelectedItem).Key;
-
-    public void SetProductOptions(List<(int id, string isaName)> products)
-    {
-        Dictionary<int, string> optionsDict = new();
-        foreach (var (id, isaName) in products)
-        {
-            optionsDict.Add(id, $"ID: {id} - {isaName}");
-        }
-
-        ComboProductID.DataSource = new BindingSource(optionsDict, null);
-        ComboProductID.DisplayMember = "Value";
-        ComboProductID.ValueMember = "Key";
-    }
-
-    public void ShowResult(int addResult)
-    {
-        MessageBox.Show($"Database added {addResult} rows");
-    }
-
-    public void AddNavItems(List<BankAccount> accounts) => SideNav.AddItem(accounts);
-
-    public decimal Balance
-    {
-        get => NumericBalance.Value;
-        set => NumericBalance.Value = value;
-    }
-
-    public decimal Accrued
-    {
-        get => NumericAccrued.Value;
-        set => NumericAccrued.Value = value;
-    }
-
-    public int GetProductID() => ((KeyValuePair<int, string>)ComboProductID.SelectedItem).Key;
 }

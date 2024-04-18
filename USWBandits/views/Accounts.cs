@@ -5,14 +5,14 @@ namespace USWBandits.views;
 
 public partial class Accounts : UserControl, IAccounts
 {
-    public IPresenter? Presenter { get; set; }
-    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
-    public event EventHandler? ButtonNewAccountClick;
-
     public Accounts()
     {
         InitializeComponent();
     }
+
+    public IPresenter? Presenter { get; set; }
+    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
+    public event EventHandler? ButtonNewAccountClick;
 
     private void OnAccountsLoad(object sender, EventArgs eventArgs)
     {

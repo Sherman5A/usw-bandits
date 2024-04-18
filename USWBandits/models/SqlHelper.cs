@@ -19,7 +19,6 @@ public class SqlHelper
             using (var reader = sqlCommand.ExecuteReader())
             {
                 while (reader.Read())
-                {
                     accounts.Add(new BankAccount(
                         reader.GetInt32(0),
                         reader.GetInt32(1),
@@ -27,7 +26,6 @@ public class SqlHelper
                         reader.GetDecimal(3),
                         reader.GetDecimal(4))
                     );
-                }
             }
         }
 
@@ -47,14 +45,12 @@ public class SqlHelper
             using (var reader = sqlCommand.ExecuteReader())
             {
                 while (reader.Read())
-                {
                     products.Add(new BankProduct(
                         reader.GetInt32(0),
                         reader.GetString(1),
                         reader.GetString(2),
-                        reader.GetInt32(3)
+                        reader.GetDecimal(3)
                     ));
-                }
             }
         }
 
@@ -75,7 +71,6 @@ public class SqlHelper
             using (var reader = sqlCommand.ExecuteReader())
             {
                 while (reader.Read())
-                {
                     customers.Add(new BankCustomer(
                         reader.GetInt32(0),
                         reader.GetString(1),
@@ -87,7 +82,6 @@ public class SqlHelper
                         reader.GetDecimal(8),
                         DateOnly.FromDateTime(reader.GetDateTime(4))
                     ));
-                }
             }
         }
 

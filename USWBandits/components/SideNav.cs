@@ -4,12 +4,12 @@ namespace USWBandits.components;
 
 public partial class SideNav : UserControl
 {
-    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
-
     public SideNav()
     {
         InitializeComponent();
     }
+
+    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
 
     public void AddItem(List<BankAccount> accounts)
     {
@@ -32,9 +32,9 @@ public partial class SideNav : UserControl
         List<TreeNode> customerNodes = new();
         foreach (var account in customers)
         {
-            var node = new TreeNode($@"{account.CustomerID} - {account.FirstName}")
+            var node = new TreeNode($@"{account.CustomerId} - {account.FirstName}")
             {
-                Name = $"Customer-{account.CustomerID}"
+                Name = $"Customer-{account.CustomerId}"
             };
             customerNodes.Add(node);
         }
@@ -88,7 +88,7 @@ public partial class SideNav : UserControl
 
     private void OnTreeNavAfterSelect(object sender, TreeViewEventArgs e)
     {
-        string selectedNode = e.Node.Name;
+        var selectedNode = e.Node.Name;
         TreeNavSelectArgs args = new()
         {
             SelectedNode = selectedNode

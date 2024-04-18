@@ -1,16 +1,10 @@
-﻿using USWBandits.views;
-using USWBandits.models;
+﻿using USWBandits.models;
+using USWBandits.views;
 
 namespace USWBandits.presenters;
 
 public class CustomersPresenter : SideNavPresenters, IPresenter
 {
-    public override Control ParentControl { get; set; }
-    public ICustomers View { get; set; }
-    public GenericModel Model { get; set; }
-    public override ModelData ModelData => Model.ModelData;
-    public override UserControl ViewControl => View as UserControl;
-
     public CustomersPresenter(Control parentControl, ICustomers view, ModelData modelData)
     {
         ParentControl = parentControl;
@@ -22,6 +16,12 @@ public class CustomersPresenter : SideNavPresenters, IPresenter
             );
         Model = new GenericModel(modelData);
     }
+
+    public ICustomers View { get; set; }
+    public GenericModel Model { get; set; }
+    public override ModelData ModelData => Model.ModelData;
+    public override Control ParentControl { get; set; }
+    public override UserControl ViewControl => View as UserControl;
 
     public override void ChangePresenter(IPresenter presenter)
     {

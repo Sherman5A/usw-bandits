@@ -1,17 +1,10 @@
 ﻿using USWBandits.models;
 using USWBandits.views;
 
-
 namespace USWBandits.presenters;
 
 internal class CustomersByHoldingsPresenter : SideNavPresenters, IPresenter
 {
-    public override Control ParentControl { get; set; }
-    public ICustomersByHoldings View { get; set; }
-    public CustomersByHoldingsModel Model { get; set; }
-    public override ModelData ModelData => Model.ModelData;
-    public override UserControl ViewControl => View as UserControl;
-
     public CustomersByHoldingsPresenter(Control parentControl, ICustomersByHoldings view, ModelData modelData)
     {
         ParentControl = parentControl;
@@ -22,13 +15,19 @@ internal class CustomersByHoldingsPresenter : SideNavPresenters, IPresenter
         Model = new CustomersByHoldingsModel(modelData);
     }
 
-    private void OnStartQuery(object? sender, EventArgs e)
-    {
-        View.Customers = Model.GetMostValuableCustomers();
-    }
+    public ICustomersByHoldings View { get; set; }
+    public CustomersByHoldingsModel Model { get; set; }
+    public override ModelData ModelData => Model.ModelData;
+    public override Control ParentControl { get; set; }
+    public override UserControl ViewControl => View as UserControl;
 
     public override void ChangePresenter(IPresenter presenter)
     {
         ParentControl.GoTo(presenter);
+    }
+
+    private void OnStartQuery(object? sender, EventArgs e)
+    {
+        View.Customers = Model.GetMostValuableCustomers();
     }
 }

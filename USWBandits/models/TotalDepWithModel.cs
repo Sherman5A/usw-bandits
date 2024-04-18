@@ -1,18 +1,16 @@
-﻿using System.Data;
-using System.Data.SQLite;
-using System.Diagnostics;
+﻿using System.Data.SQLite;
 using USWBandits.logic;
 
 namespace USWBandits.models;
 
 internal class TotalDepWithModel : IModel
 {
-    public ModelData ModelData { get; set; }
-
     public TotalDepWithModel(ModelData modelData)
     {
         ModelData = modelData;
     }
+
+    public ModelData ModelData { get; set; }
 
     public decimal GetTransactionTotal(DateTime lowerDate, DateTime upperDate, TransactionAction action)
     {
@@ -32,10 +30,7 @@ internal class TotalDepWithModel : IModel
             sqlCommand.Parameters.AddWithValue("@Action", TransactionHelper.StringFromTransaction(action));
             using (var reader = sqlCommand.ExecuteReader())
             {
-                while (reader.Read())
-                {
-                    return reader.GetDecimal(0);
-                }
+                while (reader.Read()) return reader.GetDecimal(0);
             }
         }
 
@@ -57,10 +52,7 @@ internal class TotalDepWithModel : IModel
                 upperDate.ToString("yyyy:MM:dd HH:mm"));
             using (var reader = sqlCommand.ExecuteReader())
             {
-                while (reader.Read())
-                {
-                    return reader.GetDecimal(0);
-                }
+                while (reader.Read()) return reader.GetDecimal(0);
             }
         }
 

@@ -5,14 +5,14 @@ namespace USWBandits.views;
 
 public partial class Transactions : UserControl, ITransactions
 {
-    public IPresenter? Presenter { get; set; }
-    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
-    public event EventHandler? ButtonAddTransactionClick;
-
     public Transactions()
     {
         InitializeComponent();
     }
+
+    public IPresenter? Presenter { get; set; }
+    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
+    public event EventHandler? ButtonAddTransactionClick;
 
     private void OnTransactionsLoad(object sender, EventArgs eventArgs)
     {

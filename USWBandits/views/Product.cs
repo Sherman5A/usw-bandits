@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using USWBandits.components;
+﻿using USWBandits.components;
 using USWBandits.logic;
 using USWBandits.presenters;
 
@@ -10,10 +9,22 @@ public partial class Product : UserControl, IProduct
     public IPresenter? Presenter { get; set; }
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
     public event EventHandler? ButtonAddProductClicked;
+    public event EventHandler? ButtonEditProductClicked;
+    public event EventHandler? ButtonDeleteProductClicked;
 
     public Product()
     {
         InitializeComponent();
+    }
+
+    public void AddNavItems(List<BankProduct> products) => SideNav.AddItem(products);
+
+    public void EditMode()
+    {
+        ButtonAddProduct.Text = "Edit product";
+        ButtonAddProduct.Click += (s, e) => ButtonEditProductClicked?.Invoke(s, e);
+        ButtonDelete.Enabled = true;
+        ButtonDelete.Click += (s, e) => ButtonDeleteProductClicked?.Invoke(s, e);
     }
 
     private void OnProductLoad(object sender, EventArgs eventArgs)
@@ -26,18 +37,6 @@ public partial class Product : UserControl, IProduct
         SideNav.FocusNode("NodeProducts");
     }
 
-    public void SetProductId(int productId)
-    {
-        Debug.WriteLine("starting");
-        Debug.WriteLine(productId.ToString());
-        LabelId.Text = productId.ToString();
-    }
-
-    public string GetAccountName()
-    {
-        return TextAccName.Text;
-    }
-
     public ProductOpenStatus? GetStatus()
     {
         if (Enum.TryParse<ProductOpenStatus>(ComboStatus.Text, out var returnValue))
@@ -48,10 +47,36 @@ public partial class Product : UserControl, IProduct
         return null;
     }
 
-    public int Interest
+    public decimal Interest
     {
-        get => Convert.ToInt32(NumericRate.Value);
+        get => Convert.ToDecimal(NumericRate.Value);
         set => NumericRate.Value = value;
+    }
+
+    public int ProductId
+    {
+        get => Convert.ToInt32(LabelId.Text);
+        set => LabelId.Text = value.ToString();
+    }
+
+    public string AccountName
+    {
+        get => TextAccName.Text;
+        set => TextAccName.Text = value;
+    }
+
+    public ProductOpenStatus? ProductStatus
+    {
+        get
+        {
+            if (Enum.TryParse<ProductOpenStatus>(ComboStatus.Text, out var returnValue))
+            {
+                return Enum.IsDefined(typeof(ProductOpenStatus), returnValue) ? returnValue : null;
+            }
+
+            return null;
+        }
+        set => ComboStatus.SelectedItem = value.ToString();
     }
 
     public void ShowError(string message)

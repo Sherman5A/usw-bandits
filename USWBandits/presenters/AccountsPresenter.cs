@@ -5,12 +5,6 @@ namespace USWBandits.presenters;
 
 public class AccountsPresenter : SideNavPresenters, IPresenter
 {
-    public override Control ParentControl { get; set; }
-    public IAccounts View { get; set; }
-    public GenericModel Model { get; set; }
-    public override ModelData ModelData => Model.ModelData;
-    public override UserControl ViewControl => View as UserControl;
-
     public AccountsPresenter(Control parentControl, IAccounts view, ModelData modelData)
     {
         ParentControl = parentControl;
@@ -22,6 +16,12 @@ public class AccountsPresenter : SideNavPresenters, IPresenter
         );
         Model = new GenericModel(modelData);
     }
+
+    public IAccounts View { get; set; }
+    public GenericModel Model { get; set; }
+    public override ModelData ModelData => Model.ModelData;
+    public override Control ParentControl { get; set; }
+    public override UserControl ViewControl => View as UserControl;
 
     public override void ChangePresenter(IPresenter presenter)
     {

@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using USWBandits.components;
+﻿using USWBandits.components;
 using USWBandits.logic;
 using USWBandits.presenters;
 
@@ -7,28 +6,16 @@ namespace USWBandits.views;
 
 public partial class Transaction : UserControl, ITransaction
 {
-    public IPresenter? Presenter { get; set; }
-    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
-    public event EventHandler? ButtonAddTransactionClicked;
-    public event EventHandler? ButtonEditTransactionClicked;
-    public event EventHandler? ButtonDeleteTransactionClicked;
-
-
     public Transaction()
     {
         InitializeComponent();
     }
 
-    private void OnTransactionLoad(object sender, EventArgs eventArgs)
-    {
-        NumericAmount.Maximum = decimal.MaxValue;
-        ButtonAddTran.Click += (s, e) => ButtonAddTransactionClicked?.Invoke(s, e);
-        SideNav.TreeNavSelect += (s, e) =>
-        {
-            if (e.SelectedNode != "NodeTransactions") TreeNavSelect?.Invoke(s, e);
-        };
-        SideNav.FocusNode("NodeTransactions");
-    }
+    public IPresenter? Presenter { get; set; }
+    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
+    public event EventHandler? ButtonAddTransactionClicked;
+    public event EventHandler? ButtonEditTransactionClicked;
+    public event EventHandler? ButtonDeleteTransactionClicked;
 
     public void EditMode()
     {
@@ -61,9 +48,7 @@ public partial class Transaction : UserControl, ITransaction
         get
         {
             if (Enum.TryParse<TransactionAction>(ComboAction.Text.Replace(" ", ""), true, out var returnValue))
-            {
                 return Enum.IsDefined(typeof(TransactionAction), returnValue) ? returnValue : null;
-            }
 
             return null;
         }
@@ -82,7 +67,10 @@ public partial class Transaction : UserControl, ITransaction
         set => DateTransactionEvent.Value = value;
     }
 
-    public void AddNavItems(List<BankTransaction> transactions) => SideNav.AddItem(transactions);
+    public void AddNavItems(List<BankTransaction> transactions)
+    {
+        SideNav.AddItem(transactions);
+    }
 
 
     public void ShowResult(int result)
@@ -93,5 +81,16 @@ public partial class Transaction : UserControl, ITransaction
     public void ShowError(string message)
     {
         MessageBox.Show(message);
+    }
+
+    private void OnTransactionLoad(object sender, EventArgs eventArgs)
+    {
+        NumericAmount.Maximum = decimal.MaxValue;
+        ButtonAddTran.Click += (s, e) => ButtonAddTransactionClicked?.Invoke(s, e);
+        SideNav.TreeNavSelect += (s, e) =>
+        {
+            if (e.SelectedNode != "NodeTransactions") TreeNavSelect?.Invoke(s, e);
+        };
+        SideNav.FocusNode("NodeTransactions");
     }
 }

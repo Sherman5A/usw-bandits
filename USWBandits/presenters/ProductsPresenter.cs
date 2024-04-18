@@ -28,3 +28,4 @@ public class ProductsPresenter : SideNavPresenters, IPresenter
         ParentControl.GoTo(presenter);
     }
 }
+    

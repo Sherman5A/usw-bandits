@@ -5,14 +5,14 @@ namespace USWBandits.views;
 
 public partial class Customers : UserControl, ICustomers
 {
-    public IPresenter? Presenter { get; set; }
-    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
-    public event EventHandler? ButtonAddCustClick;
-
     public Customers()
     {
         InitializeComponent();
     }
+
+    public IPresenter? Presenter { get; set; }
+    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
+    public event EventHandler? ButtonAddCustClick;
 
     private void OnCustomersLoad(object sender, EventArgs eventArgs)
     {

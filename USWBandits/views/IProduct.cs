@@ -10,10 +10,16 @@ public interface IProduct : IView
 {
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
     public event EventHandler? ButtonAddProductClicked;
-    int Interest { get; set; }
-    string GetAccountName();
+    public event EventHandler? ButtonEditProductClicked;
+    public event EventHandler? ButtonDeleteProductClicked;
+
+    decimal Interest { get; set; }
+    int ProductId { get; set; }
+    string AccountName { get; set; }
+    ProductOpenStatus? ProductStatus { get; set; }
     ProductOpenStatus? GetStatus();
     void ShowResult(int result);
     void ShowError(string message);
-    void SetProductId(int productId);
+    void AddNavItems(List<BankProduct> products);
+    void EditMode();
 }

@@ -1,5 +1,4 @@
 ﻿using System.Data.SQLite;
-using System.Diagnostics;
 using System.Globalization;
 using USWBandits.logic;
 
@@ -7,12 +6,12 @@ namespace USWBandits.models;
 
 public class TransactionModel : IModel
 {
-    public ModelData ModelData { get; set; }
-
     public TransactionModel(ModelData modelData)
     {
         ModelData = modelData;
     }
+
+    public ModelData ModelData { get; set; }
 
     public int GetCurrentTransactionId()
     {
@@ -25,10 +24,7 @@ public class TransactionModel : IModel
             sqlCommand.CommandText = queryString;
             using (var reader = sqlCommand.ExecuteReader())
             {
-                while (reader.Read())
-                {
-                    return reader.GetInt32(0);
-                }
+                while (reader.Read()) return reader.GetInt32(0);
             }
         }
 
@@ -36,7 +32,7 @@ public class TransactionModel : IModel
     }
 
     /// <summary>
-    /// Query the database for a transaction record with the given key
+    ///     Query the database for a transaction record with the given key
     /// </summary>
     /// <param name="key">Key of the record to get</param>
     /// <returns>The retrieve record</returns>
@@ -94,10 +90,7 @@ public class TransactionModel : IModel
             sqlCommand.CommandText = queryString;
             using (var reader = sqlCommand.ExecuteReader())
             {
-                while (reader.Read())
-                {
-                    returnList.Add((reader.GetInt32(0)));
-                }
+                while (reader.Read()) returnList.Add(reader.GetInt32(0));
             }
         }
 
@@ -118,7 +111,7 @@ public class TransactionModel : IModel
             sqlCommand.Parameters.AddWithValue("@Action", transaction.GetActionString());
             sqlCommand.Parameters.AddWithValue("@Amount", transaction.Amount);
             sqlCommand.Parameters.AddWithValue("@Event", transaction.Event.ToString("yyyy:MM:dd HH:mm"));
-            int result = sqlCommand.ExecuteNonQuery();
+            var result = sqlCommand.ExecuteNonQuery();
             return result;
         }
     }
@@ -126,7 +119,6 @@ public class TransactionModel : IModel
 
     public int DeleteTransactionByKey(int transactionId)
     {
-        Debug.WriteLine(transactionId);
         const string queryString =
             @"DELETE FROM tranx WHERE trnxid = @Key;";
         using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))
@@ -135,7 +127,7 @@ public class TransactionModel : IModel
             var sqlCommand = connection.CreateCommand();
             sqlCommand.CommandText = queryString;
             sqlCommand.Parameters.AddWithValue("@Key", transactionId);
-            int result = sqlCommand.ExecuteNonQuery();
+            var result = sqlCommand.ExecuteNonQuery();
             return result;
         }
     }
@@ -143,7 +135,7 @@ public class TransactionModel : IModel
     public int EditTransaction(BankTransaction transaction)
     {
         const string queryString =
-            "UPDATE tranx SET accid = @AccountId, action = @Action, amnt = @Amount, event = @Event WHERE trnxid = @TransactionId";
+            @"UPDATE tranx SET accid = @AccountId, action = @Action, amnt = @Amount, event = @Event WHERE trnxid = @TransactionId";
 
         using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))
         {
@@ -156,7 +148,7 @@ public class TransactionModel : IModel
             sqlCommand.Parameters.AddWithValue("@Action", transaction.GetActionString());
             sqlCommand.Parameters.AddWithValue("@Amount", transaction.Amount);
             sqlCommand.Parameters.AddWithValue("@Event", transaction.Event.ToString("yyyy:MM:dd HH:mm"));
-            int result = sqlCommand.ExecuteNonQuery();
+            var result = sqlCommand.ExecuteNonQuery();
             return result;
         }
     }

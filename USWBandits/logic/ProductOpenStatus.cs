@@ -3,5 +3,5 @@
 public enum ProductOpenStatus
 {
     Open,
-    Closed,
+    Closed
 }

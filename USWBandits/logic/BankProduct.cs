@@ -5,10 +5,10 @@ public class BankProduct
     public int ProductID { get; }
     public string AccountName { get; }
     public ProductOpenStatus ProductStatus { get; }
-    public int ProductInterest { get; }
+    public decimal ProductInterest { get; }
 
 
-    public BankProduct(int productId, string accountName, ProductOpenStatus productStatus, int productInterest)
+    public BankProduct(int productId, string accountName, ProductOpenStatus productStatus, decimal productInterest)
     {
         ProductID = productId;
         AccountName = accountName;
@@ -16,7 +16,7 @@ public class BankProduct
         ProductInterest = productInterest;
     }
 
-    public BankProduct(int productId, string accountName, string productStatus, int productInterest)
+    public BankProduct(int productId, string accountName, string productStatus, decimal productInterest)
     {
         ProductID = productId;
         AccountName = accountName;

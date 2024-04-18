@@ -6,12 +6,12 @@ namespace USWBandits.models;
 
 public class TransactionsByCustomerModel : IModel
 {
-    public ModelData ModelData { get; set; }
-
     public TransactionsByCustomerModel(ModelData modelData)
     {
         ModelData = modelData;
     }
+
+    public ModelData ModelData { get; set; }
 
     public List<BankTransaction> GetTransactionsByCustomer(int customerKey)
     {
@@ -68,10 +68,7 @@ public class TransactionsByCustomerModel : IModel
             sqlCommand.CommandText = queryString;
             using (var reader = sqlCommand.ExecuteReader())
             {
-                while (reader.Read())
-                {
-                    returnList.Add((reader.GetInt32(0), reader.GetString(1), reader.GetString(2)));
-                }
+                while (reader.Read()) returnList.Add((reader.GetInt32(0), reader.GetString(1), reader.GetString(2)));
             }
         }
 

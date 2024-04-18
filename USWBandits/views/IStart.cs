@@ -1,7 +1,7 @@
 ﻿namespace USWBandits.views;
 
 /// <summary>
-/// Interface between Start and StartPresenter
+///     Interface between Start and StartPresenter
 /// </summary>
 public interface IStart : IView
 {

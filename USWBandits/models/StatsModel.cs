@@ -4,16 +4,17 @@ namespace USWBandits.models;
 
 public class StatsModel : IModel
 {
-    public ModelData ModelData { get; set; }
-
     public StatsModel(ModelData modelData)
     {
         ModelData = modelData;
     }
 
+    public ModelData ModelData { get; set; }
+
     public int CalculateInterest()
     {
-        const string queryString = "UPDATE account SET accrued = ROUND(accrued + (SELECT (account.balance * product.intrate / 365.0) FROM product WHERE account.prodid = product.prodid), 2), balance = ROUND(balance + (SELECT (account.balance * product.intrate / 365.0) FROM product WHERE account.prodid = product.prodid), 2);";
+        const string queryString =
+            "UPDATE account SET accrued = ROUND(accrued + (SELECT (account.balance * product.intrate / 365.0) FROM product WHERE account.prodid = product.prodid), 2), balance = ROUND(balance + (SELECT (account.balance * product.intrate / 365.0) FROM product WHERE account.prodid = product.prodid), 2);";
 
         using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))
         {
@@ -21,7 +22,7 @@ public class StatsModel : IModel
 
             var sqlCommand = connection.CreateCommand();
             sqlCommand.CommandText = queryString;
-            int result = sqlCommand.ExecuteNonQuery();
+            var result = sqlCommand.ExecuteNonQuery();
             return result;
         }
     }

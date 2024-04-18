@@ -5,17 +5,17 @@ namespace USWBandits.views;
 
 public partial class Home : UserControl, IHome
 {
+    public Home()
+    {
+        InitializeComponent();
+    }
+
     public IPresenter? Presenter { get; set; }
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
     public event EventHandler? ButtonCustomersClick;
     public event EventHandler? ButtonTransactionsClick;
     public event EventHandler? ButtonAccountsClick;
     public event EventHandler? ButtonProductsClick;
-
-    public Home()
-    {
-        InitializeComponent();
-    }
 
     private void OnHomeLoad(object sender, EventArgs eventArgs)
     {

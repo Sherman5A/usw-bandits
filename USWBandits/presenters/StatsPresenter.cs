@@ -5,12 +5,6 @@ namespace USWBandits.presenters;
 
 internal class StatsPresenter : SideNavPresenters, IPresenter
 {
-    public override Control ParentControl { get; set; }
-    public IStats View { get; set; }
-    public override UserControl ViewControl => View as UserControl;
-    public StatsModel Model { get; set; }
-    public override ModelData ModelData => Model.ModelData;
-
     public StatsPresenter(Control parentControl, IStats view, ModelData modelData)
     {
         ParentControl = parentControl;
@@ -28,14 +22,20 @@ internal class StatsPresenter : SideNavPresenters, IPresenter
         Model = new StatsModel(modelData);
     }
 
-    private void OnCalculateInterest()
-    {
-        int result = Model.CalculateInterest();
-        View.ShowMessage(result);
-    }
+    public IStats View { get; set; }
+    public StatsModel Model { get; set; }
+    public override ModelData ModelData => Model.ModelData;
+    public override Control ParentControl { get; set; }
+    public override UserControl ViewControl => View as UserControl;
 
     public override void ChangePresenter(IPresenter presenter)
     {
         ParentControl.GoTo(presenter);
+    }
+
+    private void OnCalculateInterest()
+    {
+        var result = Model.CalculateInterest();
+        View.ShowMessage(result);
     }
 }

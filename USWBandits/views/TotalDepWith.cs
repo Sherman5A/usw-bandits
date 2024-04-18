@@ -6,24 +6,14 @@ namespace USWBandits.views;
 
 public partial class TotalDepWith : UserControl, ITotalDepWith
 {
-    public IPresenter? Presenter { get; set; }
-    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
-    public event EventHandler? ButtonStartQuery;
-
     public TotalDepWith()
     {
         InitializeComponent();
     }
 
-    private void OnTotalDepWithLoad(object sender, EventArgs eventArgs)
-    {
-        ButtonSearch.Click += (s, e) => ButtonStartQuery?.Invoke(s, e);
-        SideNav.TreeNavSelect += (s, e) =>
-        {
-            if (e.SelectedNode != "NodeTransactions") TreeNavSelect?.Invoke(s, e);
-        };
-        SideNav.FocusNode("NodeTransactions");
-    }
+    public IPresenter? Presenter { get; set; }
+    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
+    public event EventHandler? ButtonStartQuery;
 
     public DateTime LowerDate
     {
@@ -42,9 +32,7 @@ public partial class TotalDepWith : UserControl, ITotalDepWith
         get
         {
             if (Enum.TryParse<TransactionAction>(ComboTransactionType.Text.Replace(" ", ""), true, out var returnValue))
-            {
                 return Enum.IsDefined(typeof(TransactionAction), returnValue) ? returnValue : null;
-            }
 
             return null;
         }
@@ -60,5 +48,15 @@ public partial class TotalDepWith : UserControl, ITotalDepWith
     public void ShowError(string errorMessage)
     {
         MessageBox.Show(errorMessage);
+    }
+
+    private void OnTotalDepWithLoad(object sender, EventArgs eventArgs)
+    {
+        ButtonSearch.Click += (s, e) => ButtonStartQuery?.Invoke(s, e);
+        SideNav.TreeNavSelect += (s, e) =>
+        {
+            if (e.SelectedNode != "NodeTransactions") TreeNavSelect?.Invoke(s, e);
+        };
+        SideNav.FocusNode("NodeTransactions");
     }
 }

@@ -6,14 +6,6 @@ namespace USWBandits.presenters;
 
 public class TransactionPresenter : SideNavPresenters, IPresenter
 {
-    public override Control ParentControl { get; set; }
-    public ITransaction View { get; set; }
-    public TransactionModel Model { get; set; }
-    public override ModelData ModelData => Model.ModelData;
-    public override UserControl ViewControl => View as UserControl;
-    public int TableKey { get; set; }
-    private BankTransaction Transaction { get; set; }
-
     public TransactionPresenter(Control parentControl, ITransaction view, ModelData modelData)
     {
         ParentControl = parentControl;
@@ -30,7 +22,7 @@ public class TransactionPresenter : SideNavPresenters, IPresenter
         parentControl, view, modelData)
     {
         TableKey = tableKey;
-        BankTransaction? transaction = Model.GetTransactionByKey(TableKey);
+        var transaction = Model.GetTransactionByKey(TableKey);
         if (transaction is null)
         {
             View.ShowError("Transaction does not exist");
@@ -52,66 +44,64 @@ public class TransactionPresenter : SideNavPresenters, IPresenter
         }
     }
 
+    public ITransaction View { get; set; }
+    public TransactionModel Model { get; set; }
+    public override ModelData ModelData => Model.ModelData;
+    public int TableKey { get; set; }
+    private BankTransaction Transaction { get; }
+    public override Control ParentControl { get; set; }
+    public override UserControl ViewControl => View as UserControl;
+
+    public override void ChangePresenter(IPresenter presenter)
+    {
+        ParentControl.GoTo(presenter);
+    }
+
     private void InitView()
     {
         View.AddNavItems(Model.GetTransactions());
-        View.TransactionId = (Model.GetCurrentTransactionId() + 1);
+        View.TransactionId = Model.GetCurrentTransactionId() + 1;
         View.SetAccountOptions(Model.GetAccounts());
     }
 
     private void OnDeleteTransaction(object? sender, EventArgs eventArgs)
     {
-        int result = Model.DeleteTransactionByKey(Transaction.TransactionID);
-        if (result == 1)
-        {
-            View.ShowResult(result);
-            ChangePresenter(new TransactionsPresenter(ParentControl, new Transactions(), ModelData));
-        }
+        var result = Model.DeleteTransactionByKey(Transaction.TransactionID);
+        if (result != 1) return;
+        View.ShowResult(result);
+        ChangePresenter(new TransactionsPresenter(ParentControl, new Transactions(), ModelData));
     }
 
     private void OnEditTransaction(object? sender, EventArgs eventArgs)
     {
-        var transaction = CreateTransaction();
-        int result = Model.EditTransaction(transaction);
-        if (result == 1)
-        {
-            View.ShowResult(result);
-            ChangePresenter(new TransactionsPresenter(ParentControl, new Transactions(), ModelData));
-        }
+        var transaction = CreateTransaction(true);
+        var result = Model.EditTransaction(transaction);
+        if (result != 1) return;
+        View.ShowResult(result);
+        ChangePresenter(new TransactionsPresenter(ParentControl, new Transactions(), ModelData));
     }
 
 
     private void OnAddTransactionClicked(object? sender, EventArgs eventArgs)
     {
-        var transaction = CreateTransaction();
-        int result = Model.AddTransaction(transaction);
+        var transaction = CreateTransaction(false);
+        var result = Model.AddTransaction(transaction);
         View.ShowResult(result);
-        if (result == 1)
-        {
-            View.TransactionId = (Model.GetCurrentTransactionId() + 1);
-        }
+        if (result == 1) View.TransactionId = Model.GetCurrentTransactionId() + 1;
     }
 
-    private BankTransaction CreateTransaction()
+    private BankTransaction CreateTransaction(bool editMode)
     {
-        int transactionId = Model.GetCurrentTransactionId() + 1;
-        int accountID = View.AccountId;
-        TransactionAction? getResult = View.Action;
-        if (getResult is null)
-        {
-            View.ShowError("Invalid transaction event");
-        }
+        var transactionId = editMode ? TableKey : Model.GetCurrentTransactionId() + 1;
+        var accountID = View.AccountId;
+        var getResult = View.Action;
+        if (getResult is null) View.ShowError("Invalid transaction event");
 
-        TransactionAction transactionAction = (TransactionAction)getResult;
+        var transactionAction = (TransactionAction)getResult;
 
-        decimal amount = View.Amount;
-        DateTime tranEvent = View.TransactionEvent;
+        var amount = View.Amount;
+        var tranEvent = View.TransactionEvent;
         BankTransaction transaction = new(transactionId, accountID, transactionAction, amount, tranEvent);
         return transaction;
-    }
-
-    public override void ChangePresenter(IPresenter presenter)
-    {
-        ParentControl.GoTo(presenter);
     }
 }

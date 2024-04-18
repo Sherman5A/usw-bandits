@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Reflection.Metadata.Ecma335;
-using USWBandits.components;
+﻿using USWBandits.components;
 using USWBandits.models;
 using USWBandits.views;
 
@@ -8,9 +6,11 @@ namespace USWBandits.presenters;
 
 public abstract class SideNavPresenters : IPresenter
 {
+    public abstract ModelData ModelData { get; }
     public abstract Control ParentControl { get; set; }
     public abstract UserControl ViewControl { get; }
-    public abstract ModelData ModelData { get; }
+
+    public abstract void ChangePresenter(IPresenter presenter);
 
     public void OnTreeNavSelect(object? sender, TreeNavSelectArgs e)
     {
@@ -47,11 +47,6 @@ public abstract class SideNavPresenters : IPresenter
             "Customer" => new CustomerPresenter(ParentControl, new Customer(), ModelData, tableKey),
             _ => null
         };
-        if (nextPresenter != null)
-        {
-            ChangePresenter(nextPresenter);
-        }
+        if (nextPresenter != null) ChangePresenter(nextPresenter);
     }
-
-    public abstract void ChangePresenter(IPresenter presenter);
 }

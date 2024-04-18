@@ -3,7 +3,7 @@
 namespace USWBandits.views;
 
 /// <summary>
-/// Contract between Products and ProductsPresenter
+///     Contract between Products and ProductsPresenter
 /// </summary>
 public interface IProducts : IView
 {

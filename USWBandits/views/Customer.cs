@@ -1,33 +1,27 @@
 ﻿using USWBandits.components;
+using USWBandits.logic;
 using USWBandits.presenters;
 
 namespace USWBandits.views;
 
 public partial class Customer : UserControl, ICustomer
 {
-    public IPresenter? Presenter { get; set; }
-    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
-    public event EventHandler? ButtonAddCustomersClicked;
-
     public Customer()
     {
         InitializeComponent();
     }
 
-    private void OnCustomerLoad(object sender, EventArgs eventArgs)
-    {
-        NumericAllowance.Maximum = decimal.MaxValue;
-        ButtonAddCustomer.Click += (s, e) => ButtonAddCustomersClicked?.Invoke(s, e);
-        SideNav.TreeNavSelect += (s, e) =>
-        {
-            if (e.SelectedNode != "NodeCustomers") TreeNavSelect?.Invoke(s, e);
-        };
-        SideNav.FocusNode("NodeCustomers");
-    }
+    public IPresenter? Presenter { get; set; }
+    public event EventHandler? ButtonDeleteCustomerClicked;
+    public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
+    public event EventHandler? ButtonAddCustomerClicked;
 
-    public void SetCustomerId(int customerId)
+    public void EditMode()
     {
-        LabelCustomerId.Text = customerId.ToString();
+        ButtonAddCustomer.Text = "Edit transaction";
+        ButtonAddCustomer.Click += (s, e) => ButtonEditCustomerClicked?.Invoke(s, e);
+        ButtonDelete.Enabled = true;
+        ButtonDelete.Click += (s, e) => ButtonDeleteCustomerClicked?.Invoke(s, e);
     }
 
     public decimal Allowance
@@ -36,43 +30,79 @@ public partial class Customer : UserControl, ICustomer
         set => NumericAllowance.Value = value;
     }
 
-    public DateOnly GetDateBirth()
+    public int CustomerId
     {
-        return DateOnly.FromDateTime(DatePickDOB.Value);
+        get => Convert.ToInt32(LabelCustomerId.Text);
+        set => LabelCustomerId.Text = value.ToString();
     }
 
-    public string GetEmail()
+    public string Title
     {
-        return MaskedEmail.Text;
+        get => TextTitle.Text;
+        set => TextTitle.Text = value;
     }
 
-    public string GetFirstName()
+    public string FirstName
     {
-        return TextFirstName.Text;
+        get => TextFirstName.Text;
+        set => TextFirstName.Text = value;
     }
 
-    public string GetLastName()
+    public string LastName
     {
-        return TextLastName.Text;
+        get => TextLastName.Text;
+        set => TextLastName.Text = value;
     }
 
-    public string GetNiNumber()
+    public DateOnly CustomerDob
     {
-        return MaskedNI.Text;
+        get => DateOnly.FromDateTime(DatePickDOB.Value);
+        set => DatePickDOB.Value = value.ToDateTime(TimeOnly.FromDateTime(DateTime.Now));
     }
 
-    public string GetPassword()
+    public string NiNumber
     {
-        return TextPassword.Text;
+        get => MaskedNI.Text;
+        set => MaskedNI.Text = value;
     }
+
+    public string Email
+    {
+        get => MaskedEmail.Text;
+        set => MaskedEmail.Text = value;
+    }
+
+    public string Password
+    {
+        get => TextPassword.Text;
+        set => TextPassword.Text = value;
+    }
+
+    public event EventHandler? ButtonEditCustomerClicked;
 
     public void ShowResult(int result)
     {
         MessageBox.Show($"Database added {result} rows");
     }
 
-    public string GetCustomerTitle()
+    public void AddNavItems(List<BankCustomer> customers)
     {
-        return TextTitle.Text;
+        SideNav.AddItem(customers);
+    }
+
+    public void ShowError(string message)
+    {
+        MessageBox.Show(message);
+    }
+
+    private void OnCustomerLoad(object sender, EventArgs eventArgs)
+    {
+        NumericAllowance.Maximum = decimal.MaxValue;
+        ButtonAddCustomer.Click += (s, e) => ButtonAddCustomerClicked?.Invoke(s, e);
+        SideNav.TreeNavSelect += (s, e) =>
+        {
+            if (e.SelectedNode != "NodeCustomers") TreeNavSelect?.Invoke(s, e);
+        };
+        SideNav.FocusNode("NodeCustomers");
     }
 }

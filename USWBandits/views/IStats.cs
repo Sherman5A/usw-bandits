@@ -3,7 +3,7 @@
 namespace USWBandits.views;
 
 /// <summary>
-/// Interface between Stats and StatsPresenter
+///     Interface between Stats and StatsPresenter
 /// </summary>
 public interface IStats : IView
 {

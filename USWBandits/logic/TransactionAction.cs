@@ -5,17 +5,18 @@ public enum TransactionAction
     TransferIn,
     TransferOut,
     Deposit,
-    Withdraw,
+    Withdraw
 }
 
 public class TransactionHelper
 {
     /// <summary>
-    /// Return string values of enums to match database format
+    ///     Return string values of enums to match database format
     /// </summary>
     /// <param name="action">Enum</param>
-    /// <returns>Formatted string of enum.
-    /// Null if the enum was not matched
+    /// <returns>
+    ///     Formatted string of enum.
+    ///     Null if the enum was not matched
     /// </returns>
     public static string? StringFromTransaction(TransactionAction action)
     {
@@ -25,7 +26,7 @@ public class TransactionHelper
             TransactionAction.TransferOut => "transfer out",
             TransactionAction.Deposit => "deposit",
             TransactionAction.Withdraw => "widthdraw",
-            _ => null,
+            _ => null
         };
     }
 }
