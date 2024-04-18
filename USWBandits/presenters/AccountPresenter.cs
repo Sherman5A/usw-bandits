@@ -16,6 +16,12 @@ internal class AccountPresenter : SideNavPresenters, IPresenter
     public int TableKey { get; set; }
     public BankAccount Account { get; set; }
 
+    /// <summary>
+    /// Interfaces between AccountView and AccountModel
+    /// </summary>
+    /// <param name="parentControl">Master control for switching views</param>
+    /// <param name="view">View</param>
+    /// <param name="modelData">Persistent data</param>
     public AccountPresenter(Control parentControl, IAccount view, ModelData modelData)
     {
         ParentControl = parentControl;
@@ -27,6 +33,9 @@ internal class AccountPresenter : SideNavPresenters, IPresenter
         InitView();
     }
 
+    /// <summary>
+    /// Overload for editing Accounts
+    /// </summary>
     public AccountPresenter(Control parentControl, Account view, ModelData modelData, int tableKey) : this(
         parentControl, view, modelData)
     {
@@ -69,6 +78,7 @@ internal class AccountPresenter : SideNavPresenters, IPresenter
         var account = CreateAccount(false);
         int result = Model.AddAccount(account);
         View.ShowResult(result);
+        // If insert is successful, increment the account id
         if (result == 1)
         {
             View.AccountId = Model.GetAccountNumber() + 1;
@@ -78,6 +88,7 @@ internal class AccountPresenter : SideNavPresenters, IPresenter
     private void OnDeleteTransaction(object? sender, EventArgs e)
     {
         int result = Model.DeleteAccountByKey(Account.AccountID);
+        // If query fails don't show results
         if (result != 1) return;
         View.ShowResult(result);
         ChangePresenter(new AccountsPresenter(ParentControl, new Accounts(), ModelData));
@@ -87,6 +98,7 @@ internal class AccountPresenter : SideNavPresenters, IPresenter
     {
         var account = CreateAccount(true);
         int result = Model.EditAccount(account);
+        // If query fails don't show results
         if (result != 1) return;
         View.ShowResult(result);
         ChangePresenter(new TransactionsPresenter(ParentControl, new Transactions(), ModelData));

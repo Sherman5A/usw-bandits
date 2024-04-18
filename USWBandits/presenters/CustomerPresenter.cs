@@ -4,8 +4,15 @@ using USWBandits.views;
 
 namespace USWBandits.presenters;
 
+/// <summary>
+/// Interfaces between CustomerView and CustomerModel
+/// </summary>
+/// <param name="parentControl">Master control for switching views</param>
+/// <param name="view">View</param>
+/// <param name="modelData">Persistent data</param>
 public class CustomerPresenter : SideNavPresenters, IPresenter
 {
+
     public CustomerPresenter(Control parentControl, ICustomer view, ModelData modelData)
     {
         ParentControl = parentControl;
@@ -17,6 +24,9 @@ public class CustomerPresenter : SideNavPresenters, IPresenter
         InitView();
     }
 
+    /// <summary>
+    /// Overload for editing Customers
+    /// </summary>
     public CustomerPresenter(Control parentControl, Customer view, ModelData modelData, int tableKey) : this(
         parentControl, view, modelData)
     {

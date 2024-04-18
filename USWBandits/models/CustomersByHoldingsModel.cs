@@ -11,6 +11,10 @@ public class CustomersByHoldingsModel : IModel
 
     public ModelData ModelData { get; set; }
 
+    /// <summary>
+    /// Finds the customers with the highest total account balances and sorts them in order
+    /// </summary>
+    /// <returns>List containing a tuple of the account information</returns>
     public List<(int customerId, string firstName, string lastName, decimal totalBalance)> GetMostValuableCustomers()
     {
         List<(int customerId, string firstName, string lastName, decimal totalBalance)> transactions = new();

@@ -17,6 +17,9 @@ public partial class Transaction : UserControl, ITransaction
     public event EventHandler? ButtonEditTransactionClicked;
     public event EventHandler? ButtonDeleteTransactionClicked;
 
+    /// <summary>
+    /// Setup editing in the form
+    /// </summary>
     public void EditMode()
     {
         NumericAmount.Maximum = decimal.MaxValue;

@@ -46,9 +46,9 @@ public partial class TransactionsByCustomer : UserControl, ITransactionsByCustom
         ButtonSearch.Click += ButtonSearchClicked;
         SideNav.TreeNavSelect += (s, e) =>
         {
-            if (e.SelectedNode != "NodeCustomers") TreeNavSelect?.Invoke(s, e);
+            if (e.SelectedNode != "NodeStats") TreeNavSelect?.Invoke(s, e);
         };
-        SideNav.FocusNode("NodeCustomers");
+        SideNav.FocusNode("NodeStats");
     }
 
     private void ButtonSearchClicked(object sender, EventArgs e)

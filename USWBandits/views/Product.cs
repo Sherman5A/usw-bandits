@@ -19,6 +19,9 @@ public partial class Product : UserControl, IProduct
 
     public void AddNavItems(List<BankProduct> products) => SideNav.AddItem(products);
 
+    /// <summary>
+    /// Setup editing variables
+    /// </summary>
     public void EditMode()
     {
         ButtonAddProduct.Text = "Edit product";
@@ -35,16 +38,6 @@ public partial class Product : UserControl, IProduct
             if (e.SelectedNode != "NodeProducts") TreeNavSelect?.Invoke(s, e);
         };
         SideNav.FocusNode("NodeProducts");
-    }
-
-    public ProductOpenStatus? GetStatus()
-    {
-        if (Enum.TryParse<ProductOpenStatus>(ComboStatus.Text, out var returnValue))
-        {
-            return Enum.IsDefined(typeof(ProductOpenStatus), returnValue) ? returnValue : null;
-        }
-
-        return null;
     }
 
     public decimal Interest
@@ -69,8 +62,10 @@ public partial class Product : UserControl, IProduct
     {
         get
         {
+            // Try to read the string into one of ProductOpenStatus' members
             if (Enum.TryParse<ProductOpenStatus>(ComboStatus.Text, out var returnValue))
             {
+                // If not a member return null
                 return Enum.IsDefined(typeof(ProductOpenStatus), returnValue) ? returnValue : null;
             }
 

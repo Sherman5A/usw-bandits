@@ -10,8 +10,10 @@ internal class StatsPresenter : SideNavPresenters, IPresenter
         ParentControl = parentControl;
         View = view;
         View.Presenter = this;
-        View.TreeNavSelect += OnTreeNavSelect;
+        // Perform daily interest calculation on button press
         View.ButtonCalculateInterestClicked += (s, e) => OnCalculateInterest();
+        // Map the buttons to changing pages
+        View.TreeNavSelect += OnTreeNavSelect;
         View.ButtonCustomerByHoldingsClicked += (s, e) =>
             ChangePresenter(new CustomersByHoldingsPresenter(ParentControl, new CustomersByHoldings(), ModelData));
         View.ButtonTransactionsByDateClicked += (s, e) => ChangePresenter(

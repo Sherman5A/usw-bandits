@@ -4,6 +4,12 @@ using USWBandits.views;
 
 namespace USWBandits.presenters;
 
+/// <summary>
+/// Interfaces between TransactionView and TransactionModel
+/// </summary>
+/// <param name="parentControl">Master control for switching views</param>
+/// <param name="view">View</param>
+/// <param name="modelData">Persistent data</param>
 public class TransactionPresenter : SideNavPresenters, IPresenter
 {
     public TransactionPresenter(Control parentControl, ITransaction view, ModelData modelData)
@@ -18,6 +24,9 @@ public class TransactionPresenter : SideNavPresenters, IPresenter
     }
 
 
+    /// <summary>
+    /// Overload for editing Transactions
+    /// </summary>
     public TransactionPresenter(Control parentControl, Transaction view, ModelData modelData, int tableKey) : this(
         parentControl, view, modelData)
     {

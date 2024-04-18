@@ -42,9 +42,14 @@ public partial class Account : UserControl, IAccount
         MessageBox.Show(message);
     }
 
+    /// <summary>
+    /// Change view variables for editing
+    /// </summary>
     public void EditMode()
     {
+        // Set numeric to their limits
         NumericBalance.Maximum = decimal.MaxValue;
+        NumericAccrued.Maximum = decimal.MaxValue;
         ButtonAdd.Text = "Edit transaction";
         ButtonAdd.Click += (s, e) => ButtonEditAccountClicked?.Invoke(s, e);
         ButtonDelete.Enabled = true;

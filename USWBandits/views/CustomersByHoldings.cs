@@ -32,11 +32,12 @@ public partial class CustomersByHoldings : UserControl, ICustomersByHoldings
 
     private void OnCustomersLoad(object sender, EventArgs eventArgs)
     {
+        // Start query when first loaded as there is no user input
         StartQuery?.Invoke(this, EventArgs.Empty);
         SideNav.TreeNavSelect += (s, e) =>
         {
-            if (e.SelectedNode != "NodeCustomers") TreeNavSelect?.Invoke(s, e);
+            if (e.SelectedNode != "NodeStats") TreeNavSelect?.Invoke(s, e);
         };
-        SideNav.FocusNode("NodeCustomers");
+        SideNav.FocusNode("NodeStats");
     }
 }

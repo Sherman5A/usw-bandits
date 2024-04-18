@@ -3,6 +3,9 @@ using USWBandits.logic;
 
 namespace USWBandits.models;
 
+/// <summary>
+/// Provides business logic for accounts
+/// </summary>
 public class AccountModel : IModel
 {
     public AccountModel(ModelData modelData)
@@ -104,6 +107,11 @@ public class AccountModel : IModel
         }
     }
 
+    /// <summary>
+    ///     Gets an account by its key
+    /// </summary>
+    /// <param name="key">Key to search for</param>
+    /// <returns>The bank account if found, null if not</returns>
     public BankAccount? GetAccountByKey(int key)
     {
         const string queryString = "SELECT accid, custid, prodid, balance, accrued FROM account WHERE accid = @Key;";
@@ -129,6 +137,11 @@ public class AccountModel : IModel
         return null;
     }
 
+    /// <summary>
+    /// Deletes an account by its key
+    /// </summary>
+    /// <param name="accountId">Key to search for</param>
+    /// <returns>Number of rows affected</returns>
     public int DeleteAccountByKey(int accountId)
     {
         const string queryString =
@@ -144,6 +157,11 @@ public class AccountModel : IModel
         }
     }
 
+    /// <summary>
+    /// Edit an account by its key
+    /// </summary>
+    /// <param name="account">Account to replace data with</param>
+    /// <returns>Number of rows affected</returns>
     public int EditAccount(BankAccount account)
     {
         const string queryString =

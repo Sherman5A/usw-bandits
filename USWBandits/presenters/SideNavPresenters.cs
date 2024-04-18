@@ -14,6 +14,7 @@ public abstract class SideNavPresenters : IPresenter
 
     public void OnTreeNavSelect(object? sender, TreeNavSelectArgs e)
     {
+        // Get the selected node and route where to swap view to
         IPresenter? nextPresenter = e.SelectedNode switch
         {
             "NodeHome" => new HomePresenter(ParentControl, new Home(), ModelData),
@@ -26,6 +27,7 @@ public abstract class SideNavPresenters : IPresenter
         };
         if (nextPresenter != null)
         {
+            // If none of the parent views are selected, use child view function
             ChangePresenter(nextPresenter);
             return;
         }
@@ -35,10 +37,11 @@ public abstract class SideNavPresenters : IPresenter
 
     private void HandleChildSelected(string nodeName)
     {
+        // Split the name of child nodes into their View and db row number
         var splitNode = nodeName.Split("-");
         var tableType = splitNode[0];
         var tableKey = Convert.ToInt32(splitNode[1]);
-
+        // Route to any child views
         IPresenter? nextPresenter = tableType switch
         {
             "Account" => new AccountPresenter(ParentControl, new Account(), ModelData, tableKey),
@@ -47,6 +50,7 @@ public abstract class SideNavPresenters : IPresenter
             "Customer" => new CustomerPresenter(ParentControl, new Customer(), ModelData, tableKey),
             _ => null
         };
+        // If no nodes were clicked, do nothing
         if (nextPresenter != null) ChangePresenter(nextPresenter);
     }
 }

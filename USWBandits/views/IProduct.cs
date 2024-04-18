@@ -17,7 +17,6 @@ public interface IProduct : IView
     int ProductId { get; set; }
     string AccountName { get; set; }
     ProductOpenStatus? ProductStatus { get; set; }
-    ProductOpenStatus? GetStatus();
     void ShowResult(int result);
     void ShowError(string message);
     void AddNavItems(List<BankProduct> products);

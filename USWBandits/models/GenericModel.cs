@@ -3,7 +3,7 @@
 namespace USWBandits.models;
 
 /// <summary>
-///     A generic model for presenters that perform no database queries
+///     A generic model for presenters that perform no specialist database queries
 /// </summary>
 public class GenericModel : IModel
 {

@@ -4,8 +4,16 @@ using USWBandits.logic;
 
 namespace USWBandits.models;
 
+/// <summary>
+/// Provides commonly used database queries
+/// </summary>
 public class SqlHelper
 {
+    /// <summary>
+    /// Gets all account records
+    /// </summary>
+    /// <param name="sqlPath">Path of database</param>
+    /// <returns>List of all accounts</returns>
     public static List<BankAccount> GetAllAccounts(string sqlPath)
     {
         List<BankAccount> accounts = new();
@@ -32,6 +40,11 @@ public class SqlHelper
         return accounts;
     }
 
+    /// <summary>
+    /// Gets all product records
+    /// </summary>
+    /// <param name="sqlPath">Path of database</param>
+    /// <returns>List of all products</returns>
     public static List<BankProduct> GetAllProducts(string sqlPath)
     {
         List<BankProduct> products = new();
@@ -57,6 +70,11 @@ public class SqlHelper
         return products;
     }
 
+    /// <summary>
+    /// Gets all customer records
+    /// </summary>
+    /// <param name="sqlPath">Path of database</param>
+    /// <returns>List of all customers</returns>
     public static List<BankCustomer> GetAllCustomers(string sqlPath)
     {
         List<BankCustomer> customers = new();
@@ -88,6 +106,11 @@ public class SqlHelper
         return customers;
     }
 
+    /// <summary>
+    /// Gets all transaction records
+    /// </summary>
+    /// <param name="sqlPath">Path of database</param>
+    /// <returns>List of all transactions</returns>
     public static List<BankTransaction> GetAllTransactions(string sqlPath)
     {
         List<BankTransaction> accounts = new();

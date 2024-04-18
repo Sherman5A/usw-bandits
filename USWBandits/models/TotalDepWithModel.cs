@@ -12,6 +12,9 @@ internal class TotalDepWithModel : IModel
 
     public ModelData ModelData { get; set; }
 
+    /// <summary>
+    /// Gets the sum of all transactions between 2 dates and of a certain transaction type
+    /// </summary>
     public decimal GetTransactionTotal(DateTime lowerDate, DateTime upperDate, TransactionAction action)
     {
         const string queryString =
@@ -39,6 +42,7 @@ internal class TotalDepWithModel : IModel
 
     public decimal GetTransactionTotal(DateTime lowerDate, DateTime upperDate)
     {
+        // Overloaded method for not filtering by action
         const string queryString = @"SELECT SUM(amnt) FROM tranx WHERE event BETWEEN @LowerDate AND @UpperDate";
 
         using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))

@@ -3,6 +3,9 @@ using USWBandits.presenters;
 
 namespace USWBandits.views;
 
+/// <summary>
+/// Starting page for the program
+/// </summary>
 public partial class Start : UserControl, IStart
 {
     public Start()

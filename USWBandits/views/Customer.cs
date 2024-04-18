@@ -16,6 +16,9 @@ public partial class Customer : UserControl, ICustomer
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
     public event EventHandler? ButtonAddCustomerClicked;
 
+    /// <summary>
+    /// Change view variables for editing
+    /// </summary>
     public void EditMode()
     {
         NumericAllowance.Maximum = decimal.MaxValue;
@@ -58,6 +61,7 @@ public partial class Customer : UserControl, ICustomer
     public DateOnly CustomerDob
     {
         get => DateOnly.FromDateTime(DatePickDOB.Value);
+        // Convert DateOnly to DateTime for use in DatePicker
         set => DatePickDOB.Value = value.ToDateTime(TimeOnly.FromDateTime(DateTime.Now));
     }
 

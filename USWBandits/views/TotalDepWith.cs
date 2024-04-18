@@ -31,7 +31,9 @@ public partial class TotalDepWith : UserControl, ITotalDepWith
     {
         get
         {
+            // Try to convert the string into an enum
             if (Enum.TryParse<TransactionAction>(ComboTransactionType.Text.Replace(" ", ""), true, out var returnValue))
+                // If the acquired enum is not a member of TransactionAction, return null
                 return Enum.IsDefined(typeof(TransactionAction), returnValue) ? returnValue : null;
 
             return null;
@@ -55,8 +57,8 @@ public partial class TotalDepWith : UserControl, ITotalDepWith
         ButtonSearch.Click += (s, e) => ButtonStartQuery?.Invoke(s, e);
         SideNav.TreeNavSelect += (s, e) =>
         {
-            if (e.SelectedNode != "NodeTransactions") TreeNavSelect?.Invoke(s, e);
+            if (e.SelectedNode != "NodeStats") TreeNavSelect?.Invoke(s, e);
         };
-        SideNav.FocusNode("NodeTransactions");
+        SideNav.FocusNode("NodeStats");
     }
 }

@@ -4,6 +4,12 @@ using USWBandits.views;
 
 namespace USWBandits.presenters;
 
+/// <summary>
+/// Interfaces between ProductView and ProductModel
+/// </summary>
+/// <param name="parentControl">Master control for switching views</param>
+/// <param name="view">View</param>
+/// <param name="modelData">Persistent data</param>
 public class ProductPresenter : SideNavPresenters, IPresenter
 {
     public override Control ParentControl { get; set; }
@@ -26,6 +32,9 @@ public class ProductPresenter : SideNavPresenters, IPresenter
         InitView();
     }
 
+    /// <summary>
+    /// Overload for editing Products
+    /// </summary>
     public ProductPresenter(Control parentControl, Product view, ModelData modelData, int tableKey) : this(
         parentControl, view, modelData)
     {
@@ -72,7 +81,7 @@ public class ProductPresenter : SideNavPresenters, IPresenter
     {
         int productId = editMode ? TableKey : Model.GetCurrentProductId() + 1;
         string accountName = View.AccountName;
-        ProductOpenStatus? getResult = View.GetStatus();
+        ProductOpenStatus? getResult = View.ProductStatus;
         if (getResult is null)
         {
             return null;

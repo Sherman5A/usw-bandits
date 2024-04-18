@@ -11,6 +11,10 @@ public class StatsModel : IModel
 
     public ModelData ModelData { get; set; }
 
+    /// <summary>
+    /// Activates a daily interest calculation that increase each accounts accrued and balance fields by their interests defined in products
+    /// </summary>
+    /// <returns>Number of rows affected</returns>
     public int CalculateInterest()
     {
         const string queryString =

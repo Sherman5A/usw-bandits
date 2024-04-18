@@ -3,6 +3,10 @@ using USWBandits.views;
 
 namespace USWBandits.presenters;
 
+/// <summary>
+/// Presenter between TransactionsByCustomerModel and TransactionsByCustomerView
+/// Displays each customer's transactions
+/// </summary>
 public class TransactionsByCustomerPresenter : SideNavPresenters, IPresenter
 {
     public TransactionsByCustomerPresenter(Control parentControl, ITransactionsByCustomer view, ModelData modelData)

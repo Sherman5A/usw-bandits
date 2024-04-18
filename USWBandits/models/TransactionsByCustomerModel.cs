@@ -13,6 +13,11 @@ public class TransactionsByCustomerModel : IModel
 
     public ModelData ModelData { get; set; }
 
+    /// <summary>
+    /// Lists transactions by the customer that they are linked to
+    /// </summary>
+    /// <param name="customerKey">The customer that all the transactions are linked to</param>
+    /// <returns>List of transaction related to the customerKey argument</returns>
     public List<BankTransaction> GetTransactionsByCustomer(int customerKey)
     {
         List<BankTransaction> transactions = new();
