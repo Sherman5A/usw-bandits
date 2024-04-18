@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using USWBandits.logic;
+﻿using USWBandits.logic;
 using USWBandits.models;
 using USWBandits.views;
 
@@ -21,10 +20,11 @@ public class TransactionPresenter : SideNavPresenters, IPresenter
         View = view;
         View.Presenter = this;
         View.TreeNavSelect += OnTreeNavSelect;
-        View.ButtonAddTransactionClicked += OnAddProductClicked;
+        View.ButtonAddTransactionClicked += OnAddTransactionClicked;
         Model = new TransactionModel(modelData);
         InitView();
     }
+
 
     public TransactionPresenter(Control parentControl, Transaction view, ModelData modelData, int tableKey) : this(
         parentControl, view, modelData)
@@ -41,12 +41,22 @@ public class TransactionPresenter : SideNavPresenters, IPresenter
             View.EditMode();
             View.TransactionId = Transaction.TransactionID;
             View.AccountId = Transaction.TranAccountID;
-            Debug.WriteLine(Transaction.Action.ToString());
             View.Action = Transaction.Action;
+            View.Amount = Transaction.Amount;
             View.TransactionEvent = Transaction.Event;
+            // Remove previous event binding
+            View.ButtonAddTransactionClicked -= OnAddTransactionClicked;
+            // Add new event binding
             View.ButtonEditTransactionClicked += OnEditTransaction;
             View.ButtonDeleteTransactionClicked += OnDeleteTransaction;
         }
+    }
+
+    private void InitView()
+    {
+        View.AddNavItems(Model.GetTransactions());
+        View.TransactionId = (Model.GetCurrentTransactionId() + 1);
+        View.SetAccountOptions(Model.GetAccounts());
     }
 
     private void OnDeleteTransaction(object? sender, EventArgs eventArgs)
@@ -61,23 +71,28 @@ public class TransactionPresenter : SideNavPresenters, IPresenter
 
     private void OnEditTransaction(object? sender, EventArgs eventArgs)
     {
-        throw new NotImplementedException();
+        var transaction = CreateTransaction();
+        int result = Model.EditTransaction(transaction);
+        if (result == 1)
+        {
+            View.ShowResult(result);
+            ChangePresenter(new TransactionsPresenter(ParentControl, new Transactions(), ModelData));
+        }
     }
 
 
-    private void InitView()
+    private void OnAddTransactionClicked(object? sender, EventArgs eventArgs)
     {
-        View.AddNavItems(Model.GetTransactions());
-        View.TransactionId = (Model.GetCurrentTransactionId() + 1);
-        View.SetAccountOptions(Model.GetAccounts());
+        var transaction = CreateTransaction();
+        int result = Model.AddTransaction(transaction);
+        View.ShowResult(result);
+        if (result == 1)
+        {
+            View.TransactionId = (Model.GetCurrentTransactionId() + 1);
+        }
     }
 
-    public override void ChangePresenter(IPresenter presenter)
-    {
-        ParentControl.GoTo(presenter);
-    }
-
-    private void OnAddProductClicked(object? sender, EventArgs eventArgs)
+    private BankTransaction CreateTransaction()
     {
         int transactionId = Model.GetCurrentTransactionId() + 1;
         int accountID = View.AccountId;
@@ -91,12 +106,12 @@ public class TransactionPresenter : SideNavPresenters, IPresenter
 
         decimal amount = View.Amount;
         DateTime tranEvent = View.TransactionEvent;
-        BankTransaction product = new(transactionId, accountID, transactionAction, amount, tranEvent);
-        int result = Model.AddTransaction(product);
-        View.ShowResult(result);
-        if (result == 1)
-        {
-            View.TransactionId = (Model.GetCurrentTransactionId() + 1);
-        }
+        BankTransaction transaction = new(transactionId, accountID, transactionAction, amount, tranEvent);
+        return transaction;
+    }
+
+    public override void ChangePresenter(IPresenter presenter)
+    {
+        ParentControl.GoTo(presenter);
     }
 }

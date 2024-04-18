@@ -123,10 +123,6 @@ public class TransactionModel : IModel
         }
     }
 
-    public List<BankTransaction> GetTransactions()
-    {
-        return SqlHelper.GetAllTransactions(ModelData.SQLPath);
-    }
 
     public int DeleteTransactionByKey(int transactionId)
     {
@@ -142,5 +138,31 @@ public class TransactionModel : IModel
             int result = sqlCommand.ExecuteNonQuery();
             return result;
         }
+    }
+
+    public int EditTransaction(BankTransaction transaction)
+    {
+        const string queryString =
+            "UPDATE tranx SET accid = @AccountId, action = @Action, amnt = @Amount, event = @Event WHERE trnxid = @TransactionId";
+
+        using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))
+        {
+            connection.Open();
+
+            var sqlCommand = connection.CreateCommand();
+            sqlCommand.CommandText = queryString;
+            sqlCommand.Parameters.AddWithValue("@TransactionId", transaction.TranAccountID);
+            sqlCommand.Parameters.AddWithValue("@AccountId", transaction.TranAccountID);
+            sqlCommand.Parameters.AddWithValue("@Action", transaction.GetActionString());
+            sqlCommand.Parameters.AddWithValue("@Amount", transaction.Amount);
+            sqlCommand.Parameters.AddWithValue("@Event", transaction.Event.ToString("yyyy:MM:dd HH:mm"));
+            int result = sqlCommand.ExecuteNonQuery();
+            return result;
+        }
+    }
+
+    public List<BankTransaction> GetTransactions()
+    {
+        return SqlHelper.GetAllTransactions(ModelData.SQLPath);
     }
 }

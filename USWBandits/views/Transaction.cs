@@ -1,4 +1,5 @@
-﻿using USWBandits.components;
+﻿using System.Diagnostics;
+using USWBandits.components;
 using USWBandits.logic;
 using USWBandits.presenters;
 
@@ -20,8 +21,8 @@ public partial class Transaction : UserControl, ITransaction
 
     private void OnTransactionLoad(object sender, EventArgs eventArgs)
     {
-        DateTransactionEvent.CustomFormat = "yyyy:MM:dd HH:mm";
         NumericAmount.Maximum = decimal.MaxValue;
+        DateTransactionEvent.CustomFormat = "yyyy:MM:dd HH:mm";
         ButtonAddTran.Click += (s, e) => ButtonAddTransactionClicked?.Invoke(s, e);
         SideNav.TreeNavSelect += (s, e) =>
         {
@@ -32,6 +33,7 @@ public partial class Transaction : UserControl, ITransaction
 
     public void EditMode()
     {
+        NumericAmount.Maximum = decimal.MaxValue;
         ButtonAddTran.Text = "Edit transaction";
         ButtonAddTran.Click += (s, e) => ButtonEditTransactionClicked?.Invoke(s, e);
         ButtonDelete.Enabled = true;
@@ -72,7 +74,13 @@ public partial class Transaction : UserControl, ITransaction
     public decimal Amount
     {
         get => NumericAmount.Value;
-        set => NumericAmount.Value = value;
+        set
+        {
+            Debug.WriteLine(NumericAmount.Maximum);
+            Debug.WriteLine(NumericAmount.Minimum);
+            Debug.WriteLine(value);
+            NumericAmount.Value = value;
+        }
     }
 
     public DateTime TransactionEvent

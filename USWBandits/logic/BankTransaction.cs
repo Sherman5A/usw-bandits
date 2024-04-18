@@ -4,7 +4,6 @@ public class BankTransaction
 {
     public int TransactionID { get; }
     public int TranAccountID { get; }
-    public BankAccount TranAccount { get; set; }
     public TransactionAction Action { get; }
     public decimal Amount { get; }
     public DateTime Event { get; }
