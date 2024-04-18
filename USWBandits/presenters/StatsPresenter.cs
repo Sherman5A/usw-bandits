@@ -8,7 +8,7 @@ internal class StatsPresenter : SideNavPresenters, IPresenter
     public override Control ParentControl { get; set; }
     public IStats View { get; set; }
     public override UserControl ViewControl => View as UserControl;
-    public GenericModel Model { get; set; }
+    public StatsModel Model { get; set; }
     public override ModelData ModelData => Model.ModelData;
 
     public StatsPresenter(Control parentControl, IStats view, ModelData modelData)
@@ -18,16 +18,20 @@ internal class StatsPresenter : SideNavPresenters, IPresenter
         View.Presenter = this;
         View.TreeNavSelect += OnTreeNavSelect;
         View.ButtonCalculateInterestClicked += (s, e) => OnCalculateInterest();
-        View.ButtonCustomerByHoldingsClicked += (s, e) => ChangePresenter(new CustomersByHoldingsPresenter(ParentControl, new CustomersByHoldings(), ModelData));
-        View.ButtonTranscationsByDateClicked += (s, e) => ChangePresenter(
+        View.ButtonCustomerByHoldingsClicked += (s, e) =>
+            ChangePresenter(new CustomersByHoldingsPresenter(ParentControl, new CustomersByHoldings(), ModelData));
+        View.ButtonTransactionsByDateClicked += (s, e) => ChangePresenter(
             new TotalDepWithPresenter(ParentControl, new TotalDepWith(), ModelData));
-        View.ButtonTransactionByCustomerClicked += (s, e) => ChangePresenter(new TransactionsByCustomerPresenter(ParentControl, new TransactionsByCustomer(), ModelData));
-        Model = new GenericModel(modelData);
+        View.ButtonTransactionByCustomerClicked += (s, e) =>
+            ChangePresenter(
+                new TransactionsByCustomerPresenter(ParentControl, new TransactionsByCustomer(), ModelData));
+        Model = new StatsModel(modelData);
     }
 
     private void OnCalculateInterest()
     {
-        throw new NotImplementedException();
+        int result = Model.CalculateInterest();
+        View.ShowMessage(result);
     }
 
     public override void ChangePresenter(IPresenter presenter)

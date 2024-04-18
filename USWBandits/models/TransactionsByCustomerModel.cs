@@ -16,7 +16,8 @@ public class TransactionsByCustomerModel : IModel
     public List<BankTransaction> GetTransactionsByCustomer(int customerKey)
     {
         List<BankTransaction> transactions = new();
-        const string queryString = "SELECT event, accid, action, amount FROM tranx JOIN account ON tranx.accid = account.accid WHERE account.custid = @CustomerKey ORDER BY tranx.event ASC";
+        const string queryString =
+            "SELECT event, trnxid, tranx.accid, action, amnt FROM tranx JOIN account ON tranx.accid = account.accid WHERE account.custid = @CustomerKey ORDER BY tranx.event ASC";
 
         using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))
         {
@@ -33,23 +34,47 @@ public class TransactionsByCustomerModel : IModel
                     DateTime transactionEvent;
                     try
                     {
-                        transactionEvent = DateTime.ParseExact(reader.GetString(4), "yyyy:MM:dd HH:mm",
+                        transactionEvent = DateTime.ParseExact(reader.GetString(0), "yyyy:MM:dd HH:mm",
                             CultureInfo.InvariantCulture);
                     }
                     catch (FormatException)
                     {
                         transactionEvent = DateTime.UnixEpoch;
                     }
+
                     transactions.Add(new BankTransaction(
-                        reader.GetInt32(0),
                         reader.GetInt32(1),
-                        reader.GetString(2),
-                        reader.GetDecimal(3),
+                        reader.GetInt32(2),
+                        reader.GetString(3),
+                        reader.GetDecimal(4),
                         transactionEvent
-                        ));
+                    ));
                 }
             }
         }
+
         return transactions;
+    }
+
+    public List<(int id, string firstName, string lastName)> GetCustomers()
+    {
+        const string queryString = "SELECT custid, firstname, lastname FROM customer ORDER BY custid;";
+        List<(int, string, string)> returnList = new();
+        using (var connection = new SQLiteConnection($@"Data Source={ModelData.SQLPath}"))
+        {
+            connection.Open();
+
+            var sqlCommand = connection.CreateCommand();
+            sqlCommand.CommandText = queryString;
+            using (var reader = sqlCommand.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    returnList.Add((reader.GetInt32(0), reader.GetString(1), reader.GetString(2)));
+                }
+            }
+        }
+
+        return returnList;
     }
 }

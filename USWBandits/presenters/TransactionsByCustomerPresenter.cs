@@ -1,4 +1,5 @@
-﻿using USWBandits.models;
+﻿using System.Data.SQLite;
+using USWBandits.models;
 using USWBandits.views;
 
 
@@ -20,12 +21,13 @@ public class TransactionsByCustomerPresenter : SideNavPresenters, IPresenter
         View.TreeNavSelect += OnTreeNavSelect;
         View.ButtonStartQuery += OnStartQuery;
         Model = new TransactionsByCustomerModel(modelData);
+        View.ComboCustomers = Model.GetCustomers();
     }
+
 
     private void OnStartQuery(object? sender, EventArgs e)
     {
-        // Do query
-        throw new NotImplementedException();
+        View.ShowTransactions(Model.GetTransactionsByCustomer(View.CustomerId));
     }
 
     public override void ChangePresenter(IPresenter presenter)

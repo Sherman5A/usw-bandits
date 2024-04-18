@@ -9,7 +9,7 @@ public partial class Stats : UserControl, IStats
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
     public event EventHandler? ButtonCalculateInterestClicked;
     public event EventHandler? ButtonCustomerByHoldingsClicked;
-    public event EventHandler? ButtonTranscationsByDateClicked;
+    public event EventHandler? ButtonTransactionsByDateClicked;
     public event EventHandler? ButtonTransactionByCustomerClicked;
 
 
@@ -27,8 +27,12 @@ public partial class Stats : UserControl, IStats
         SideNav.FocusNode("NodeStats");
         ButtonCalcInterest.Click += (s, e) => ButtonCalculateInterestClicked?.Invoke(s, e);
         ButtonCustomerByHoldings.Click += (s, e) => ButtonCustomerByHoldingsClicked?.Invoke(s, e);
-        ButtonTotalTransaction.Click += (s, e) => ButtonTranscationsByDateClicked?.Invoke(s, e);
+        ButtonTotalTransaction.Click += (s, e) => ButtonTransactionsByDateClicked?.Invoke(s, e);
         ButtonTransactionByCustomer.Click += (s, e) => ButtonTransactionByCustomerClicked?.Invoke(s, e);
     }
 
+    public void ShowMessage(int result)
+    {
+        MessageBox.Show($"Interest changed for {result} rows");
+    }
 }

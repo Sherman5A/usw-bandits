@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace USWBandits.logic;
+﻿namespace USWBandits.logic;
 
 public class BankTransaction
 {

@@ -25,13 +25,18 @@ public partial class TotalDepWith : UserControl, ITotalDepWith
         SideNav.FocusNode("NodeTransactions");
     }
 
-    public void ShowResult(int addResult)
+    public DateTime LowerDate
     {
-        MessageBox.Show($"Database added {addResult} rows");
+        get => DateFrom.Value;
+        set => DateFrom.Value = value;
     }
 
-    public DateTime LowerDate { get => DateFrom.Value; set => DateFrom.Value = value; }
-    public DateTime UpperDate { get => DateTo.Value; set => DateTo.Value = value; }
+    public DateTime UpperDate
+    {
+        get => DateTo.Value;
+        set => DateTo.Value = value;
+    }
+
     public TransactionAction? TransactionAction
     {
         get
@@ -45,9 +50,15 @@ public partial class TotalDepWith : UserControl, ITotalDepWith
         }
         set => ComboTransactionType.Text = TransactionHelper.StringFromTransaction((TransactionAction)value);
     }
-            
-    public void AddTransactions(List<BankAccount> accounts)
+
+    public void ShowResult(decimal result)
     {
-        throw new NotImplementedException();
+        ListSearchResults.Items.Clear();
+        ListSearchResults.Items.Add(result);
+    }
+
+    public void ShowError(string errorMessage)
+    {
+        MessageBox.Show(errorMessage);
     }
 }

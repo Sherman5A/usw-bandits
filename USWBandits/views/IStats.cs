@@ -10,6 +10,7 @@ public interface IStats : IView
     public event EventHandler<TreeNavSelectArgs> TreeNavSelect;
     public event EventHandler? ButtonCalculateInterestClicked;
     public event EventHandler? ButtonCustomerByHoldingsClicked;
-    public event EventHandler? ButtonTranscationsByDateClicked;
+    public event EventHandler? ButtonTransactionsByDateClicked;
     public event EventHandler? ButtonTransactionByCustomerClicked;
+    void ShowMessage(int result);
 }

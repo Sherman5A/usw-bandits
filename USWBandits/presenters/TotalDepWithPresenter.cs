@@ -27,16 +27,23 @@ internal class TotalDepWithPresenter : SideNavPresenters, IPresenter
     {
         DateTime fromDate = View.LowerDate;
         DateTime toDate = View.UpperDate;
-        TransactionAction action = (TransactionAction)View.TransactionAction;
-        int result;
-        //if (action is null)
-             //result = Model.AddAccount(account);
+        TransactionAction? action = View.TransactionAction;
+        decimal result;
+        if (action is null)
+            result = Model.GetTransactionTotal(fromDate, toDate);
+        else
+        {
+            result = Model.GetTransactionTotal(fromDate, toDate, (TransactionAction)action);
+        }
 
-        //View.ShowResult(result);
-        //if (result == 1)
-        //{
-            //View.SetAccountId(Model.GetAccountNumber() + 1);
-        //}
+        if (result >= 0)
+        {
+            View.ShowResult(result);
+        }
+        else
+        {
+            View.ShowError($"Unable to find total transactions of type {action}");
+        }
     }
 
     public override void ChangePresenter(IPresenter presenter)

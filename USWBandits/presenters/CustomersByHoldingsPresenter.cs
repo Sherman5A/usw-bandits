@@ -8,7 +8,7 @@ internal class CustomersByHoldingsPresenter : SideNavPresenters, IPresenter
 {
     public override Control ParentControl { get; set; }
     public ICustomersByHoldings View { get; set; }
-    public TotalDepWithModel Model { get; set; }
+    public CustomersByHoldingsModel Model { get; set; }
     public override ModelData ModelData => Model.ModelData;
     public override UserControl ViewControl => View as UserControl;
 
@@ -18,14 +18,13 @@ internal class CustomersByHoldingsPresenter : SideNavPresenters, IPresenter
         View = view;
         View.Presenter = this;
         View.TreeNavSelect += OnTreeNavSelect;
-        View.ButtonStartQuery += OnStartQuery;
-        Model = new TotalDepWithModel(modelData);
+        View.StartQuery += OnStartQuery;
+        Model = new CustomersByHoldingsModel(modelData);
     }
 
     private void OnStartQuery(object? sender, EventArgs e)
     {
-        // Do query
-        throw new NotImplementedException();
+        View.Customers = Model.GetMostValuableCustomers();
     }
 
     public override void ChangePresenter(IPresenter presenter)

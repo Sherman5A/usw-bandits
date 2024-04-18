@@ -1,4 +1,5 @@
 ﻿using USWBandits.components;
+using USWBandits.logic;
 using USWBandits.presenters;
 
 namespace USWBandits.views;
@@ -9,6 +10,8 @@ public partial class TransactionsByCustomer : UserControl, ITransactionsByCustom
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
     public event EventHandler? ButtonStartQuery;
 
+    public int CustomerId => ((KeyValuePair<int, string>)ComboCustomerId.SelectedItem).Key;
+
     public TransactionsByCustomer()
     {
         InitializeComponent();
@@ -16,7 +19,7 @@ public partial class TransactionsByCustomer : UserControl, ITransactionsByCustom
 
     private void OnCustomersLoad(object sender, EventArgs eventArgs)
     {
-        ButtonStartQuery?.Invoke(this, EventArgs.Empty);
+        ButtonSearch.Click += ButtonSearchClicked;
         SideNav.TreeNavSelect += (s, e) =>
         {
             if (e.SelectedNode != "NodeCustomers") TreeNavSelect?.Invoke(s, e);
@@ -24,21 +27,36 @@ public partial class TransactionsByCustomer : UserControl, ITransactionsByCustom
         SideNav.FocusNode("NodeCustomers");
     }
 
-    public void ShowResult(int addResult)
+    private void ButtonSearchClicked(object sender, EventArgs e)
     {
-        MessageBox.Show($"Database added {addResult} rows");
+        ButtonStartQuery?.Invoke(this, EventArgs.Empty);
     }
 
-    public List<(int customer, string firstName, string lastName, decimal balance)> Customers
+    public List<(int customer, string firstName, string lastName)> ComboCustomers
     {
         set
         {
-            Dictionary<(int customer, string firstName, string lastName, decimal balance), string> listParing = new();
+            Dictionary<int, string> listParing = new();
 
-            foreach (var (customer, firstName, lastName, balance) in value)
+            foreach (var (customerKey, firstName, lastName) in value)
             {
-                listParing.Add((customer, firstName, lastName, balance), $"ID: {customer} Name: {firstName} {lastName} {balance}");
+                listParing.Add(customerKey,
+                    $"ID: {customerKey} Name: {firstName} {lastName}");
             }
+
+            ComboCustomerId.DataSource = new BindingSource(listParing, null);
+            ComboCustomerId.DisplayMember = "Value";
+            ComboCustomerId.ValueMember = "Key";
+        }
+    }
+
+    public void ShowTransactions(List<BankTransaction> transactions)
+    {
+        ListCustomers.Items.Clear();
+        foreach (var transaction in transactions)
+        {
+            ListCustomers.Items.Add(
+                $"Date: {transaction.Event} Account: {transaction.TranAccountID} Action: {transaction.GetActionString()} Amount: {transaction.Amount}");
         }
     }
 }

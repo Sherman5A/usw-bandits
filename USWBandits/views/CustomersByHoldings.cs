@@ -3,11 +3,12 @@ using USWBandits.presenters;
 
 namespace USWBandits.views;
 
-public partial class CustomersByHoldings: UserControl, ICustomersByHoldings
+public partial class CustomersByHoldings : UserControl, ICustomersByHoldings
 {
     public IPresenter? Presenter { get; set; }
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
-    public event EventHandler? ButtonStartQuery;
+    public event EventHandler? StartQuery;
+
 
     public CustomersByHoldings()
     {
@@ -16,7 +17,7 @@ public partial class CustomersByHoldings: UserControl, ICustomersByHoldings
 
     private void OnCustomersLoad(object sender, EventArgs eventArgs)
     {
-        ButtonStartQuery?.Invoke(this, EventArgs.Empty);
+        StartQuery?.Invoke(this, EventArgs.Empty);
         SideNav.TreeNavSelect += (s, e) =>
         {
             if (e.SelectedNode != "NodeCustomers") TreeNavSelect?.Invoke(s, e);
@@ -24,21 +25,21 @@ public partial class CustomersByHoldings: UserControl, ICustomersByHoldings
         SideNav.FocusNode("NodeCustomers");
     }
 
-    public void ShowResult(int addResult)
-    {
-        MessageBox.Show($"Database added {addResult} rows");
-    }
-
-    public List<(int customer, string firstName, string lastName, decimal balance)> Customers
+    public List<(int customerId, string firstName, string lastName, decimal balance)> Customers
     {
         set
         {
-            Dictionary<(int customer, string firstName, string lastName, decimal balance), string> listParing = new();
+            Dictionary<(int customerId, string firstName, string lastName, decimal balance), string> listParing = new();
 
-            foreach (var (customer, firstName, lastName, balance) in value)
+            foreach (var (customerId, firstName, lastName, balance) in value)
             {
-                listParing.Add((customer, firstName, lastName, balance), $"ID: {customer} Name: {firstName} {lastName} {balance}");
+                listParing.Add((customerId, firstName, lastName, balance),
+                    $"ID: {customerId} Name: {firstName} {lastName} Total Balance: {balance}");
             }
+
+            ListCustomers.DataSource = new BindingSource(listParing, null);
+            ListCustomers.DisplayMember = "Value";
+            ListCustomers.ValueMember = "Key";
         }
     }
 }

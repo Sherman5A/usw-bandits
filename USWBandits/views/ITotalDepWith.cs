@@ -10,5 +10,6 @@ internal interface ITotalDepWith : IView
     DateTime LowerDate { get; set; }
     DateTime UpperDate { get; set; }
     TransactionAction? TransactionAction { get; set; }
-    void AddTransactions(List<BankAccount> accounts);
+    void ShowResult(decimal result);
+    void ShowError(string errorMessage);
 }
