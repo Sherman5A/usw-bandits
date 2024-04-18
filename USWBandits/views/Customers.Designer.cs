@@ -28,12 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ButtonSearch = new Button();
             ButtonAddCustomer = new Button();
             SideNav = new components.SideNav();
             LabelTitle = new Label();
-            ButtonTransactions = new Button();
-            ButtonAddTransaction = new Button();
             TableButtons = new TableLayoutPanel();
             tableLayoutPanel1 = new TableLayoutPanel();
             button1 = new Button();
@@ -42,22 +39,12 @@
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
-            // ButtonSearch
-            // 
-            ButtonSearch.Dock = DockStyle.Fill;
-            ButtonSearch.Location = new Point(260, 3);
-            ButtonSearch.Name = "ButtonSearch";
-            ButtonSearch.Size = new Size(252, 178);
-            ButtonSearch.TabIndex = 9;
-            ButtonSearch.Text = "Search for customers";
-            ButtonSearch.UseVisualStyleBackColor = true;
-            // 
             // ButtonAddCustomer
             // 
             ButtonAddCustomer.Dock = DockStyle.Fill;
             ButtonAddCustomer.Location = new Point(3, 3);
             ButtonAddCustomer.Name = "ButtonAddCustomer";
-            ButtonAddCustomer.Size = new Size(251, 178);
+            ButtonAddCustomer.Size = new Size(509, 362);
             ButtonAddCustomer.TabIndex = 8;
             ButtonAddCustomer.Text = "Add new customers";
             ButtonAddCustomer.UseVisualStyleBackColor = true;
@@ -82,40 +69,16 @@
             LabelTitle.TabIndex = 6;
             LabelTitle.Text = "Customers";
             // 
-            // ButtonTransactions
-            // 
-            ButtonTransactions.Dock = DockStyle.Fill;
-            ButtonTransactions.Location = new Point(3, 187);
-            ButtonTransactions.Name = "ButtonTransactions";
-            ButtonTransactions.Size = new Size(251, 178);
-            ButtonTransactions.TabIndex = 10;
-            ButtonTransactions.Text = "Display Transactions By Customer";
-            ButtonTransactions.UseVisualStyleBackColor = true;
-            // 
-            // ButtonAddTransaction
-            // 
-            ButtonAddTransaction.Dock = DockStyle.Fill;
-            ButtonAddTransaction.Location = new Point(260, 187);
-            ButtonAddTransaction.Name = "ButtonAddTransaction";
-            ButtonAddTransaction.Size = new Size(252, 178);
-            ButtonAddTransaction.TabIndex = 11;
-            ButtonAddTransaction.Text = "Add Customer Transaction";
-            ButtonAddTransaction.UseVisualStyleBackColor = true;
-            // 
             // TableButtons
             // 
             TableButtons.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            TableButtons.ColumnCount = 2;
-            TableButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TableButtons.ColumnCount = 1;
             TableButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             TableButtons.Controls.Add(ButtonAddCustomer, 0, 0);
-            TableButtons.Controls.Add(ButtonAddTransaction, 1, 1);
-            TableButtons.Controls.Add(ButtonSearch, 1, 0);
-            TableButtons.Controls.Add(ButtonTransactions, 0, 1);
+            TableButtons.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             TableButtons.Location = new Point(157, 41);
             TableButtons.Name = "TableButtons";
-            TableButtons.RowCount = 2;
-            TableButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            TableButtons.RowCount = 1;
             TableButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             TableButtons.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             TableButtons.Size = new Size(515, 368);
@@ -172,13 +135,9 @@
         }
 
         #endregion
-
-        private Button ButtonSearch;
         private Button ButtonAddCustomer;
         private components.SideNav SideNav;
         private Label LabelTitle;
-        private Button ButtonTransactions;
-        private Button ButtonAddTransaction;
         private TableLayoutPanel TableButtons;
         private TableLayoutPanel tableLayoutPanel1;
         private Button button1;

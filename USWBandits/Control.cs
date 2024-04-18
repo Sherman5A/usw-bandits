@@ -35,6 +35,13 @@ public class Control : INav
     /// <summary>
     ///     Swap to the default starting view of the program
     /// </summary>
+
+    public void Disconnect()
+    {
+        GoToDefault();
+        SetConnectionStatus(false);
+    }
+
     public void GoToDefault()
     {
         GoTo(new StartPresenter(this, new Start()));
@@ -46,5 +53,10 @@ public class Control : INav
     public void Start()
     {
         Application.Run(Form);
+    }
+
+    public void SetConnectionStatus(bool status)
+    {
+        Form.SetConntectionStatus(status);
     }
 }

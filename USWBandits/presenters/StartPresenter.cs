@@ -16,7 +16,6 @@ public class StartPresenter : IPresenter
 
     public IStart View { get; set; }
     public StartModel Model { get; set; }
-    public SQLiteConnection Conn { get; set; }
     public Control ParentControl { get; set; }
     public UserControl ViewControl => View as UserControl;
 
@@ -28,7 +27,8 @@ public class StartPresenter : IPresenter
     private void HandleDatabaseConnect(object? sender, ConnectDatabaseEventArgs e)
     {
         if (!File.Exists(e.DatabasePath)) return;
-        ;
+
+        ParentControl.SetConnectionStatus(true);
 
         Model = new StartModel(new ModelData(e.DatabasePath));
         ChangePresenter(new HomePresenter(ParentControl, new Home(), Model.ModelData));

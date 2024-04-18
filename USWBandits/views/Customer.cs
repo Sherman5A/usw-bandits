@@ -18,6 +18,7 @@ public partial class Customer : UserControl, ICustomer
 
     public void EditMode()
     {
+        NumericAllowance.Maximum = decimal.MaxValue;
         ButtonAddCustomer.Text = "Edit transaction";
         ButtonAddCustomer.Click += (s, e) => ButtonEditCustomerClicked?.Invoke(s, e);
         ButtonDelete.Enabled = true;

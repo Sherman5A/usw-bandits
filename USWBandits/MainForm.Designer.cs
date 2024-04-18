@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             TopMenu = new MenuStrip();
             Host = new Panel();
             ButtonMenu = new ToolStrip();
-            BackButton = new ToolStripButton();
-            ForwardButton = new ToolStripButton();
-            toolStripLabel1 = new ToolStripLabel();
+            ButtonDisconnect = new ToolStripButton();
+            LabelConnected = new ToolStripLabel();
             toolStripSeparator1 = new ToolStripSeparator();
             ButtonMenu.SuspendLayout();
             SuspendLayout();
@@ -61,7 +59,7 @@
             // 
             ButtonMenu.BackColor = SystemColors.ControlLight;
             ButtonMenu.GripStyle = ToolStripGripStyle.Hidden;
-            ButtonMenu.Items.AddRange(new ToolStripItem[] { BackButton, ForwardButton, toolStripLabel1, toolStripSeparator1 });
+            ButtonMenu.Items.AddRange(new ToolStripItem[] { ButtonDisconnect, LabelConnected, toolStripSeparator1 });
             ButtonMenu.Location = new Point(0, 24);
             ButtonMenu.Name = "ButtonMenu";
             ButtonMenu.Padding = new Padding(10, 0, 0, 0);
@@ -69,29 +67,22 @@
             ButtonMenu.Stretch = true;
             ButtonMenu.TabIndex = 1;
             // 
-            // BackButton
+            // ButtonDisconnect
             // 
-            BackButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            BackButton.Image = (Image)resources.GetObject("BackButton.Image");
-            BackButton.ImageTransparentColor = Color.Magenta;
-            BackButton.Name = "BackButton";
-            BackButton.Size = new Size(23, 22);
-            BackButton.Text = "toolStripButton1";
+            ButtonDisconnect.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            ButtonDisconnect.Image = Properties.Resources.Disconnect;
+            ButtonDisconnect.ImageTransparentColor = Color.Magenta;
+            ButtonDisconnect.Name = "ButtonDisconnect";
+            ButtonDisconnect.Size = new Size(23, 22);
+            ButtonDisconnect.Text = "Disconnect";
+            ButtonDisconnect.ToolTipText = "Disconnect";
+            ButtonDisconnect.Click += DisconnectClick;
             // 
-            // ForwardButton
+            // LabelConnected
             // 
-            ForwardButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            ForwardButton.Image = (Image)resources.GetObject("ForwardButton.Image");
-            ForwardButton.ImageTransparentColor = Color.Magenta;
-            ForwardButton.Name = "ForwardButton";
-            ForwardButton.Size = new Size(23, 22);
-            ForwardButton.Text = "toolStripButton2";
-            // 
-            // toolStripLabel1
-            // 
-            toolStripLabel1.Name = "toolStripLabel1";
-            toolStripLabel1.Size = new Size(65, 22);
-            toolStripLabel1.Text = "Connected";
+            LabelConnected.Name = "LabelConnected";
+            LabelConnected.Size = new Size(79, 22);
+            LabelConnected.Text = "Disconnected";
             // 
             // toolStripSeparator1
             // 
@@ -122,9 +113,8 @@
         private MenuStrip TopMenu;
         private Panel Host;
         private ToolStrip ButtonMenu;
-        private ToolStripButton BackButton;
-        private ToolStripButton ForwardButton;
-        private ToolStripLabel toolStripLabel1;
+        private ToolStripButton ButtonDisconnect;
+        private ToolStripLabel LabelConnected;
         private ToolStripSeparator toolStripSeparator1;
     }
 }

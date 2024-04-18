@@ -30,7 +30,6 @@
         {
             LabelTitle = new Label();
             SideNav = new components.SideNav();
-            ButtonSearch = new Button();
             ButtonAddAccount = new Button();
             TableButtons = new TableLayoutPanel();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -60,22 +59,13 @@
             SideNav.Size = new Size(150, 412);
             SideNav.TabIndex = 2;
             // 
-            // ButtonSearch
-            // 
-            ButtonSearch.Dock = DockStyle.Fill;
-            ButtonSearch.Location = new Point(260, 3);
-            ButtonSearch.Name = "ButtonSearch";
-            ButtonSearch.Size = new Size(252, 359);
-            ButtonSearch.TabIndex = 5;
-            ButtonSearch.Text = "Search for product";
-            ButtonSearch.UseVisualStyleBackColor = true;
-            // 
             // ButtonAddAccount
             // 
             ButtonAddAccount.Dock = DockStyle.Fill;
+            ButtonAddAccount.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             ButtonAddAccount.Location = new Point(3, 3);
             ButtonAddAccount.Name = "ButtonAddAccount";
-            ButtonAddAccount.Size = new Size(251, 359);
+            ButtonAddAccount.Size = new Size(509, 359);
             ButtonAddAccount.TabIndex = 4;
             ButtonAddAccount.Text = "Add new account";
             ButtonAddAccount.UseVisualStyleBackColor = true;
@@ -83,10 +73,8 @@
             // TableButtons
             // 
             TableButtons.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            TableButtons.ColumnCount = 2;
+            TableButtons.ColumnCount = 1;
             TableButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            TableButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            TableButtons.Controls.Add(ButtonSearch, 1, 0);
             TableButtons.Controls.Add(ButtonAddAccount, 0, 0);
             TableButtons.Location = new Point(156, 44);
             TableButtons.Name = "TableButtons";
@@ -150,7 +138,6 @@
 
         private Label LabelTitle;
         private components.SideNav SideNav;
-        private Button ButtonSearch;
         private Button ButtonAddAccount;
         private TableLayoutPanel TableButtons;
         private TableLayoutPanel tableLayoutPanel1;

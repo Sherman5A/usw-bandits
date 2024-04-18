@@ -31,4 +31,21 @@ public partial class MainForm : Form
     {
         e.Control.Dock = DockStyle.Fill;
     }
+
+    public void SetConntectionStatus(bool status)
+    {
+        if (status)
+        {
+            LabelConnected.Text = "Connected";
+        }
+        else
+        {
+            LabelConnected.Text = "Disconnected";
+        }
+    }
+
+    private void DisconnectClick(object sender, EventArgs e)
+    {
+        Control.Disconnect();
+    }
 }
