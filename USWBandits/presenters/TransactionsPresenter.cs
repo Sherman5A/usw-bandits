@@ -14,6 +14,8 @@ internal class TransactionsPresenter : SideNavPresenters, IPresenter
         View.ButtonAddTransactionClick += (s, e) =>
             ChangePresenter(new TransactionPresenter(ParentControl, new Transaction(), Model.ModelData));
         Model = new GenericModel(modelData);
+        View.AddNavItems(Model.GetTransactions());
+
     }
 
     public ITransactions View { get; set; }

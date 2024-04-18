@@ -1,4 +1,6 @@
-﻿namespace USWBandits.models;
+﻿using USWBandits.logic;
+
+namespace USWBandits.models;
 
 /// <summary>
 ///     A generic model for presenters that perform no database queries
@@ -11,4 +13,24 @@ public class GenericModel : IModel
     }
 
     public ModelData ModelData { get; set; }
+
+    public List<BankProduct> GetProducts()
+    {
+        return SqlHelper.GetAllProducts(ModelData.SQLPath);
+    }
+
+    public List<BankCustomer> GetCustomers()
+    {
+        return SqlHelper.GetAllCustomers(ModelData.SQLPath);
+    }
+
+    public List<BankAccount> GetAccounts()
+    {
+        return SqlHelper.GetAllAccounts(ModelData.SQLPath);
+    }
+
+    public List<BankTransaction> GetTransactions()
+    {
+        return SqlHelper.GetAllTransactions(ModelData.SQLPath);
+    }
 }

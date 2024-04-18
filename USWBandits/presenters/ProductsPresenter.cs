@@ -21,6 +21,7 @@ public class ProductsPresenter : SideNavPresenters, IPresenter
         View.ButtonAddProductClick += (s, e) =>
             ChangePresenter(new ProductPresenter(ParentControl, new Product(), Model.ModelData));
         Model = new GenericModel(modelData);
+        View.AddNavItems(Model.GetProducts());
     }
 
     public override void ChangePresenter(IPresenter presenter)

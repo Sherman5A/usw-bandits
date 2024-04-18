@@ -15,6 +15,7 @@ public class CustomersPresenter : SideNavPresenters, IPresenter
             ChangePresenter(new CustomerPresenter(ParentControl, new Customer(), Model.ModelData)
             );
         Model = new GenericModel(modelData);
+        View.AddNavItems(Model.GetCustomers());
     }
 
     public ICustomers View { get; set; }

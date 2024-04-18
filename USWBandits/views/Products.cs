@@ -1,4 +1,5 @@
 ﻿using USWBandits.components;
+using USWBandits.logic;
 using USWBandits.presenters;
 
 namespace USWBandits.views;
@@ -13,6 +14,12 @@ public partial class Products : UserControl, IProducts
     public IPresenter? Presenter { get; set; }
     public event EventHandler<TreeNavSelectArgs>? TreeNavSelect;
     public event EventHandler? ButtonAddProductClick;
+
+    public void AddNavItems(List<BankProduct> products)
+    {
+        SideNav.AddItem(products);
+    }
+
 
     private void OnProductsLoad(object sender, EventArgs eventArgs)
     {

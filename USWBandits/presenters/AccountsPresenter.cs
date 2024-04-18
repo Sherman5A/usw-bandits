@@ -15,6 +15,8 @@ public class AccountsPresenter : SideNavPresenters, IPresenter
             new AccountPresenter(ParentControl, new Account(), ModelData)
         );
         Model = new GenericModel(modelData);
+        View.AddNavItems(Model.GetAccounts());
+
     }
 
     public IAccounts View { get; set; }
